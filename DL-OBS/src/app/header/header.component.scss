@@ -1,0 +1,55 @@
+#section {
+    height: 170px;
+}
+
+#dropdown {
+    width: 60px;
+    height: 30px;
+    margin-left: 20px;
+    margin-top: 20px;
+    float: left;
+}
+
+#dropdown-label {
+    margin-top: 25px;
+    margin-left: 15px;
+    font-size: 20px;
+    float: left;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+#logo {
+    width: 220px;
+    display: inline-block;
+    margin-top: 20px;
+    margin-left: 330px;
+}
+
+#dropbtn {
+    background-color: white;
+    font-size: 20px;
+    margin-right: 10px;
+    text-decoration: none;
+    color: black;
+    float: right;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+#atm {
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    margin-right: 10px;
+    float: right;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+#search {
+    width: 30px;
+    margin-top: -2px;
+    float: right;
+}
+
+.right-bar {
+    margin-top: -130px;
+}
