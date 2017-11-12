@@ -45,7 +45,7 @@
         <div id="locationForm">
             <label>ATM/Branch Locations</label>
             <input type="text" placeholder="Enter Address"><br>
-            <input type="submit" value="Find Locations">
+            <input type="submit" value="Find Locations" [@state]="state" (click)="toggleState()">
         </div>
     </div>
 </div>
