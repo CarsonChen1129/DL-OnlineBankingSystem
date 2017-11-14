@@ -15,6 +15,7 @@ import {LoginComponent} from '../pages/login/login';
 import {RegisterComponent} from '../pages/register/register';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import {DashboardComponent} from '../pages/dashboard/dashboard';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAkv3jLcTIQ1APk1e0BFAW70e_ndHbWrbM',
@@ -32,6 +33,7 @@ export const firebaseConfig = {
     RegisterComponent,
     HeaderComponent,
     FooterComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
