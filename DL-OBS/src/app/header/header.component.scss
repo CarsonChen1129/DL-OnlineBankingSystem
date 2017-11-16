@@ -1,4 +1,5 @@
 header {
+<<<<<<< Updated upstream
     width: 100%;
 }
 
@@ -28,6 +29,38 @@ nav ul a {
     color: #424242;
 }
 
+=======
+  width:100%;
+}
+
+nav {
+  background-color:transparent;
+  color:#424242;
+  height:12vw;
+}
+
+nav a.button-collapse {
+  display:inherit;
+}
+
+nav ul a {
+  color:#424242;
+  height:100%;
+}
+
+.brand-logo img {
+  width:15vw;
+  height:10vw;
+  margin-top:1vw;
+  margin-bottom:1vw;
+}
+
+.dropdown-content li>a {
+  color:#424242;
+}
+
+
+>>>>>>> Stashed changes
 #section {
     height: 170px;
 }

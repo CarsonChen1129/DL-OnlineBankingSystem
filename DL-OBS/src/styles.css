@@ -5,7 +5,11 @@ h1 {
 }
 
 a {
+<<<<<<< Updated upstream
     color: inherit;
+=======
+  color:inherit;
+>>>>>>> Stashed changes
 }
 
 input:not([type]):focus:not([readonly]),
@@ -21,7 +25,14 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
+<<<<<<< Updated upstream
     border-bottom: 1px solid #b79344;
     -webkit-box-shadow: 0 1px 0 0 #b79344;
     box-shadow: 0 1px 0 0 #b79344;
 }
+=======
+  border-bottom: 1px solid #b79344;
+  -webkit-box-shadow: 0 1px 0 0 #b79344;
+  box-shadow: 0 1px 0 0 #b79344;
+}
+>>>>>>> Stashed changes

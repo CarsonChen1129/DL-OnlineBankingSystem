@@ -1,5 +1,9 @@
 footer {
+<<<<<<< Updated upstream
     width: 100%;
+=======
+  width:100%;
+>>>>>>> Stashed changes
 }
 
 .followus {
@@ -17,12 +21,21 @@ footer {
 }
 
 .social-buttons {
+<<<<<<< Updated upstream
     height: 100%;
     width: 400px;
     //margin-top: 5px;
     //margin-left: 535px;
     margin: auto;
     padding-top: 5px;
+=======
+  height:100%;
+    width: 400px;
+    //margin-top: 5px;
+    //margin-left: 535px;
+  margin:auto;
+  padding-top:5px;
+>>>>>>> Stashed changes
 }
 
 .sharebutton {
@@ -43,6 +56,7 @@ footer {
     text-align: left;
     margin-left: 50px;
     float: left;
+<<<<<<< Updated upstream
     th {
         font-size: 25px;
         padding-bottom: 10px;
@@ -54,6 +68,21 @@ footer {
     }
 }
 
+=======
+
+  th {
+    font-size: 25px;
+    padding-bottom: 10px;
+    //padding-right: 120px;
+  }
+
+  td {
+    font-size: 18px;
+    //padding-top: 30px;
+  }
+}
+
+>>>>>>> Stashed changes
 .location-panel {
     width: 28%;
     height: 275px;
@@ -66,6 +95,7 @@ footer {
 
 .location-form {
     padding: 30px 0px;
+<<<<<<< Updated upstream
     label {
         font-size: 27px;
         font-family: 'Noto Sans', sans-serif;
@@ -100,3 +130,34 @@ footer {
     height: 11vw;
     font-size: 12px;
 }
+=======
+  label {
+    font-size: 27px;
+    font-family: 'Noto Sans', sans-serif;
+    color: #b79344;
+    margin-top: 30px;
+  }
+  input[type=text] {
+    margin: 20px 5px;
+    font-size: 25px;
+    color: black;
+    background-color: rgb(243, 241, 241);
+    height: 70px;
+    border-radius: 5px;
+    padding-left: 20px;
+    border: 1px solid #b79344;
+    width:90%;
+  }
+  input[type=submit] {
+    margin-top: 30px;
+    font-size: 20px;
+    color: white;
+    background-color: #b79344;
+    width: 270px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    border: none;
+  }
+}
+
+>>>>>>> Stashed changes
