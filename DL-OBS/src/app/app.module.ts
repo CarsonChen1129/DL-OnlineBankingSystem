@@ -3,18 +3,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
+<<<<<<< HEAD
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from 'angularfire2';
 // New imports to update based on AngularFire2 version 4
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
+=======
+>>>>>>> Enrollpages
 import { AppComponent } from './app.component';
-import {WelcomePageComponent} from '../pages/welcome-page/welcome-page';
-import {LoginComponent} from '../pages/login/login';
-import {RegisterComponent} from '../pages/register/register';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+<<<<<<< HEAD
 import {DashboardComponent} from '../pages/dashboard/dashboard';
 
 export const firebaseConfig = {
@@ -24,15 +25,24 @@ export const firebaseConfig = {
   storageBucket: 'fir-2bd19.appspot.com',
   messagingSenderId: '932306096637'
 };
+=======
+import { RegisteroneComponent } from './registerone/registerone.component';
+import { RegistertwoComponent } from './registertwo/registertwo.component';
+import { RegisterthreeComponent } from './registerthree/registerthree.component';
+import { RegisterfourComponent } from './registerfour/registerfour.component';
+import { FormsModule }   from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { routes } from './app.routes';
+import { EqualValidator } from './registerone/equal-validator.directive'; 
+import { ForbiddenValidatorDirective } from './shared/forbidden-name.directive';
+>>>>>>> Enrollpages
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomePageComponent,
-    LoginComponent,
-    RegisterComponent,
     HeaderComponent,
     FooterComponent,
+<<<<<<< HEAD
     DashboardComponent
   ],
   imports: [
@@ -44,6 +54,21 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule
+=======
+    RegisteroneComponent,
+    RegistertwoComponent,
+    RegisterthreeComponent,
+    RegisterfourComponent,
+    EqualValidator,
+    ForbiddenValidatorDirective,
+  ],
+  imports: [
+    BrowserModule,
+    routes,
+    FormsModule,
+     CommonModule,
+
+>>>>>>> Enrollpages
   ],
   providers: [],
   bootstrap: [AppComponent]
