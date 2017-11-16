@@ -1,27 +1,36 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
-import {WelcomePageComponent} from '../pages/welcome-page/welcome-page';
-import {LoginComponent} from '../pages/login/login';
-import {RegisterComponent} from '../pages/register/register';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-
+import { RegisteroneComponent } from './registerone/registerone.component';
+import { RegistertwoComponent } from './registertwo/registertwo.component';
+import { RegisterthreeComponent } from './registerthree/registerthree.component';
+import { RegisterfourComponent } from './registerfour/registerfour.component';
+import { FormsModule }   from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { routes } from './app.routes';
+import { EqualValidator } from './registerone/equal-validator.directive'; 
+import { ForbiddenValidatorDirective } from './shared/forbidden-name.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomePageComponent,
-    LoginComponent,
-    RegisterComponent,
     HeaderComponent,
     FooterComponent,
+    RegisteroneComponent,
+    RegistertwoComponent,
+    RegisterthreeComponent,
+    RegisterfourComponent,
+    EqualValidator,
+    ForbiddenValidatorDirective,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    routes,
+    FormsModule,
+     CommonModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
