@@ -126,16 +126,18 @@
 		padding-right: 7px;
 	}
 
-	input[type=submit] {
-	margin: 3px;
-    font-size: 20px;
-    color: white;
-    background-color: #b79344;
-    width: 130px;
-    padding: 12px 10px;
-    border-radius: 5px;
-    border: none;
-  }
+	.buttonscolor {
+		height: 50px !important;
+		width: auto  !important;
+		font-size: 20px    !important;
+		color: white     !important;
+		background-color: #b79344   !important;
+		width: 130px               !important;
+		padding: 9px 10px !important;
+		border-radius: 5px !important;
+		border: none !important;
+	}
+	
 
 .steps {
   color: #000;
