@@ -2,10 +2,10 @@ import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { RegisteroneComponent } from './registerone/registerone.component';
-import { RegistertwoComponent } from './registertwo/registertwo.component';
-import { RegisterthreeComponent } from './registerthree/registerthree.component';
-import { RegisterfourComponent } from './registerfour/registerfour.component';
+import { RegisteroneComponent } from '../pages/register/registerone/registerone.component';
+import { RegistertwoComponent } from '../pages/register/registertwo/registertwo.component';
+import { RegisterthreeComponent } from '../pages/register/registerthree/registerthree.component';
+import { RegisterfourComponent } from '../pages/register/registerfour/registerfour.component';
 
 export const router: Routes = [
     { path: '', redirectTo: 'one', pathMatch: 'full' },
