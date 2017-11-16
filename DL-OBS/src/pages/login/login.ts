@@ -15,15 +15,17 @@ export class LoginComponent implements OnInit {
   user: Observable<firebase.User>;
   items: AngularFireList<any[]>;
   error: any;
-  constructor(public afAuth: AngularFireAuth, public af: AngularFireDatabase, private router : Router){
+  constructor(public afAuth: AngularFireAuth,
+              public af: AngularFireDatabase,
+              private router: Router) {
     this.user = this.afAuth.authState;
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
 
   }
   onSubmit(formData) {
-    if(formData.valid) {
+    if (formData.valid) {
       console.log(formData.value);
       this.afAuth.auth.signInWithEmailAndPassword(
         formData.value.email,

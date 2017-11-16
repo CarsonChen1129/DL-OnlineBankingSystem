@@ -14,7 +14,6 @@
         <span class="error" *ngIf="error">{{ error }}</span>
 
         <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
-
             <input type="text" placeholder="Email address" (ngModel)="email" name="email" class="txt" required><br>
             <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required><br>
 

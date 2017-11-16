@@ -4,19 +4,16 @@ import {WelcomePageComponent} from '../pages/welcome-page/welcome-page';
 import {LoginComponent} from '../pages/login/login';
 import {RegisterComponent} from '../pages/register/register';
 import {DashboardComponent} from '../pages/dashboard/dashboard';
+import {AppComponent} from "./app.component";
 
 const routes: Routes = [
     {
         path:'',
-        component: LoginComponent
+        component: WelcomePageComponent
     },
     {
         path:'register',
         component: RegisterComponent
-    },
-    {
-        path:'welcome-page',
-        component:WelcomePageComponent
     },
     {
         path:'dashboard',

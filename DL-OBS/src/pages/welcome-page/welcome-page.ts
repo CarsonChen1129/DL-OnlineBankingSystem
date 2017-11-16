@@ -1,4 +1,9 @@
 import {Component, OnInit} from '@angular/core';
+import {Observable} from "rxjs/Observable";
+import {AngularFireDatabase, AngularFireList} from "angularfire2/database";
+import {AngularFireAuth} from "angularfire2/auth";
+import {Router} from "@angular/router";
+import * as firebase from "firebase";
 
 @Component({
     selector: 'page-welcome',
@@ -14,9 +19,37 @@ export class WelcomePageComponent implements OnInit {
     {title: 'Devonshire Mobile Banking', description: 'The Latest mobile banking app built around you. It\'s simple, rewarding, and secure.', img: 'assets/images/dl-mobile.png'}
   ];
 
-  // constructor(){}
+  user: Observable<firebase.User>;
+  items: AngularFireList<any[]>;
+  error: any;
+  constructor(public afAuth: AngularFireAuth,
+              public af: AngularFireDatabase,
+              private router: Router) {
+    this.user = this.afAuth.authState;
+  }
 
   ngOnInit(): void {
 
+  }
+
+  onSubmit(formData) {
+    console.log(formData);
+
+    // if (formData.valid) {
+    //   console.log(formData.value);
+    //   this.afAuth.auth.signInWithEmailAndPassword(
+    //     formData.value.email,
+    //     formData.value.password
+    //   ).then(
+    //     (success) => {
+    //       console.log(success);
+    //       this.router.navigate(['welcome-page']);
+    //     }).catch(
+    //     (err) => {
+    //       console.log(err);
+    //       this.error = err;
+    //     }
+    //   );
+    // }
   }
 }
