@@ -1,0 +1,48 @@
+#topbar {
+    height: 6vw;
+    background-color: #b79344;
+    padding-top: 8px;
+    padding-left: 40px;
+    span {
+        font-size: 3rem;
+        color: white;
+    }
+}
+
+#dashboard {
+    background: url('/assets/images/lending.png');
+    background-repeat: no-repeat;
+    background-size: 1400px 40vw;
+    height: 40vw;
+    .button {
+        position: relative;
+        display: inline-block;
+        width: 300px;
+        height: 200px;
+        margin-left: 150px;
+        margin-top: 140px;
+    }
+    .circle {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: white;
+        padding-top: 25px;
+        padding-left: 27px;
+        margin-bottom: 20px;
+        // rotate image
+        -webkit-transition: -webkit-transform .8s ease-in-out;
+        transition: transform .8s ease-in-out;
+    }
+    .circle:hover {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+    .icon {
+        width: 140px;
+    }
+    .title {
+        font-size: 2rem;
+        color: #b79344;
+    }
+}

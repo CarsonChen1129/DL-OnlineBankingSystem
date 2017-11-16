@@ -8,6 +8,19 @@
 
 <body>
     <h1>This is the login page</h1>
+    <div class="form-container">
+        <h2>Login with email and password</h2>
+
+        <span class="error" *ngIf="error">{{ error }}</span>
+
+        <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+            <input type="text" placeholder="Email address" (ngModel)="email" name="email" class="txt" required><br>
+            <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required><br>
+
+            <button type="submit" [disabled]="!formData.valid" class="basic-btn">Log in</button><br>
+            <a routerLink="register" class="alc">Don't have an account?</a>
+        </form>
+    </div>
 </body>
 
 </html>
