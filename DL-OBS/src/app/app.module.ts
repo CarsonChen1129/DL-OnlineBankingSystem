@@ -8,14 +8,18 @@ import { AngularFireModule } from 'angularfire2';
 // New imports to update based on AngularFire2 version 4
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
 import { AppComponent } from './app.component';
-import {WelcomePageComponent} from '../pages/welcome-page/welcome-page';
-import {LoginComponent} from '../pages/login/login';
-import {RegisterComponent} from '../pages/register/register';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import {DashboardComponent} from '../pages/dashboard/dashboard';
+import { RegisteroneComponent } from '../pages/register/registerone/registerone.component';
+import { RegistertwoComponent } from '../pages/register/registertwo/registertwo.component';
+import { RegisterthreeComponent } from '../pages/register/registerthree/registerthree.component';
+import { RegisterfourComponent } from '../pages/register/registerfour/registerfour.component';
+import { CommonModule } from '@angular/common';
+import { routes } from './app.routes';
+import { EqualValidator } from '../pages/register/registerone/equal-validator.directive';
+import { ForbiddenValidatorDirective } from '../directives/forbidden-name.directive';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAkv3jLcTIQ1APk1e0BFAW70e_ndHbWrbM',
@@ -28,12 +32,15 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    WelcomePageComponent,
-    LoginComponent,
-    RegisterComponent,
     HeaderComponent,
     FooterComponent,
-    DashboardComponent
+    DashboardComponent,
+    RegisteroneComponent,
+    RegistertwoComponent,
+    RegisterthreeComponent,
+    RegisterfourComponent,
+    EqualValidator,
+    ForbiddenValidatorDirective,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +50,10 @@ export const firebaseConfig = {
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    routes,
+    FormsModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
