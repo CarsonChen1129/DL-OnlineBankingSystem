@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {AngularFireAuth} from "angularfire2/auth";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs/Observable";
-import {default as firebase, User} from "firebase";
+import {User} from "firebase";
 import {AngularFireDatabase} from "angularfire2/database";
 
 @Component({
@@ -13,7 +13,7 @@ import {AngularFireDatabase} from "angularfire2/database";
 })
 export class HeaderComponent implements OnInit {
 
-  user: Observable<firebase.User>;
+  user: any;
 
   constructor(public afAuth: AngularFireAuth,
               public af: AngularFireDatabase,
