@@ -19,19 +19,19 @@
     </div>
     <form *ngIf="user == null" class="col s12" #formData="ngForm" (ngSubmit)="onSubmit(formData)">
       <span class="error" *ngIf="error">{{ error }}</span>
-      <div class="row">
+      <div class="row s12">
         <div class="input-field col s12">
           <input id="email" name="email" ngModel type="email" class="validate" required>
           <label for="email">Username</label>
         </div>
       </div>
-      <div class="row">
+      <div class="row s12">
         <div class="input-field col s12">
           <input id="password" name="password" (ngModel)="password" type="password" class="validate" required>
           <label for="password">Password</label>
         </div>
       </div>
-      <div class="row">
+      <div class="row s12">
         <div class="col s12">
           <input type="checkbox" id="remember">
           <label for="remember">Remember Me</label>

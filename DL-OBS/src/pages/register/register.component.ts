@@ -86,7 +86,7 @@ export class RegisterComponent implements OnInit {
             .then((res) => {
               console.log(res);
               console.log({name: res.displayName, email: res.email});
-              localStorage.setItem('user',JSON.stringify({name: res.displayName, email: res.email}));
+              localStorage.setItem('user', JSON.stringify({name: res.displayName, email: res.email, uid: res.uid}));
               this.router.navigate(['dashboard']);
           }).catch((error) => {
             console.log(error);

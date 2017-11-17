@@ -43,7 +43,7 @@ export class WelcomePageComponent implements OnInit {
       ).then(
         (success) => {
           console.log(success);
-          localStorage.setItem('user', JSON.stringify({name: success.displayName, email: success.email}));
+          localStorage.setItem('user', JSON.stringify({name: success.displayName, email: success.email, uid: success.uid}));
           this.router.navigate(['dashboard']);
         }).catch(
         (err) => {

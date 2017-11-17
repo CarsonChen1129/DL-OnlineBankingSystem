@@ -17,6 +17,7 @@
             </ul>
             <a class="brand-logo center" routerLink="/" routerLinkActive="active"><img src="assets/images/dl-logo.png" class="valign-wrapper" alt="dl-logo"></a>
             <ul class="right hide-on-med-and-down">
+                <li *ngIf="hasUser()"><a (click)="logout()">Logout</a></li>
                 <li><a href="">ATM & Branch</a></li>
                 <li><a class="dropdown-button" href="#" data-activates="language-dropdown">Language<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a href=""><i class="material-icons right">search</i></a></li>

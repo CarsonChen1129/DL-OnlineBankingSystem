@@ -12,7 +12,7 @@ import { User }  from '../User';
 })
 export class RegisteroneComponent implements OnInit {
 
-  model = new User(null,'','','','',null,'');
+  model = new User(null,'','','','',null,'',null,'',null,'',null,'');
 
   constructor(private router: Router) { }
 
