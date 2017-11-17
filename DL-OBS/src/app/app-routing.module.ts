@@ -16,6 +16,13 @@ const routes: Routes = [
         component: WelcomePageComponent
     },
     {
+<<<<<<< HEAD
+=======
+        path:'register',
+        component: RegisterComponent
+    },
+    {
+>>>>>>> origin/login-register
         path:'dashboard',
         component: DashboardComponent
     },
