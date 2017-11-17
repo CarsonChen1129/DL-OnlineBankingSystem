@@ -1,0 +1,45 @@
+#upsection {
+    background: url('/assets/images/lending.png');
+    background-repeat: no-repeat;
+    background-size: 1400px 40vw;
+    height: 40vw;
+    #person {
+        margin-top: 20px;
+        margin-left: 110px;
+    }
+    #checking {
+        height: 160px;
+    }
+    #saving1 {
+        height: 160px;
+        margin-left: 155px;
+    }
+    #lending {
+        height: 160px;
+    }
+    #saving2 {
+        height: 160px;
+        margin-left: 155px;
+    }
+    #row1 {
+        margin-top: 10px;
+        margin-left: 110px;
+    }
+    #row2 {
+        margin-top: 10px;
+        margin-left: 110px;
+    }
+}
+
+#downsection {
+    #upcoming {
+        width: 1200px;
+        margin-left: 95px;
+        margin-top: 20px;
+    }
+    #past {
+        width: 1200px;
+        margin-left: 95px;
+        margin-top: 40px;
+    }
+}

@@ -18,6 +18,7 @@ import { ForbiddenValidatorDirective } from '../directives/forbidden-name.direct
 import {RegisterComponent} from "../pages/register/register.component";
 import {WelcomePageComponent} from "../pages/welcome-page/welcome-page";
 import {LoginComponent} from "../pages/login/login";
+import {AccountpageComponent} from "../pages/account-page/account-page";
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAkv3jLcTIQ1APk1e0BFAW70e_ndHbWrbM',
@@ -34,6 +35,7 @@ export const firebaseConfig = {
     FooterComponent,
     WelcomePageComponent,
     LoginComponent,
+    AccountpageComponent,
     DashboardComponent,
     RegisterComponent,
     EqualValidator,
