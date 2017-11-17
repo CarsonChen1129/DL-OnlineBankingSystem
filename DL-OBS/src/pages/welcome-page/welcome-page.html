@@ -17,7 +17,7 @@
       <div>Welcome back, {{user.name}}</div>
       <button routerLink="/dashboard" routerLinkActive="active" class="btn waves-effect waves-light s12" type="button">Dashboard</button>
     </div>
-    <form *ngIf="user == null" class="col s12" #formData="ngForm" (ngSubmit)="onSubmit(formData)">
+    <form *ngIf="user == null" class="col s12 login" #formData="ngForm" (ngSubmit)="onSubmit(formData)">
       <span class="error" *ngIf="error">{{ error }}</span>
       <div class="row s12">
         <div class="input-field col s12">

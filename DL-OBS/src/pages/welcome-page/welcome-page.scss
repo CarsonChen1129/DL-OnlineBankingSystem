@@ -11,6 +11,10 @@ h1, h5 { font-weight: 300; color: #fff; }
   width:80%;
   margin:auto;
 
+  .login {
+    padding: 3vh;
+  }
+
   //.background-img {
   //  position:absolute;
   //  width:100%;
@@ -48,7 +52,7 @@ h1, h5 { font-weight: 300; color: #fff; }
     z-index: 2;
     border-radius:5px;
     background-color:#FFFFFF;
-    margin-top:5%;
+    margin-top:2.5%;
 
     .logged-in {
       padding:3vw;
@@ -60,12 +64,12 @@ h1, h5 { font-weight: 300; color: #fff; }
     }
 
     .row {
-      margin:0 4vw;
+      margin:1vh 0;
       //margin-bottom:0.5vh;
     }
 
     button {
-      width:100%;
+      width:20vw;
       background-color:#b79344;
     }
 

@@ -81,17 +81,20 @@ export class RegisterComponent implements OnInit {
       this.afAuth.auth.createUserWithEmailAndPassword(this.model.email, this.model.password)
         .then((success) => {
         console.log(success);
-        this.afAuth.authState.subscribe(authState => {
-          authState.updateProfile({displayName: this.model.name, photoURL: ''})
-            .then((res) => {
-              console.log(res);
-              console.log({name: res.displayName, email: res.email});
-              localStorage.setItem('user', JSON.stringify({name: res.displayName, email: res.email, uid: res.uid}));
-              this.router.navigate(['dashboard']);
-          }).catch((error) => {
-            console.log(error);
-          });
-        });
+          localStorage.setItem('user', JSON.stringify({name: this.model.name, email: this.model.email, uid: success.uid}));
+          this.router.navigate(['dashboard']);
+        // this.afAuth.authState.subscribe(authState => {
+        //   authState.updateProfile({displayName: this.model.name, photoURL: ''})
+        //     .then((res) => {
+        //       console.log(res);
+        //       console.log({name: res.displayName, email: res.email});
+        //       /* TODO: res is undefined */
+        //       localStorage.setItem('user', JSON.stringify({name: res.displayName, email: res.email, uid: res.uid}));
+        //       this.router.navigate(['dashboard']);
+        //   }).catch((error) => {
+        //     console.log(error);
+        //   });
+        // });
         // this.afs.doc(`users/$(success.uid`).set({displayName: this.model.name, phoneNumber: this.model.phone})
         //   .then((res) => {
         //     console.log(res);
