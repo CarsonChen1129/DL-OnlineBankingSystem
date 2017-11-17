@@ -12,14 +12,12 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import {DashboardComponent} from '../pages/dashboard/dashboard';
-import { RegisteroneComponent } from '../pages/register/registerone/registerone.component';
-import { RegistertwoComponent } from '../pages/register/registertwo/registertwo.component';
-import { RegisterthreeComponent } from '../pages/register/registerthree/registerthree.component';
-import { RegisterfourComponent } from '../pages/register/registerfour/registerfour.component';
 import { CommonModule } from '@angular/common';
-import { routes } from './app.routes';
-import { EqualValidator } from '../pages/register/registerone/equal-validator.directive';
+import { EqualValidator } from '../directives/equal-validator.directive';
 import { ForbiddenValidatorDirective } from '../directives/forbidden-name.directive';
+import {RegisterComponent} from "../pages/register/register.component";
+import {WelcomePageComponent} from "../pages/welcome-page/welcome-page";
+import {LoginComponent} from "../pages/login/login";
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyAkv3jLcTIQ1APk1e0BFAW70e_ndHbWrbM',
@@ -34,11 +32,10 @@ export const firebaseConfig = {
     AppComponent,
     HeaderComponent,
     FooterComponent,
+    WelcomePageComponent,
+    LoginComponent,
     DashboardComponent,
-    RegisteroneComponent,
-    RegistertwoComponent,
-    RegisterthreeComponent,
-    RegisterfourComponent,
+    RegisterComponent,
     EqualValidator,
     ForbiddenValidatorDirective,
   ],
@@ -51,7 +48,6 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    routes,
     FormsModule,
     CommonModule,
   ],
