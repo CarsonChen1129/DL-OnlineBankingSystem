@@ -32,9 +32,8 @@ export class HeaderComponent implements OnInit {
       console.log("Success");
       console.log(success);
       localStorage.removeItem('user');
-      this.router.navigateByUrl('/', { skipLocationChange: true }).then(()=>{
-        window.location.reload();
-      });
+      window.location.replace('/');
+      // this.router.navigateByUrl('', { skipLocationChange: true });
     }).catch((error) => {
       console.log("Error");
       console.log(error);

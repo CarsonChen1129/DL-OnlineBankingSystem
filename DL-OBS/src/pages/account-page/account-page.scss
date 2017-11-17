@@ -1,11 +1,24 @@
 #upsection {
     background: url('/assets/images/lending.png');
     background-repeat: no-repeat;
-    background-size: 1400px 40vw;
-    height: 40vw;
+    background-size: 100% 50vw;
+    height: 50vw;
+
+    .account-summary {
+      margin:3vh 0;
+    }
+    .accounts {
+      margin:2vh 0;
+      img {
+        height:22vh;
+        width:85%;
+        margin:2vh 0;
+      }
+    }
+
     #person {
-        margin-top: 20px;
-        margin-left: 110px;
+        //margin-top: 5%;
+        //margin-left: 5%;
     }
     #person:hover {
         transform: translate(-5px, -5px);
@@ -47,14 +60,17 @@
 }
 
 #downsection {
+    .col {
+      padding:2.5% 10%
+    }
     #upcoming {
-        width: 1200px;
-        margin-left: 95px;
-        margin-top: 20px;
+        width: 100%;
+        //margin-left: 95px;
+        //margin-top: 2vh;
     }
     #past {
-        width: 1200px;
-        margin-left: 95px;
-        margin-top: 40px;
+        width: 100%;
+        //margin-left: 95px;
+        //margin-top: 4vh;
     }
 }

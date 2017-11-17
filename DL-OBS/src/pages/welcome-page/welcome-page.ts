@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs/Observable";
 import {AngularFireDatabase, AngularFireList} from "angularfire2/database";
 import {AngularFireAuth} from "angularfire2/auth";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import * as firebase from "firebase";
 import {MatSnackBar} from "@angular/material";
 
@@ -25,14 +25,26 @@ export class WelcomePageComponent implements OnInit {
   error: any;
   constructor(public afAuth: AngularFireAuth,
               public af: AngularFireDatabase,
-              private router: Router) {
+              private router: Router,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
     if (localStorage.getItem('user') != null) {
       this.user = JSON.parse(localStorage.getItem('user'));
     }
+    this.route.params.subscribe(params => {
+       console.log("Param");
+       console.log(params['skipLocationChange']);
+       if (params['skipLocationChange']) {
+         window.location.reload();
+       }
+    });
   }
+
+  // onDestory() {
+  //
+  // }
 
   onSubmit(formData) {
     console.log(formData);
