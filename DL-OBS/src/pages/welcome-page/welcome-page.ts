@@ -19,37 +19,38 @@ export class WelcomePageComponent implements OnInit {
     {title: 'Devonshire Mobile Banking', description: 'The Latest mobile banking app built around you. It\'s simple, rewarding, and secure.', img: 'assets/images/dl-mobile.png'}
   ];
 
-  user: Observable<firebase.User>;
+  user;
   items: AngularFireList<any[]>;
   error: any;
   constructor(public afAuth: AngularFireAuth,
               public af: AngularFireDatabase,
               private router: Router) {
-    this.user = this.afAuth.authState;
   }
 
   ngOnInit(): void {
-
+    if (localStorage.getItem('user') != null) {
+      this.user = JSON.parse(localStorage.getItem('user'));
+    }
   }
 
   onSubmit(formData) {
     console.log(formData);
-
-    // if (formData.valid) {
-    //   console.log(formData.value);
-    //   this.afAuth.auth.signInWithEmailAndPassword(
-    //     formData.value.email,
-    //     formData.value.password
-    //   ).then(
-    //     (success) => {
-    //       console.log(success);
-    //       this.router.navigate(['welcome-page']);
-    //     }).catch(
-    //     (err) => {
-    //       console.log(err);
-    //       this.error = err;
-    //     }
-    //   );
-    // }
+    if (formData.valid) {
+      console.log(formData.value);
+      this.afAuth.auth.signInWithEmailAndPassword(
+        formData.value.email,
+        formData.value.password
+      ).then(
+        (success) => {
+          console.log(success);
+          localStorage.setItem('user', JSON.stringify({name: success.displayName, email: success.email}));
+          this.router.navigate(['dashboard']);
+        }).catch(
+        (err) => {
+          console.log(err);
+          this.error = err;
+        }
+      );
+    }
   }
 }

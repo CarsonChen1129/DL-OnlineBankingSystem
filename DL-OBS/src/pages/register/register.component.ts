@@ -2,6 +2,12 @@
 import {Component, OnInit, ViewChild} from "@angular/core";
 import {User} from "./User";
 import {NgForm} from "@angular/forms";
+import {Observable} from "rxjs/Observable";
+import {AngularFireDatabase, AngularFireList} from "angularfire2/database";
+import {AngularFireAuth} from "angularfire2/auth";
+import * as firebase from "firebase";
+import {Router} from "@angular/router";
+import {AngularFirestore} from "angularfire2/firestore";
 
 @Component({
   selector:'page-register',
@@ -38,9 +44,15 @@ export class RegisterComponent implements OnInit {
 
   model = new User(null, '', '', '', '', null, '', null, '', null, '', null, '');
 
-  constructor(
+  user: Observable<firebase.User>;
+  items: AngularFireList<any[]>;
+  error: any;
 
-  ){}
+  constructor(public afAuth: AngularFireAuth,
+              public af: AngularFireDatabase,
+              private router: Router) {
+    this.user = this.afAuth.authState;
+  }
 
   ngOnInit(): void {
 
@@ -60,16 +72,37 @@ export class RegisterComponent implements OnInit {
     this.step = this.step - 1;
   }
 
-  userAgreementCheck() {
-    this.userAgreement = !this.userAgreement;
-    console.log(this.userAgreement);
-  }
-
   onChange(f) {
     console.log(f);
   }
 
-  onSubmit() {
-
+  submit() {
+    if (this.model.email !== null && this.model.password !== null && this.model.name !== null) {
+      this.afAuth.auth.createUserWithEmailAndPassword(this.model.email, this.model.password)
+        .then((success) => {
+        console.log(success);
+        this.afAuth.authState.subscribe(authState => {
+          authState.updateProfile({displayName: this.model.name, photoURL: ''})
+            .then((res) => {
+              console.log(res);
+              console.log({name: res.displayName, email: res.email});
+              localStorage.setItem('user',JSON.stringify({name: res.displayName, email: res.email}));
+              this.router.navigate(['dashboard']);
+          }).catch((error) => {
+            console.log(error);
+          });
+        });
+        // this.afs.doc(`users/$(success.uid`).set({displayName: this.model.name, phoneNumber: this.model.phone})
+        //   .then((res) => {
+        //     console.log(res);
+        //     // localStorage.setItem('user',)
+        //     this.router.navigate(['dashboard']);
+        // }).catch((error) => {
+        //   console.log(error);
+        // });
+        }).catch((error) => {
+        console.log(error);
+        });
+    }
   }
 }

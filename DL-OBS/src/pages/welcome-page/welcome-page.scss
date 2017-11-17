@@ -50,6 +50,15 @@ h1, h5 { font-weight: 300; color: #fff; }
     background-color:#FFFFFF;
     margin-top:5%;
 
+    .logged-in {
+      padding:3vw;
+
+      div {
+        margin-bottom: 1.5vw;
+        font-size:2vw;
+      }
+    }
+
     .row {
       padding:0 4vw;
       margin-bottom:1vh;
@@ -66,7 +75,6 @@ h1, h5 { font-weight: 300; color: #fff; }
       width:100%;
     }
   }
-
 }
 
 .product-section {

@@ -20,11 +20,12 @@ import {WelcomePageComponent} from "../pages/welcome-page/welcome-page";
 import {LoginComponent} from "../pages/login/login";
 
 export const firebaseConfig = {
-  apiKey: 'AIzaSyAkv3jLcTIQ1APk1e0BFAW70e_ndHbWrbM',
-  authDomain: 'fir-2bd19.firebaseapp.com',
-  databaseURL: 'https://fir-2bd19.firebaseio.com',
-  storageBucket: 'fir-2bd19.appspot.com',
-  messagingSenderId: '932306096637'
+  apiKey: "AIzaSyAjyp-JugtSvYWTiV1k8tGhJE4b7HXEYeg",
+  authDomain: "dl-onlinebankingsystem.firebaseapp.com",
+  databaseURL: "https://dl-onlinebankingsystem.firebaseio.com",
+  projectId: "dl-onlinebankingsystem",
+  storageBucket: "dl-onlinebankingsystem.appspot.com",
+  messagingSenderId: "774948489055"
 };
 
 @NgModule({
