@@ -7,5 +7,11 @@ export class User{
         public name:string,
         public phone: number,
         public address:string,
+        public sq1:number,
+        public sq1a:string,
+        public sq2:number,
+        public sq2a:string,
+        public sq3:number,
+        public sq3a:string
     ){}
-}   
+}

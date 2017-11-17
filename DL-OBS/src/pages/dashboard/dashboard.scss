@@ -1,10 +1,10 @@
 #topbar {
-    height: 6vw;
+    height: 5vw;
     background-color: #b79344;
     padding-top: 8px;
     padding-left: 40px;
     span {
-        font-size: 3rem;
+        font-size: 2.5vw;
         color: white;
     }
 }
@@ -12,36 +12,50 @@
 #dashboard {
     background: url('/assets/images/lending.png');
     background-repeat: no-repeat;
-    background-size: 1400px 40vw;
+    background-size: 100% 40vw;
     height: 40vw;
+    //.button {
+    //    position: relative;
+    //    display: inline-block;
+    //    width: 10vw;
+    //    height: 10vh;
+    //    margin-left: 150px;
+    //    margin-top: 140px;
+    //}
     .button {
-        position: relative;
-        display: inline-block;
-        width: 300px;
-        height: 200px;
-        margin-left: 150px;
-        margin-top: 140px;
+      height:100%;
+    }
+    a {
+      width:100%;
+      margin:auto;
     }
     .circle {
-        width: 200px;
-        height: 200px;
+        width: 10vw;
+        height: 10vw;
         border-radius: 50%;
         background-color: white;
-        padding-top: 25px;
-        padding-left: 27px;
-        margin-bottom: 20px;
+        margin:auto;
+        //padding-top: 25px;
+        //padding-left: 27px;
+        //margin-bottom: 20px;
         // rotate image
         -webkit-transition: -webkit-transform .8s ease-in-out;
         transition: transform .8s ease-in-out;
+      img {
+        margin:auto;
+      }
     }
     .circle:hover {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
     }
     .icon {
-        width: 140px;
+        width: 5vw;
+        height:5vw;
     }
     .title {
+        margin-top:1vw;
+        display:block;
         font-size: 2rem;
         color: #b79344;
     }

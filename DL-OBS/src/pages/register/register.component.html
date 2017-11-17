@@ -18,6 +18,7 @@
             <div class="number">1. Account Number<span class="star">*</span></div>
             <input class="input" type="text" name="account"  size="16" minlength="10" maxlength="10" required pattern="[0-9]{10,10}" [(ngModel)]="model.account" #account="ngModel" forbiddenName="1234567890">
             <div class="usernotify">Any Devonshire Lending checking, saving or lending account Number (10 digits).</div>
+            <div class="usernotify">*Don't have an account with us? Visit the nearest branch and start the journey with us. <a style="text-decoration: underline;color:blue;">Find Branch</a></div>
             <div *ngIf="account.invalid && (account.dirty || account.touched)" class="alert">
               <div *ngIf="account.errors.required">Account number is required.</div>
               <div *ngIf="account.errors.pattern">Account number must be 10 digit numbers.</div>
@@ -141,7 +142,7 @@
               <tr>
                 <td class="label"><label>Question One:</label><span class="star">*</span></td>
                 <td class="selections">
-                  <select id="selectone" name="securityone" ngModel required>
+                  <select id="selectone" name="securityone" [(ngModel)]="model.sq1" #securityone="ngModel" required>
                     <option value="" disabled selected>Please select</option>
                     <option *ngFor="let question of securityOneQuestions" [ngValue]="question.value">{{question.question}}</option>
                     <!--<option name="1" value="questiononeone">In what city or town did your mother and father meet?</option>-->
@@ -156,14 +157,14 @@
               <tr>
                 <td class="label"><label>Answer One:</label><span class="star">*</span></td>
                 <td class="selections">
-                  <input id="answerone" class="input" type="text" name="answerone"  size="30" maxlength="30" ngModel required/>
+                  <input id="answerone" class="input" type="text" name="answerone"  size="30" maxlength="30" [(ngModel)]="model.sq1a" #answerone="ngModel" required/>
                 </td>
               </tr>
 
               <tr>
                 <td class="label"><label>Question Two:</label><span class="star">*</span></td>
                 <td class="selections">
-                  <select id="selecttwo" name="securitytwo" ngModel required>
+                  <select id="selecttwo" name="securitytwo" [(ngModel)]="model.sq2" #securitytwo="ngModel" required>
                     <option value="" disabled selected>Please select</option>
                     <option *ngFor="let question of securityTwoQuestions" [ngValue]="question.value">{{question.question}}</option>
                     <!--<option name="1" value="questiontwoone">When is your youngest sibling’s birthday (MM/DD)?</option>-->
@@ -178,13 +179,13 @@
               <tr>
                 <td class="label"><label>Answer Two:</label><span class="star">*</span></td>
                 <td class="selections">
-                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" ngModel required/>
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
                 </td>
               </tr>
               <tr>
                 <td class="label"><label>Question Three:</label><span class="star">*</span></td>
                 <td class="selections">
-                  <select id="selectthree" name="securitythree" ngModel required>
+                  <select id="selectthree" name="securitythree" [(ngModel)]="model.sq3" #securitythree="ngModel" required>
                     <option value="" disabled selected>Please select</option>
                     <option *ngFor="let question of securityThreeQuestions" [ngValue]="question.value">{{question.question}}</option>
                     <!--<option name="1" value="questionthreeone">What is your grand father’s first name?</option>-->
@@ -199,7 +200,7 @@
               <tr>
                 <td class="label"><label>Answer Three:</label><span class="star">*</span></td>
                 <td class="selections">
-                  <input id="answerthree" class="input" type="text" name="answerthree"  size="30" maxlength="30" ngModel required/>
+                  <input id="answerthree" class="input" type="text" name="answerthree"  size="30" maxlength="30" [(ngModel)]="model.sq3a" #answerthree="ngModel" required/>
                 </td>
               </tr>
 
@@ -433,28 +434,20 @@ Also, if your statement shows a transfer that you did not make, tell us at once.
               <tr>
                 <td class="label"><label>Email Address:</label></td>
                 <td class="selections">
-                  team8@andrew.cmu.edu
+                  {{model.email}}
                 </td>
               </tr>
-
-              <tr>
-                <td class="label"><label>Password:</label></td>
-                <td class="selections">
-                  .........
-                </td>
-              </tr>
-
               <tr>
                 <td class="label"><label>Account Number:</label></td>
                 <td class="selections">
-                  1000000000
+                  {{model.account}}
                 </td>
               </tr>
 
               <tr>
                 <td class="label"><label>Full Name:</label></td>
                 <td class="selections">
-                  Best Team8
+                  {{model.name}}
                 </td>
               </tr>
 
@@ -462,34 +455,34 @@ Also, if your statement shows a transfer that you did not make, tell us at once.
               <tr>
                 <td class="label"><label>Phone Number:</label></td>
                 <td class="selections">
-                  4128888888
+                  {{model.phone}}
                 </td>
               </tr>
 
               <tr>
                 <td class="label"><label>Home Address:</label></td>
                 <td class="selections">
-                  5000 Forbes Avenue,Pittsburgh,PA,15213
+                  {{model.address}}
                 </td>
               </tr>
 
               <tr>
                 <td class="label"><label>Security Question 1:</label></td>
                 <td class="selections">
-                  In what city or town did your mother and father meet?
+                  {{securityOneQuestions[model.sq1-1].question}}
                 </td>
               </tr>
               <tr>
                 <td class="label"><label>Security Question 2:</label></td>
                 <td class="selections">
-                  When is your youngest sibling's birthday (MM/DD)?
+                  {{securityTwoQuestions[model.sq2-1].question}}
                 </td>
               </tr>
 
               <tr>
                 <td class="label"><label>Security Question 3:</label></td>
                 <td class="selections">
-                  What is your grand father's first name?
+                  {{securityThreeQuestions[model.sq3-1].question}}
                 </td>
               </tr>
 
@@ -509,7 +502,7 @@ Also, if your statement shows a transfer that you did not make, tell us at once.
             <table class="buttons">
               <tr>
                 <td><a class="alc"><button class="buttonscolor" type="button" (click)="previousPage()">Back</button></a></td>
-                <td><a routerLink="/four" routerLinkActive="active" class="alc"><button class="buttonscolor" type="submit">Submit</button></a></td>
+                <td><a routerLink="/dashboard" routerLinkActive="active" class="alc"><button class="buttonscolor" type="submit">Submit</button></a></td>
                 <td id="string">|</td>
                 <td id="cancel">Cancel</td>
             </table>

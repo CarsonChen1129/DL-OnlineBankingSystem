@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
 @ViewChild('formData') formData: NgForm;
 @ViewChild('formDataTwo') formDataTwo: NgForm;
 
-  step = 2;
+  step = 1;
   userAgreement = false;
   securityOneQuestions = [
     {value: 1, question: 'In what city or town did your mother and father meet?'},
@@ -36,13 +36,13 @@ export class RegisterComponent implements OnInit {
     {value: 5, question: 'Which is your favorite web browser?'}
   ];
 
-  model = new User(null, '', '', '', '', null, '');
+  model = new User(null, '', '', '', '', null, '', null, '', null, '', null, '');
 
   constructor(
 
   ){}
 
-  ngOnInit():void {
+  ngOnInit(): void {
 
   }
 
@@ -50,10 +50,8 @@ export class RegisterComponent implements OnInit {
     console.log("Going to next page");
     console.log("step: "+this.step);
     this.step = this.step + 1;
-    console.log("Form 1");
-    console.log(this.formData);
-    console.log("Form 2");
-    console.log(this.formDataTwo);
+    console.log("Model");
+    console.log(this.model);
   }
 
   previousPage() {
