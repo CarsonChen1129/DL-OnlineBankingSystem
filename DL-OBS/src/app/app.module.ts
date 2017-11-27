@@ -30,6 +30,7 @@ import {AccountpageComponent} from "../pages/account-page/account-page";
 import { TfDashboardComponent } from './../pages/transfer-fund/tf-dashboard/tf-dashboard.component';
 import { TfInternalTransferComponent } from './../pages/transfer-fund/tf-internal-transfer/tf-internal-transfer.component';
 import { TfPayOthersComponent } from './../pages/transfer-fund/tf-pay-others/tf-pay-others.component';
+import { TfCheckDepositComponent } from './../pages/transfer-fund/tf-check-deposit/tf-check-deposit.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAjyp-JugtSvYWTiV1k8tGhJE4b7HXEYeg",
@@ -55,6 +56,7 @@ export const firebaseConfig = {
     TfDashboardComponent,
     TfInternalTransferComponent,
     TfPayOthersComponent,
+    TfCheckDepositComponent,
   ],
   imports: [
     BrowserModule,
