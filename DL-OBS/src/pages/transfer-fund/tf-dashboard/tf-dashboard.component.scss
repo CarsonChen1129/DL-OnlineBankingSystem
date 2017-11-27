@@ -1,0 +1,29 @@
+.container {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    .b-image {
+        width: 100%;
+        height: 45vw;
+        opacity: 0.8;
+    }
+    .title {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3vw;
+        color: white;
+    }
+    .board {
+        width: 30%;
+        height: 35vw;
+        margin: 15px 15px 5px 15px;
+        background-color: #f8f7f8;
+        display: inline-block;
+        border-radius: 10px;
+    }
+    .board:hover {
+        transform: translate(-5px, -5px);
+    }
+}
