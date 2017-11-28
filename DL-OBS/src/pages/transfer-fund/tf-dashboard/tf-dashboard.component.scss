@@ -2,6 +2,7 @@
     position: relative;
     text-align: center;
     width: 100%;
+    height: 85vw;
     .b-image {
         width: 100%;
         height: 45vw;
@@ -9,10 +10,10 @@
     }
     .title {
         position: absolute;
-        top: 50%;
+        top: 25%;
         left: 50%;
         transform: translate(-50%, -50%);
-        font-size: 3vw;
+        font-size: 4vw;
         color: white;
     }
     .board {
@@ -20,10 +21,31 @@
         height: 35vw;
         margin: 15px 15px 5px 15px;
         background-color: #f8f7f8;
-        display: inline-block;
+        // display: inline-block;
+        float: left;
         border-radius: 10px;
     }
     .board:hover {
         transform: translate(-5px, -5px);
+        border: solid 2px #b79344;
+    }
+    .icon {
+        width: 15vw;
+        height: 28vh;
+        padding-top: 2vh;
+        padding-bottom: 0;
+    }
+    .desc {
+        font-size: 2.5vw;
+        padding-top: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
+        color: #b79344;
+        font-weight: bold;
+        text-align: center;
+        display: block;
+    }
+    .adjust1 {
+        // margin-top: -300px;
     }
 }
