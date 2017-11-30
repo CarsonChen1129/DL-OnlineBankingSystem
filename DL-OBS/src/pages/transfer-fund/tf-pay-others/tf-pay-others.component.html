@@ -17,4 +17,135 @@
     <div class="background">
         <img src="assets/images/pay-others.png">
     </div>
+    <form>
+        <div class="title">
+            <span>Pay People You Know</span>
+        </div>
+        <div class="step">
+            <span>Step 1: Select/Add A Contact</span>
+        </div>
+        <div class="account">
+            <table>
+                <tr>
+                    <td><label>To:</label><span>*</span></td>
+                    <td>
+                        <select>
+                              <option disabled selected>Select An Existing Contact</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="addcontact">
+            <div class="question">Cannot Find Your Contact?</div>
+            <button (click)="hideform()">{{hide ? 'Cancel' : 'Add A Contact'}}</button>
+        </div>
+        <div *ngIf="hide" class="addcontactform">
+            <table>
+                <tr>
+                    <td><label>First Name:</label><span>*</span></td>
+                    <td>
+                        <input type="text">
+                    </td>
+                    <td><label>Last Name:</label><span>*</span></td>
+                    <td>
+                        <input type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>Account Type:</label><span>*</span></td>
+                    <td colspan="3">
+                        <select>
+                            <option disabled selected>Select An Account Type</option>
+                          </select>
+                    </td>
+                </tr>
+            </table>
+            <div class="accounthelp">
+                <img src="assets/images/accounthelp.png">
+            </div>
+            <div class="arrowsection">
+                <img class="arrowleft" src="assets/images/downarrow.png">
+                <img class="arrowright" src="assets/images/downarrow.png">
+            </div>
+            <table class="bottomtable">
+                <tr>
+                    <td colspan="2">
+                        <label>Routing Number:</label><span>*</span>
+                        <input type="text">
+                    </td>
+                    <td colspan="2">
+                        <label>Account Number:</label><span>*</span>
+                        <input type="text">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"></td>
+                    <td colspan="2">
+                        <label>Confirm Account Number:</label><span>*</span>
+                        <input type="text">
+                    </td>
+                </tr>
+            </table>
+            <div class="buttons">
+                <button (click)="hideform()">Cancel</button>
+                <button>Add The Contact</button>
+            </div>
+        </div>
+        <div class="step">
+            <span>Step 2: Enter Transfer Amount</span>
+        </div>
+        <div class="account">
+            <table>
+                <tr>
+                    <td><label>Amount:</label><span>*</span></td>
+                    <td>
+                        <input type="text" placeholder="$ 300.00">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="step">
+            <span>Step 3: Enter Send Date</span>
+        </div>
+        <div class="account">
+            <table>
+                <tr>
+                    <td><label>Date:</label><span>*</span></td>
+                    <td>
+                        <input type="date">
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="step">
+            <span>Step 4: Select From Account</span>
+        </div>
+        <div class="account">
+            <table>
+                <tr>
+                    <td><label>From Account:</label><span>*</span></td>
+                    <td>
+                        <select>
+                            <option disabled selected>Select An Existing Account</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="step">
+            <span>Step 5: Add Note to the Transaction</span>
+        </div>
+        <div class="note">
+            <div class="notetitle">Note: Optional</div>
+            <textarea type="text" name="note" [(ngModel)]="note" size="200" maxlength="200"></textarea>
+            <div class="count">{{note.length}}<span>/200</span></div>
+        </div>
+        <div class="bottom-buttons">
+            <a href="transfer-fund/dashboard">
+                <div class="bottom-button"><span>Cancel</span></div>
+            </a>
+            <input type="submit" value="Confirm Transfer">
+        </div>
+    </form>
 </div>
