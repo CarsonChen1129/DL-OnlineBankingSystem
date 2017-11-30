@@ -156,7 +156,7 @@
     }
     .imageuploader {
         width: 95%;
-        height: 15vh;
+        // height: 15vh;
         //background-color: gray;
         margin: 0 auto;
         padding: 2vh 1vw 2vh 4.5vw;
@@ -236,5 +236,49 @@
             background-color: #b79344;
             color: white;
         }
+    }
+}
+
+.customClass {
+    background-color: white;
+    border-radius: 10px;
+    border: 2px solid #bbbbbb;
+    margin: 1vw;
+    width: 80%;
+    .img-ul-upload {
+        background-color: white !important;
+        color: #b79344 !important;
+        height: 6vh !important;
+        border-radius: 10px;
+        border: 2px solid #b79344;
+        box-shadow: none !important;
+        transition: 0.5s;
+        font-weight: bold !important;
+    }
+    .img-ul-upload:hover {
+        background-color: #b79344 !important;
+        color: white !important;
+    }
+    .img-ul-drag-box-msg {
+        font-size: 2vh;
+        font-weight: bold !important;
+    }
+    .img-ul-clear {
+        background-color: white !important;
+        color: #b79344 !important;
+        height: 6vh !important;
+        border-radius: 10px;
+        border: 2px solid #b79344;
+        box-shadow: none !important;
+        transition: 0.5s;
+        font-weight: bold !important;
+        margin-left: 1vw;
+    }
+    .img-ul-clear:hover {
+        background-color: #b79344 !important;
+        color: white !important;
+    }
+    .img-ul-container {
+        background-color: white !important;
     }
 }

@@ -7,7 +7,6 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class TfCheckDepositComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {

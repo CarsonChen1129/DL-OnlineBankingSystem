@@ -12,5 +12,4 @@ export class TfDashboardComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
