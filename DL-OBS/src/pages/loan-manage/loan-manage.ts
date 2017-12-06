@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-    selector:'page-account',
+    selector:'loan-manage',
     templateUrl:'loan-manage.html',
     styleUrls: ['loan-manage.scss']
 })

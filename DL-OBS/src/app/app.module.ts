@@ -19,6 +19,7 @@ import {RegisterComponent} from "../pages/register/register.component";
 import {WelcomePageComponent} from "../pages/welcome-page/welcome-page";
 import {LoginComponent} from "../pages/login/login";
 import {LoanManageComponent} from "../pages/loan-manage/loan-manage";
+import {PaymentHistoryComponent} from "../pages/payment-history/payment-history";
 
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule,
@@ -52,6 +53,7 @@ export const firebaseConfig = {
     LoanManageComponent,
     EqualValidator,
     ForbiddenValidatorDirective,
+    PaymentHistoryComponent,
   ],
   imports: [
     BrowserModule,
