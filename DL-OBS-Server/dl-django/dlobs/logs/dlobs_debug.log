@@ -1,0 +1,79 @@
+Not Found: /
+Not Found: /favicon.ico
+Internal Server Error: /auth/login
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/base.py", line 244, in _legacy_get_response
+    response = middleware_method(request)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/middleware/common.py", line 63, in process_request
+    path = self.get_full_path_with_slash(request)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/middleware/common.py", line 101, in get_full_path_with_slash
+    'url': request.get_host() + new_path,
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to 127.0.0.1:8000/auth/login/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+Internal Server Error: /auth/login
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/CarsonChen/Desktop/dl-django/dlobs/authentication/views.py", line 78, in post
+    data = json.loads(request.body)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/__init__.py", line 339, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/decoder.py", line 364, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/decoder.py", line 382, in raw_decode
+    raise ValueError("No JSON object could be decoded")
+ValueError: No JSON object could be decoded
+Internal Server Error: /auth/logout
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/CarsonChen/Desktop/dl-django/dlobs/authentication/views.py", line 119, in post
+    print json.loads(request)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/__init__.py", line 339, in loads
+    return _default_decoder.decode(s)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/decoder.py", line 364, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+TypeError: expected string or buffer
+Not Found: /auth/account
+Not Found: /auth/accounts
+Not Found: /auth/accounts/
+Not Found: /auth/accounts
+Not Found: /auth/accounts
+Not Found: /auth/accounts/
