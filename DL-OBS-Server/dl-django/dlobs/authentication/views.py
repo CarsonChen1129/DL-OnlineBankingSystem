@@ -79,6 +79,7 @@ class LoginView(views.APIView):
 
     @csrf_exempt
     def post(self,request, format=None):
+        print('inside post method--------------')
         try:
             data = json.loads(request.body)
             print data
