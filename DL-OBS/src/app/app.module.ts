@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule} from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from 'angularfire2';
@@ -32,6 +33,7 @@ import { TfInternalTransferComponent } from './../pages/transfer-fund/tf-interna
 import { TfPayOthersComponent } from './../pages/transfer-fund/tf-pay-others/tf-pay-others.component';
 import { TfCheckDepositComponent } from './../pages/transfer-fund/tf-check-deposit/tf-check-deposit.component';
 import { ImageUploadModule } from "angular2-image-upload";
+import {AccountinfoserviceService} from '../app/services/accountinfoservice.service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAjyp-JugtSvYWTiV1k8tGhJE4b7HXEYeg",
@@ -65,6 +67,7 @@ export const firebaseConfig = {
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
@@ -103,7 +106,7 @@ export const firebaseConfig = {
     MatStepperModule,
     ImageUploadModule.forRoot(),
   ],
-  providers: [],
+  providers: [AccountinfoserviceService],
   bootstrap: [AppComponent]
 })
 

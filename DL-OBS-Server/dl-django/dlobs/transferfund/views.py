@@ -25,11 +25,21 @@ class getAccountInfoView(views.APIView):
         return (permissions.IsAuthenticated(), IsAccountOwner(),)
 
     @csrf_exempt
-    def get(self,request, format=None):
-        content = {
-            "frist":1,
-            "second":2,
+    def post(self,request, format=None):
+        data = json.loads(request.body)
+        print(data['owner'])
+        print(data['accountType'])
+        # content = {
+        #     "frist":1,
+        #     "second":2,
+        # }
+        content = data
+        headers = {
+            'Access-Control-Allow-Origin':'http://localhost:8000',
+            'Access-Control-Allow-Methods': 'POST',
+            'Access-Control-Allow-Headers':'Content-Type, Authorization',
+            'Access-Control-Allow-Credentials': True
         }
-        return Response(content, status=status.HTTP_200_OK)
+        return Response(content, headers = headers,status=status.HTTP_200_OK)
 
 

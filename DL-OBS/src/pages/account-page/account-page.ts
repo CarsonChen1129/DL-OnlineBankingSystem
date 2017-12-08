@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {AccountinfoserviceService} from '../../app/services/accountinfoservice.service';
+import { AccountInfo } from '../../app/models/accountinfo.model';
 
 @Component({
     selector:'page-account',
@@ -7,10 +9,11 @@ import {Component, OnInit} from '@angular/core';
 })
 
 export class AccountpageComponent implements OnInit {
-    
-    constructor(){}
+    owner:string = 'senw@andrew.cmu.edu';
+    accountType:string = 'checking';
+    constructor(private accountInfoService:AccountinfoserviceService ){}
     
     ngOnInit():void {
-    
+        this.accountInfoService.getAccountInfo(this.owner, this.accountType);
     }
 }
