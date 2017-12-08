@@ -18,6 +18,8 @@ from django.contrib import admin
 from rest_framework import routers
 from authentication.views import AccountViewSet, LoginView, LogoutView
 
+from transferfund.views import getAccountInfoView
+
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
 
@@ -25,4 +27,5 @@ urlpatterns = [
     url(r'', include(router.urls)),
     url(r'^auth/login', LoginView.as_view(), name='login'),
     url(r'^auth/logout', LogoutView.as_view(), name='logout'),
+    url(r'^transferfund/getAccountInfo', getAccountInfoView.as_view(), name="getAccountInfo"),
 ]
