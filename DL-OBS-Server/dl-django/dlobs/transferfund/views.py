@@ -29,17 +29,38 @@ class getAccountInfoView(views.APIView):
         data = json.loads(request.body)
         print(data['owner'])
         print(data['accountType'])
+        owner = data.get('owner', None)
+        accountType = data.get('accountType', None)
         # content = {
         #     "frist":1,
         #     "second":2,
         # }
-        content = data
-        headers = {
-            'Access-Control-Allow-Origin':'http://localhost:8000',
-            'Access-Control-Allow-Methods': 'POST',
-            'Access-Control-Allow-Headers':'Content-Type, Authorization',
-            'Access-Control-Allow-Credentials': True
-        }
-        return Response(content, headers = headers,status=status.HTTP_200_OK)
+        result = None
+        headers = {'Content-Type':'application/json'}
+        if (owner != None and accountType != None):
+            try:
+                result = AccountInfo.objects.get(owner = owner, accountType = accountType)
+                content = {
+                    "id": result.id,
+                    "accountNumber": result.accountNumber,
+                    "firstName": result.firstName,
+                    "lastName":result.lastName,
+                    "owner":result.owner,
+                    "balance":result.balance,
+                    "accountType":result.accountType,
+                    "interestRate":result.interestRate,
+                    "routingNumber":result.routingNumber
+                }
+                return Response(content, headers = headers, status = status.HTTP_200_OK)
+            except AccountInfo.DoesNotExist:
+                return Response({
+                    'status': 'Not found',
+                    'message': 'Cannot find matched account info!'
+                }, headers=headers, status = status.HTTP_404_NOT_FOUND)
+        else:
+            return Response({
+                'status': 'Not acceptable',
+                'message': 'Cannot find request parameters!'
+            }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
 
 
