@@ -24,7 +24,7 @@
     
                       <div class="number">2. PIN Code<span class="star">*</span></div>
                       <input class="input" type="text" name="name"  size="24" maxlength="24" required >
-                      <div class="usernotify">Please check your email for the PIN code after you successfully open an account in our physical branch. </div>
+                      <div class="usernotify">We will send you an email containing the PIN code after you successfully open an account in our physical branch. </div>
           
                       
     
@@ -65,7 +65,7 @@
           <div class="form">
             <div class="number">1. Alternative Email Address<span class="star">*</span></div>
             <input class="input" type="text" name="email"  size="24" maxlength="24" required [(ngModel)]="model.email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #email="ngModel" forbiddenName="team8@gmail.com">
-            <div class="usernotify">Your Email Address will be used when you forget your password. </div>
+            <div class="usernotify">Your Alternative Email Address will be used when you forget your password. </div>
             <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
               <div *ngIf="email.errors.required">Email is required.</div>
               <div *ngIf="email.errors.pattern">Please fill in according to email format.</div>
