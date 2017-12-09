@@ -1,7 +1,9 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {AccountinfoserviceService} from '../../app/services/accountinfoservice.service';
-import { AccountInfo } from '../../app/models/accountinfo.model';
 import { Subscription } from 'rxjs/Subscription';
+
+import { AccountInfo } from '../../app/models/accountinfo.model';
+import { Transaction } from '../../app/models/transaction.model';
 
 @Component({
     selector:'page-account',
@@ -16,7 +18,9 @@ export class AccountpageComponent implements OnInit, OnDestroy {
     checkingAccount: AccountInfo = null;
     savingAccount: AccountInfo = null;
     lendingAccount: AccountInfo = null;
+    pendingTransactions: Transaction[] = [];
     subscriptionAccountInfo: Subscription;
+    subscriptionTransaction: Subscription;
     constructor(private accountInfoService: AccountinfoserviceService){}
     
     ngOnInit() {
@@ -50,9 +54,14 @@ export class AccountpageComponent implements OnInit, OnDestroy {
             }
         );
     }
-
-    getAccountType(input:string):void {
-        console.log(input);
-        this.accountType = input;
+    // the function to get pending transactions
+    getPendingTransactions(fromAccountNumber:string):void {
+        console.log(fromAccountNumber);
+        this.subscriptionTransaction = this.accountInfoService.getTransactionHistory(this.owner, fromAccountNumber, true).subscribe(
+            data => {
+                this.pendingTransactions = data;
+                console.log(this.pendingTransactions);
+            }
+        );
     }
 }

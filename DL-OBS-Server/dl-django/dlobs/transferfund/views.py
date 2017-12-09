@@ -9,6 +9,7 @@ from models import AccountInfo
 from models import Transaction
 from models import Contact
 from permissions import IsAccountOwner
+from serializers import AccountInfoSerializer
 from serializers import TransactionSerializer
 
 # Create your views here.
@@ -82,21 +83,18 @@ class getTransactionHistoryView(views.APIView):
     def post(self,request, format=None):
         data = json.loads(request.body)
         print(data['owner'])
-        print(data['accountType'])
         print(data['fromAccountNumber'])
         print(data['pending'])
         owner = data.get('owner', None)
-        accountType = data.get('accountType', None)
         fromAccountNumber = data.get('fromAccountNumber', None)
         pending = data.get('pending', None)
 
         transactions = None
         headers = {'Content-Type':'application/json'}
-        if (owner != None and accountType != None and fromAccountNumber != None and pending != None):
-            transactions = Transaction.objects.filter(owner = owner, accountType = accountType, \
-                                fromAccountNumber = fromAccountNumber, pending = pending)
-            
-            
+        if (owner != None and fromAccountNumber != None and pending != None):
+            transactions = Transaction.objects.filter(owner = owner, fromAccountNumber = fromAccountNumber, pending = pending)
+            serializer = TransactionSerializer(transactions, many=True)
+            return Response(serializer.data, headers=headers, status=status.HTTP_200_OK)            
         else:
             return Response({
                 'status': 'Not acceptable',

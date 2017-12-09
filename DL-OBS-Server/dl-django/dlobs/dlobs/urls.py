@@ -19,6 +19,7 @@ from rest_framework import routers
 from authentication.views import AccountViewSet, LoginView, LogoutView
 
 from transferfund.views import getAccountInfoView
+from transferfund.views import getTransactionHistoryView
 
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
@@ -29,4 +30,5 @@ urlpatterns = [
     url(r'^auth/login', LoginView.as_view(), name='login'),
     url(r'^auth/logout', LogoutView.as_view(), name='logout'),
     url(r'^transferfund/getAccountInfo', getAccountInfoView.as_view(), name="getAccountInfo"),
+    url(r'^transferfund/getTransactionHistory', getTransactionHistoryView.as_view(), name="getTransactionHistory"),
 ]
