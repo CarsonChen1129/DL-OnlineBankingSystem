@@ -11,12 +11,13 @@ import { Subscription } from 'rxjs/Subscription';
 
 export class AccountpageComponent implements OnInit, OnDestroy {
     owner:string = 'senw@andrew.cmu.edu';
-    // accountType:string = 'checking';
+    accountType:string = 'checking';
 
     checkingAccount: AccountInfo = null;
     savingAccount: AccountInfo = null;
+    lendingAccount: AccountInfo = null;
     subscriptionAccountInfo: Subscription;
-    constructor(private accountInfoService: AccountinfoserviceService ){}
+    constructor(private accountInfoService: AccountinfoserviceService){}
     
     ngOnInit() {
         this.getThreeAccountInfos();
@@ -34,5 +35,24 @@ export class AccountpageComponent implements OnInit, OnDestroy {
                     data.firstName, data.lastName, data.owner, data.balance, data.accountType, data.interestRate, data.routingNumber);
             }
         );
+        this.subscriptionAccountInfo = this.accountInfoService.getAccountInfo(this.owner, 'saving').subscribe(
+            data => {
+                console.log(data);
+                this.savingAccount =  new AccountInfo(data.id, data.accountNumber, 
+                    data.firstName, data.lastName, data.owner, data.balance, data.accountType, data.interestRate, data.routingNumber);
+            }
+        );
+        this.subscriptionAccountInfo = this.accountInfoService.getAccountInfo(this.owner, 'lending').subscribe(
+            data => {
+                console.log(data);
+                this.lendingAccount =  new AccountInfo(data.id, data.accountNumber, 
+                    data.firstName, data.lastName, data.owner, data.balance, data.accountType, data.interestRate, data.routingNumber);
+            }
+        );
+    }
+
+    getAccountType(input:string):void {
+        console.log(input);
+        this.accountType = input;
     }
 }

@@ -12,7 +12,7 @@
                 <div class="balance-number">$ 3785.60</div>
             </div>
         </div>
-        <div class="account-card">
+        <div class="account-card" (click)="getAccountType('checking')">
             <div class="account-title"><span>CHECKING</span>{{checkingAccount.displayShortAccountNumber()}}</div>
             <div class="label-balance">
                 <div class="account-label"><img src="assets/images/account-label-1.png"></div>
@@ -21,20 +21,20 @@
             <div class="line"></div>
             <div class="account-bottom">Tansfer</div>
         </div>
-        <div class="account-card">
-            <div class="account-title"><span>SAVING</span>(...2190)</div>
+        <div class="account-card" (click)="getAccountType('saving')">
+            <div class="account-title"><span>SAVING</span>{{savingAccount.displayShortAccountNumber()}}</div>
             <div class="label-balance">
                 <div class="account-label"><img src="assets/images/account-label-1.png"></div>
-                <div class="account-balance">$ 85.70<br><span>Available Balance</span></div>
+                <div class="account-balance">$ {{savingAccount.balance}}<br><span>Available Balance</span></div>
             </div>
             <div class="line"></div>
             <div class="account-bottom">Tansfer</div>
         </div>
-        <div class="account-card">
-            <div class="account-title"><span>LENDING</span>(...2524)</div>
+        <div class="account-card" (click)="getAccountType('lending')">
+            <div class="account-title"><span>LENDING</span>{{lendingAccount.displayShortAccountNumber()}}</div>
             <div class="label-balance">
                 <div class="account-label"><img src="assets/images/account-label-1.png"></div>
-                <div class="account-balance">$ 765.30<br><span>Available Balance</span></div>
+                <div class="account-balance">$ {{lendingAccount.balance}}<br><span>Available Balance</span></div>
             </div>
             <div class="line"></div>
             <div class="account-bottom">Loan Payment</div>

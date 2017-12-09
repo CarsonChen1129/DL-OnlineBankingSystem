@@ -9,6 +9,7 @@ from models import AccountInfo
 from models import Transaction
 from models import Contact
 from permissions import IsAccountOwner
+from serializers import TransactionSerializer
 
 # Create your views here.
 class getAccountInfoView(views.APIView):
@@ -63,4 +64,41 @@ class getAccountInfoView(views.APIView):
                 'message': 'Cannot find request parameters!'
             }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
 
+# the function to get transaction history
+class getTransactionHistoryView(views.APIView):
+    print("[getTransactionHistory view ready]")
 
+    @csrf_exempt
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST':
+            return (permissions.AllowAny(),)
+
+        return (permissions.IsAuthenticated(), IsAccountOwner(),)
+
+    @csrf_exempt
+    def post(self,request, format=None):
+        data = json.loads(request.body)
+        print(data['owner'])
+        print(data['accountType'])
+        print(data['fromAccountNumber'])
+        print(data['pending'])
+        owner = data.get('owner', None)
+        accountType = data.get('accountType', None)
+        fromAccountNumber = data.get('fromAccountNumber', None)
+        pending = data.get('pending', None)
+
+        transactions = None
+        headers = {'Content-Type':'application/json'}
+        if (owner != None and accountType != None and fromAccountNumber != None and pending != None):
+            transactions = Transaction.objects.filter(owner = owner, accountType = accountType, \
+                                fromAccountNumber = fromAccountNumber, pending = pending)
+            
+            
+        else:
+            return Response({
+                'status': 'Not acceptable',
+                'message': 'Cannot find request parameters!'
+            }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
