@@ -18,4 +18,8 @@ export class Transaction {
         this.amount = amount;
         this.notes = notes;
     }
+
+    displayShortLabel():string {
+        return 'To Acct #' + this.toAccountNumber.substr(this.toAccountNumber.length - 4);
+    }
 }

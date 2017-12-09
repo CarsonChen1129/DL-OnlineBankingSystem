@@ -18,13 +18,16 @@ export class AccountpageComponent implements OnInit, OnDestroy {
     checkingAccount: AccountInfo = null;
     savingAccount: AccountInfo = null;
     lendingAccount: AccountInfo = null;
+
     pendingTransactions: Transaction[] = [];
+    pastTransactions: Transaction[] = [];
     subscriptionAccountInfo: Subscription;
     subscriptionTransaction: Subscription;
-    constructor(private accountInfoService: AccountinfoserviceService){}
+    constructor(private accountInfoService: AccountinfoserviceService) {}
     
     ngOnInit() {
         this.getThreeAccountInfos();
+        // this.getTransactionsHistory(this.checkingAccount.accountNumber);
     }
 
     ngOnDestroy() {
@@ -55,13 +58,27 @@ export class AccountpageComponent implements OnInit, OnDestroy {
         );
     }
     // the function to get pending transactions
-    getPendingTransactions(fromAccountNumber:string):void {
+    getTransactionsHistory(fromAccountNumber:string):void {
         console.log(fromAccountNumber);
+        // get pending transaction
         this.subscriptionTransaction = this.accountInfoService.getTransactionHistory(this.owner, fromAccountNumber, true).subscribe(
             data => {
                 this.pendingTransactions = data;
                 console.log(this.pendingTransactions);
             }
         );
+        // get past transaction
+        this.subscriptionTransaction = this.accountInfoService.getTransactionHistory(this.owner, fromAccountNumber, false).subscribe(
+            data => {
+                this.pastTransactions = data;
+                console.log(this.pastTransactions);
+            }
+        );
+    }
+    // teest function
+    test() {
+        console.log("test function");
+        this.pendingTransactions.splice(0, 1);
+        console.log(this.pendingTransactions);
     }
 }

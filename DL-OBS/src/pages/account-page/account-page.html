@@ -12,7 +12,7 @@
                 <div class="balance-number">$ 3785.60</div>
             </div>
         </div>
-        <div class="account-card" (click)="getPendingTransactions(checkingAccount.accountNumber)">
+        <div class="account-card" (click)="getTransactionsHistory(checkingAccount.accountNumber)">
             <div class="account-title"><span>CHECKING</span>{{checkingAccount.displayShortAccountNumber()}}</div>
             <div class="label-balance">
                 <div class="account-label"><img src="assets/images/account-label-1.png"></div>
@@ -21,7 +21,7 @@
             <div class="line"></div>
             <div class="account-bottom">Tansfer</div>
         </div>
-        <div class="account-card" (click)="getAccountType('saving')">
+        <div class="account-card" (click)="getTransactionsHistory(savingAccount.accountNumber)">
             <div class="account-title"><span>SAVING</span>{{savingAccount.displayShortAccountNumber()}}</div>
             <div class="label-balance">
                 <div class="account-label"><img src="assets/images/account-label-1.png"></div>
@@ -30,7 +30,7 @@
             <div class="line"></div>
             <div class="account-bottom">Tansfer</div>
         </div>
-        <div class="account-card" (click)="getAccountType('lending')">
+        <div class="account-card" (click)="getTransactionsHistory(lendingAccount.accountNumber)">
             <div class="account-title"><span>LENDING</span>{{lendingAccount.displayShortAccountNumber()}}</div>
             <div class="label-balance">
                 <div class="account-label"><img src="assets/images/account-label-1.png"></div>
@@ -43,10 +43,10 @@
     <div class="table-section">
         <div class="table-panel">
             <div class="header">Upcoming Transfer</div>
-            <table>
+            <table id="pTable">
                 <tr *ngFor="let transaction of pendingTransactions">
                     <td>
-                        <span>{{transaction.date}}</span><br>{{transaction.toAccountNumber}}
+                        <span>{{transaction.date}}</span><br>{{transaction.toAccountNumber | displayShortLabel}}
                     </td>
                     <td>$ {{-transaction.amount}}</td>
                 </tr>
@@ -76,7 +76,13 @@
         <div class="table-panel">
             <div class="header">Past Transfer</div>
             <table>
-                <tr>
+                <tr *ngFor="let transaction of pastTransactions">
+                    <td>
+                        <span>{{transaction.date}}</span><br>{{transaction.toAccountNumber | displayShortLabel}}
+                    </td>
+                    <td>$ {{-transaction.amount}}</td>
+                </tr>
+                <!-- <tr>
                     <td>
                         <span>Nov 20, 2017</span><br>Monthly Loan # 2764
                     </td>
@@ -93,13 +99,7 @@
                         <span>Nov 20, 2017</span><br>Monthly Loan # 2764
                     </td>
                     <td>- $125.00</td>
-                </tr>
-                <tr>
-                    <td>
-                        <span>Nov 20, 2017</span><br>Monthly Loan # 2764
-                    </td>
-                    <td>- $125.00</td>
-                </tr>
+                </tr> -->
             </table>
             <div class="footer">
                 <button>Load More</button>
