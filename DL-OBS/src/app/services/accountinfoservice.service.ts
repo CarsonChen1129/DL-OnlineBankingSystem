@@ -12,6 +12,10 @@ export class AccountinfoserviceService implements OnInit {
     const params = {owner: owner, accountType: accountType};
     return this.http.post("http://localhost:8000/transferfund/getAccountInfo", params);
   }
+  getAllAccounts(owner:string):Observable<any> {
+    const params = {owner: owner};
+    return this.http.post("http://localhost:8000/transferfund/getAllAccounts", params);
+  }
   getTransactionHistory(owner:string, fromAccountNumber:string, pending: boolean): Observable<any> {
     const params = {owner: owner, fromAccountNumber: fromAccountNumber, pending: pending};
     const options = {headers: new HttpHeaders({'Content-Type': 'application/json'})};

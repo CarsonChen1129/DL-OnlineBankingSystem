@@ -17,7 +17,7 @@
     <div class="background">
         <img src="assets/images/internal-transfer.jpg">
     </div>
-    <form>
+    <form (ngSubmit)="onSubmit()" #tForm="ngForm">
         <div class="title">
             <span>Schedule A Transfer</span>
         </div>
@@ -29,8 +29,9 @@
                 <tr>
                     <td><label>From Account:</label><span>*</span></td>
                     <td>
-                        <select>
+                        <select id="fromAccount" required [(ngModel)]="model.fromAccountNumber" name="fromAccountNumber">
                           <option disabled selected>Select An Account</option>
+                          <option *ngFor="let account of accounts" [value]="account.accountNumber">{{account.accountNumber}} {{account.accountType}}</option>
                         </select>
                     </td>
                 </tr>
@@ -44,9 +45,11 @@
                 <tr>
                     <td><label>To Account:</label><span>*</span></td>
                     <td>
-                        <select>
+                        <select id="toAccount" required [(ngModel)]="model.toAccountNumber" name="toAccountNumber">
                           <option disabled selected>Select An Account</option>
+                          <option *ngFor="let account of accounts" [value]="account.accountNumber">{{account.accountNumber}} {{account.accountType}}</option>
                         </select>
+                        <div *ngIf="checkSame()" class="alert">You cannot choose the same account!</div>
                     </td>
                 </tr>
             </table>
@@ -59,13 +62,15 @@
                 <tr>
                     <td><label>Amount:</label><span>*</span></td>
                     <td>
-                        <input type="text" placeholder="$ 300.00">
+                        <input type="number" placeholder="$ 300.00" id="amount" required [(ngModel)]="model.amount" name="amount" #amount="ngModel">
+                        <div [hidden]="amount.valid || amount.pristine" class="alert">Amount is required!</div>
                     </td>
                 </tr>
                 <tr>
                     <td><label>Date:</label><span>*</span></td>
                     <td>
-                        <input type="date">
+                        <input type="date" id="date" required [(ngModel)]="model.date" name="date" #date="ngModel">
+                        <div [hidden]="date.valid || date.pristine" class="alert">Date is required!</div>
                     </td>
                 </tr>
             </table>
@@ -74,7 +79,8 @@
             <a href="transfer-fund/dashboard">
                 <div class="bottom-button"><span>Cancel</span></div>
             </a>
-            <input type="submit" value="Confirm Transfer">
+            <button type="submit" id="confirmbutton" [disabled]="!tForm.valid || checkSame()">Confirm Transfer</button>
         </div>
+        {{diagnostic}}
     </form>
 </div>

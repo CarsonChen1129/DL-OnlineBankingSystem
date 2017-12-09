@@ -91,6 +91,10 @@
     table {
         table-layout: fixed;
         width: 50%;
+        .alert {
+            color: red;
+            font-weight: bold;
+        }
     }
     .account {
         width: 95%;
@@ -182,7 +186,7 @@
                 color: white;
             }
         }
-        input[type=submit] {
+        button {
             display: inline-block;
             width: 38%;
             height: 6vh;
@@ -194,9 +198,19 @@
             transition: background-color 0.5s;
             margin-left: 2vw;
         }
-        input[type=submit]:hover {
+        button:hover {
             background-color: #b79344;
             color: white;
         }
+        button:focus {
+            background-color: #b79344 !important;
+            color: white !important;
+        }
     }
+}
+
+#confirmbutton:disabled {
+    background-color: #dddddd !important;
+    color: #646464;
+    border: solid 2px gray;
 }

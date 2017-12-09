@@ -65,6 +65,36 @@ class getAccountInfoView(views.APIView):
                 'message': 'Cannot find request parameters!'
             }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
 
+class getAllAccountsView(views.APIView):
+    print("[getAllAccounts view ready]")
+
+    @csrf_exempt
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST':
+            return (permissions.AllowAny(),)
+
+        return (permissions.IsAuthenticated(), IsAccountOwner(),)
+
+    @csrf_exempt
+    def post(self,request, format=None):
+        data = json.loads(request.body)
+        print(data['owner'])
+        owner = data.get('owner', None)
+        result = None
+        headers = {'Content-Type':'application/json'}
+        if (owner != None):
+            result = AccountInfo.objects.filter(owner = owner)
+            serializer = AccountInfoSerializer(result, many=True)
+            return Response(serializer.data, headers=headers, status=status.HTTP_200_OK)
+        else:
+            return Response({
+                'status': 'Not acceptable',
+                'message': 'Cannot find request parameters!'
+            }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
+
 # the function to get transaction history
 class getTransactionHistoryView(views.APIView):
     print("[getTransactionHistory view ready]")
