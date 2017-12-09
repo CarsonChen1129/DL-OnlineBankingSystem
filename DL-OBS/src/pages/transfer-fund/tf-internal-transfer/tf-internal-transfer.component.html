@@ -31,7 +31,7 @@
                     <td>
                         <select id="fromAccount" required [(ngModel)]="model.fromAccountNumber" name="fromAccountNumber">
                           <option disabled selected>Select An Account</option>
-                          <option *ngFor="let account of accounts" [value]="account.accountNumber">{{account.accountNumber}} {{account.accountType}}</option>
+                          <option *ngFor="let account of accounts" [value]="account.accountNumber">{{account.accountNumber}} {{account.accountType}} Acct balance: $ {{account.balance}}</option>
                         </select>
                     </td>
                 </tr>
@@ -47,7 +47,7 @@
                     <td>
                         <select id="toAccount" required [(ngModel)]="model.toAccountNumber" name="toAccountNumber">
                           <option disabled selected>Select An Account</option>
-                          <option *ngFor="let account of accounts" [value]="account.accountNumber">{{account.accountNumber}} {{account.accountType}}</option>
+                          <option *ngFor="let account of accounts" [value]="account.accountNumber">{{account.accountNumber}} {{account.accountType}} Acct balance: $ {{account.balance}}</option>
                         </select>
                         <div *ngIf="checkSame()" class="alert">You cannot choose the same account!</div>
                     </td>
@@ -64,6 +64,7 @@
                     <td>
                         <input type="number" placeholder="$ 300.00" id="amount" required [(ngModel)]="model.amount" name="amount" #amount="ngModel">
                         <div [hidden]="amount.valid || amount.pristine" class="alert">Amount is required!</div>
+                        <div [hidden]="amount.pristine || amount != 0">Amount cannot be zero!</div>
                     </td>
                 </tr>
                 <tr>

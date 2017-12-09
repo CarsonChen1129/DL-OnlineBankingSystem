@@ -34,6 +34,7 @@ import { TfPayOthersComponent } from './../pages/transfer-fund/tf-pay-others/tf-
 import { TfCheckDepositComponent } from './../pages/transfer-fund/tf-check-deposit/tf-check-deposit.component';
 import { ImageUploadModule } from "angular2-image-upload";
 import {AccountinfoserviceService} from '../app/services/accountinfoservice.service';
+import { TransactioninfoService } from '../app/services/transactioninfo.service';
 import { displayShortLabelPipe } from '../app/models/transaction.pipe';
 
 export const firebaseConfig = {
@@ -108,7 +109,7 @@ export const firebaseConfig = {
     MatStepperModule,
     ImageUploadModule.forRoot(),
   ],
-  providers: [AccountinfoserviceService],
+  providers: [AccountinfoserviceService, TransactioninfoService],
   bootstrap: [AppComponent]
 })
 

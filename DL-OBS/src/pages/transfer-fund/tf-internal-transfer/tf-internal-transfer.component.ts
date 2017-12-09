@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, OnDestroy} from '@angular/core';
-import {AccountinfoserviceService} from '../../../app/services/accountinfoservice.service';
+import { AccountinfoserviceService } from '../../../app/services/accountinfoservice.service';
+import { TransactioninfoService } from '../../../app/services/transactioninfo.service';
 import { Subscription } from 'rxjs/Subscription';
 
 import { AccountInfo } from '../../../app/models/accountinfo.model';
@@ -16,12 +17,8 @@ export class TfInternalTransferComponent implements OnInit, OnDestroy {
   accounts: AccountInfo[] = [];
   subscriptionAccountInfo: Subscription;
 
-  model: Transaction = new Transaction('','','','','',true,0.00,'');
+  model: Transaction = new Transaction('','','',this.owner,'',true,0.00,'');
   submitted = false;
-  onSubmit() {
-    this.submitted = true;
-    console.log("submit this form!");
-  }
 
   checkSame():boolean {
     if (this.model.fromAccountNumber != '' && this.model.toAccountNumber != '' 
@@ -34,7 +31,7 @@ export class TfInternalTransferComponent implements OnInit, OnDestroy {
   // for debugging purpose 
   get diagnostic() { return JSON.stringify(this.model); }
 
-  constructor(private accountInfoService: AccountinfoserviceService) { }
+  constructor(private accountInfoService: AccountinfoserviceService, private transactionInfoService: TransactioninfoService) { }
 
   ngOnInit() {
     this.getAllAccountInfos();
@@ -47,6 +44,21 @@ export class TfInternalTransferComponent implements OnInit, OnDestroy {
       data => {
           console.log(data);
           this.accounts = data;
+      }
+    );
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    console.log("submit this form!");
+    this.transactionInfoService.internalTransfer(this.model).subscribe(
+      // successful internal transfer
+      data => {
+
+      },
+      // error in internal transfer
+      err => {
+        
       }
     );
   }
