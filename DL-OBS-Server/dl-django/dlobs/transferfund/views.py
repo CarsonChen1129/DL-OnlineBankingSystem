@@ -11,6 +11,7 @@ from models import Contact
 from permissions import IsAccountOwner
 from serializers import AccountInfoSerializer
 from serializers import TransactionSerializer
+from serializers import ContactSerializer
 
 # Create your views here.
 class getAccountInfoView(views.APIView):
@@ -265,4 +266,38 @@ class handleCheckDeposit(views.APIView):
                 'status': 'Precondition invalid',
                 'message': 'Internal Error: cannot find to account!'
             }, headers=headers, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class getContactsInfoView(views.APIView):
+    print("[getContactsInfo view ready]")
+
+    @csrf_exempt
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST':
+            return (permissions.AllowAny(),)
+
+        return (permissions.IsAuthenticated(), IsAccountOwner(),)
+
+    @csrf_exempt
+    def post(self,request, format=None):
+        data = json.loads(request.body)
+        print('--------------------')
+        print(data['owner'])
+        print('--------------------')
+        owner = data.get('owner', None)
+
+        headers = {'Content-Type':'application/json'}
+        if (owner == None):
+            return Response({
+                'status': 'Not acceptable',
+                'message': 'Cannot find request parameters!'
+            }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
+        
+        result = Contact.objects.filter(owner = owner)
+        serializer = AccountInfoSerializer(result, many=True)
+        return Response(serializer.data, headers=headers, status=status.HTTP_200_OK)
+
+
 

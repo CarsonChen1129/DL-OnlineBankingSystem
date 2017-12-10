@@ -17,7 +17,7 @@
     <div class="background">
         <img src="assets/images/pay-others.png">
     </div>
-    <form>
+    <form (ngSubmit)="onSubmit()" #eForm="ngForm">
         <div class="title">
             <span>Pay People You Know</span>
         </div>
@@ -29,8 +29,9 @@
                 <tr>
                     <td><label>To:</label><span>*</span></td>
                     <td>
-                        <select>
+                        <select id="toAccount" required [(ngModel)]="model.toAccountNumber" name="toAccountNumber">
                               <option disabled selected>Select An Existing Contact</option>
+                              <option *ngFor="let contact of contacts" [value]="contact.accountNumber">Name: {{contact.firstName}} {{contact.lastName}} {{contact.accountNumber}} Type: {{contact.accountType}}</option>
                         </select>
                     </td>
                 </tr>
@@ -100,7 +101,9 @@
                 <tr>
                     <td><label>Amount:</label><span>*</span></td>
                     <td>
-                        <input type="text" placeholder="$ 300.00">
+                        <input type="number" placeholder="$ 300.00" required [(ngModel)]="model.amount" name="amount" #amount="ngModel">
+                        <div [hidden]="amount.valid || amount.pristine" class="alert">Amount is required!</div>
+                        <div *ngIf="!amount.pristine && !checkAmount()" class="alert">Amount has to be a positive number!</div>
                     </td>
                 </tr>
             </table>
@@ -113,7 +116,8 @@
                 <tr>
                     <td><label>Date:</label><span>*</span></td>
                     <td>
-                        <input type="date">
+                        <input type="date" id="date" required [(ngModel)]="model.date" name="date" #date="ngModel">
+                        <div [hidden]="date.valid || date.pristine" class="alert">Date is required!</div>
                     </td>
                 </tr>
             </table>
@@ -126,8 +130,9 @@
                 <tr>
                     <td><label>From Account:</label><span>*</span></td>
                     <td>
-                        <select>
+                        <select id="fromAccount" required [(ngModel)]="model.fromAccountNumber" name="fromAccountNumber">
                             <option disabled selected>Select An Existing Account</option>
+                            <option *ngFor="let account of accounts" [value]="account.accountNumber">{{account.accountNumber}} {{account.accountType}} Acct balance: $ {{account.balance}}</option>
                         </select>
                     </td>
                 </tr>
@@ -138,14 +143,19 @@
         </div>
         <div class="note">
             <div class="notetitle">Note: Optional</div>
-            <textarea type="text" name="note" [(ngModel)]="note" size="200" maxlength="200"></textarea>
-            <div class="count">{{note.length}}<span>/200</span></div>
+            <textarea type="text" name="notes" [(ngModel)]="model.notes" size="200" maxlength="200"></textarea>
+            <div class="count">{{model.notes.length}}<span>/200</span></div>
+        </div>
+        <div *ngIf="successMessage || errorMessage" class=messageArea>
+            <div class="successArea">{{successMessage}}</div>
+            <div class="errorArea">{{errorMessage}}</div>
         </div>
         <div class="bottom-buttons">
             <a href="transfer-fund/dashboard">
                 <div class="bottom-button"><span>Cancel</span></div>
             </a>
-            <input type="submit" value="Confirm Transfer">
+            <button type="submit" id="confirmbutton" [disabled]="!eForm.valid || !checkAmount()">Confirm Transfer</button>
         </div>
+        {{diagnostic}}
     </form>
 </div>

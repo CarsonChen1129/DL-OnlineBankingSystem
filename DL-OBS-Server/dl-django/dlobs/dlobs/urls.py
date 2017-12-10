@@ -23,6 +23,7 @@ from transferfund.views import getAllAccountsView
 from transferfund.views import getTransactionHistoryView
 from transferfund.views import handleInternalTransfer
 from transferfund.views import handleCheckDeposit
+from transferfund.views import getContactsInfoView
 
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
@@ -37,4 +38,5 @@ urlpatterns = [
     url(r'^transferfund/getTransactionHistory', getTransactionHistoryView.as_view(), name="getTransactionHistory"),
     url(r'^transferfund/internalTransfer', handleInternalTransfer.as_view(), name="handleInternalTransfer"),
     url(r'^transferfund/checkDeposit', handleCheckDeposit.as_view(), name="handleCheckDeposit"),
+    url(r'^transferfund/getContactsInfo', getContactsInfoView.as_view(), name="getContactsInfo"),
 ]
