@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { Transaction } from '../models/transaction.model';
+import { Contact } from '../models/contact.model';
 
 @Injectable()
 export class ContactinfoService implements OnInit {
@@ -20,6 +21,11 @@ export class ContactinfoService implements OnInit {
   externalTransfer(tInfo:Transaction): Observable<any> {
     const params = JSON.parse(JSON.stringify(tInfo));
     return this.http.post("http://localhost:8000/transferfund/externalTransfer", params);
+  }
+  // the function to add contact 
+  addContact(cInfo:Contact):Observable<any> {
+    const params = JSON.parse(JSON.stringify(cInfo));
+    return this.http.post("http://localhost:8000/transferfund/addContact", params);
   }
 
 }

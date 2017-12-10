@@ -375,5 +375,73 @@ class handleExternalTransfer(views.APIView):
                 'message': 'Internal Error: cannot find from/to account!'
             }, headers=headers, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+class addContactView(views.APIView):
+    print("[addContact view ready]")
+
+    @csrf_exempt
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST':
+            return (permissions.AllowAny(),)
+
+        return (permissions.IsAuthenticated(), IsAccountOwner(),)
+
+    @csrf_exempt
+    def post(self,request, format=None):
+        data = json.loads(request.body)
+        print('--------------------')
+        print(data['firstName'])
+        print(data['lastName'])
+        print(data['owner'])
+        print(data['accountNumber'])
+        print(data['routingNumber'])
+        print(data['accountType'])
+        print('--------------------')
+        firstName = data.get('firstName', None)
+        lastName = data.get('lastName', None)
+        owner = data.get('owner', None)
+        accountNumber = data.get('accountNumber', None)
+        routingNumber = data.get('routingNumber', None)
+        accountType = data.get('accountType', None)
+
+        headers = {'Content-Type':'application/json'}
+        if (firstName == None or lastName == None or owner == None \
+            or accountNumber == None or routingNumber == None or accountType == None):
+            return Response({
+                'status': 'Not acceptable',
+                'message': 'Cannot find request parameters!'
+            }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
+        
+        # validate the contact should not exist in the record
+        try:
+            result = Contact.objects.get(owner = owner, accountNumber = accountNumber)
+            return Response({
+                'status': 'Precondition invalid',
+                'message': 'This account has already existed in your contacts list!'
+            }, headers=headers, status=status.HTTP_428_PRECONDITION_REQUIRED)
+        except Contact.DoesNotExist:
+            # first check whether this contact exist in the accountinfo table
+            try:
+                result = AccountInfo.objects.get(firstName = firstName, \
+                    lastName = lastName, accountNumber = accountNumber,\
+                    accountType = accountType, routingNumber = routingNumber)
+                # the result do exist in the contact list.
+                newContact = Contact(owner = owner, firstName = firstName, lastName = lastName, \
+                    accountNumber = accountNumber, routingNumber = routingNumber, accountType = accountType)
+                newContact.save()
+                return Response({
+                    'status': 'Success',
+                    'message': 'Your new contact has been added successfully!'
+                }, headers=headers, status=status.HTTP_200_OK)
+            except AccountInfo.DoesNotExist:
+                return Response({
+                    'status': 'Not found',
+                    'message': 'We do not have record of this contact!'
+                }, headers=headers, status=status.HTTP_404_NOT_FOUND)                
+
+            
+
 
 

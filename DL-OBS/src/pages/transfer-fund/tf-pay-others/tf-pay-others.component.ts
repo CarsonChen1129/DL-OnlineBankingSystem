@@ -41,6 +41,9 @@ export class TfPayOthersComponent implements OnInit, OnDestroy {
   successMessage:string = null;
   errorMessage:string = null;
 
+  successMessageC:string = null;
+  errorMessageC:string = null;
+
   model: Transaction = new Transaction('','','',this.owner,'',true,0.00,'');
   modelc: Contact = new Contact('','','',this.owner,'','','');
 
@@ -81,6 +84,22 @@ export class TfPayOthersComponent implements OnInit, OnDestroy {
   // the function to add contact
   onSubmitContact() {
     console.log("submit add contact form!");
+    this.successMessageC = null;
+    this.errorMessageC = null;
+    this.contactInfoService.addContact(this.modelc).subscribe(
+      data => {
+        console.log(data);
+        this.successMessageC = data['message'];
+        // also add contact to the contact array
+        this.contacts.push(this.modelc);
+      },
+      err => {
+        console.log(err);
+        console.log(err.status);
+        console.log(err.error.message);
+        this.errorMessageC = err.error.message;
+      }
+    );
   } 
 
   // the function to get all accounts information

@@ -192,6 +192,10 @@
         height: 110vh;
         // background-color: gray;
         margin: 0 auto;
+        .alert {
+            color: red;
+            font-weight: bold;
+        }
         label {
             font-size: 3vh;
             font-weight: bold;
