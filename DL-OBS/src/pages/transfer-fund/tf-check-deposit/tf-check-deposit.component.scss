@@ -1,6 +1,6 @@
 .container {
     width: 100%;
-    height: 210vh;
+    // height: 210vh;
     border: solid 2px #b79344;
     border-radius: 10px;
     .header {
@@ -91,6 +91,11 @@
     table {
         table-layout: fixed;
         width: 50%;
+        .alert {
+            color: red;
+            font-weight: bold;
+            font-size: 2.5vh;
+        }
     }
     .account {
         width: 95%;
@@ -198,7 +203,7 @@
         margin: 7vh auto;
         // background-color: black;
         padding-left: 5vw;
-        // margin-top: 15vh;
+        margin-bottom: 3vh;
         .bottom-button {
             text-align: center;
             width: 38%;
@@ -220,7 +225,7 @@
                 color: white;
             }
         }
-        input[type=submit] {
+        button {
             display: inline-block;
             width: 38%;
             height: 6vh;
@@ -232,9 +237,13 @@
             transition: background-color 0.5s;
             margin-left: 2vw;
         }
-        input[type=submit]:hover {
+        button:hover {
             background-color: #b79344;
             color: white;
+        }
+        button:focus {
+            background-color: #b79344 !important;
+            color: white !important;
         }
     }
 }
@@ -281,4 +290,10 @@
     .img-ul-container {
         background-color: white !important;
     }
+}
+
+#confirmbutton:disabled {
+    background-color: #dddddd !important;
+    color: #646464;
+    border: solid 2px gray;
 }
