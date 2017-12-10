@@ -25,7 +25,6 @@ export class TfPayOthersComponent implements OnInit, OnDestroy {
   errorMessage:string = null;
 
   model: Transaction = new Transaction('','','',this.owner,'',true,0.00,'');
-  submitted = false;
 
   hide:boolean = false;
   constructor(private accountInfoService: AccountinfoserviceService, 
@@ -40,9 +39,23 @@ export class TfPayOthersComponent implements OnInit, OnDestroy {
     this.subscriptionAccountInfo.unsubscribe;
     this.subscriptionContactsInfo.unsubscribe;
   }
-
-  onSubmit() {
-    this.submitted = true;
+  // the function to do external transfer
+  onSubmitExTransfer() {
+    this.successMessage = null;
+    this.errorMessage = null;
+    console.log("Submit external transfer form!");
+    this.transactionInfoService.externalTransfer(this.model).subscribe(
+      data => {
+        console.log(data);
+        this.successMessage = data['message'];
+      },
+      err => {
+        console.log(err);
+        console.log(err.status);
+        console.log(err.error.message);
+        this.errorMessage = err.error.message;
+      }
+    );
   }
 
   // the function to get all accounts information

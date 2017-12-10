@@ -17,6 +17,11 @@ export class TransactioninfoService implements OnInit {
     const params = JSON.parse(JSON.stringify(tInfo));
     return this.http.post("http://localhost:8000/transferfund/internalTransfer", params);
   }
+  // the function to handle internal transfer
+  externalTransfer(tInfo:Transaction): Observable<any> {
+    const params = JSON.parse(JSON.stringify(tInfo));
+    return this.http.post("http://localhost:8000/transferfund/externalTransfer", params);
+  }
   // the function to handle check deposit
   checkDeposit(tInfo:Transaction): Observable<any> {
     const params = JSON.parse(JSON.stringify(tInfo));

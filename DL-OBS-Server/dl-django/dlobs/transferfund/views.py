@@ -299,5 +299,81 @@ class getContactsInfoView(views.APIView):
         serializer = AccountInfoSerializer(result, many=True)
         return Response(serializer.data, headers=headers, status=status.HTTP_200_OK)
 
+class handleExternalTransfer(views.APIView):
+    print("[handleExternalTransfer view ready]")
+
+    @csrf_exempt
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST':
+            return (permissions.AllowAny(),)
+
+        return (permissions.IsAuthenticated(), IsAccountOwner(),)
+
+    @csrf_exempt
+    def post(self,request, format=None):
+        data = json.loads(request.body)
+        print('--------------------')
+        print(data['fromAccountNumber'])
+        print(data['toAccountNumber'])
+        print(data['owner'])
+        print(data['amount'])
+        print(data['date'])
+        print(data['pending'])
+        print(data['notes'])
+        print('--------------------')
+        fromAccountNumber = data.get('fromAccountNumber', None)
+        toAccountNumber = data.get('toAccountNumber', None)
+        owner = data.get('owner', None)
+        amount = data.get('amount', None)
+        date = data.get('date', None)
+        pending = data.get('pending', None)
+        notes = data.get('notes', None)
+
+        headers = {'Content-Type':'application/json'}
+        if (fromAccountNumber == None or toAccountNumber == None or owner == None \
+            or amount == None or date == None or pending == None or notes == None):
+            return Response({
+                'status': 'Not acceptable',
+                'message': 'Cannot find request parameters!'
+            }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
+        
+        # validate the from account balance
+        try:
+            fromAcct = AccountInfo.objects.get(owner = owner, accountNumber = fromAccountNumber)
+            toAcct = AccountInfo.objects.get(accountNumber = toAccountNumber)
+            if (amount > fromAcct.balance):
+                return Response({
+                    'status': 'Precondition invalid',
+                    'message': 'Your from account has insufficient fund!'
+                }, headers=headers, status=status.HTTP_428_PRECONDITION_REQUIRED) 
+            # deduct the amount in from-account
+            fromAcct.balance = fromAcct.balance - amount
+            fromAcct.save()
+            # increase the amount in to-account
+            toAcct.balance = toAcct.balance + amount
+            toAcct.save()
+            # generate two transaction records related to two accounts
+            trans1 = Transaction(fromAccountNumber = fromAccountNumber, \
+                toAccountNumber = toAccountNumber, owner = owner, date = date, \
+                pending = pending, amount = amount * -1)
+            trans1.save()
+            trans2 = Transaction(fromAccountNumber = toAccountNumber, \
+                toAccountNumber = fromAccountNumber, owner = toAcct.owner, date = date, \
+                pending = pending, amount = amount)
+            trans2.save()
+            successM = 'Your transfer to ' + toAcct.firstName + ' ' + toAcct.lastName + ' has been scheduled successfully!'
+            return Response({
+                'status': 'Success',
+                'message': successM
+            }, headers=headers, status=status.HTTP_200_OK) 
+        except AccountInfo.DoesNotExist:
+            return Response({
+                'status': 'Precondition invalid',
+                'message': 'Internal Error: cannot find from/to account!'
+            }, headers=headers, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 
