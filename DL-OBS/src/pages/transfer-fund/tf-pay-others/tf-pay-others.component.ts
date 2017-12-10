@@ -21,10 +21,28 @@ export class TfPayOthersComponent implements OnInit, OnDestroy {
   subscriptionAccountInfo: Subscription;
   subscriptionContactsInfo: Subscription;
 
+  secondAcctNum:string = '';
+  checkMatch():boolean {
+    if (this.secondAcctNum != '' && this.secondAcctNum != this.modelc.accountNumber) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+  checkRNumber():boolean {
+    var regex = new RegExp("^[0-9]{16}$");
+    return this.modelc.routingNumber == '' || regex.test(this.modelc.routingNumber);
+  }
+  checkANumber():boolean {
+    var regex = new RegExp("^[0-9]{16}$");
+    return this.modelc.accountNumber == '' || regex.test(this.modelc.accountNumber);
+  }
+
   successMessage:string = null;
   errorMessage:string = null;
 
   model: Transaction = new Transaction('','','',this.owner,'',true,0.00,'');
+  modelc: Contact = new Contact('','','',this.owner,'','','');
 
   hide:boolean = false;
   constructor(private accountInfoService: AccountinfoserviceService, 
@@ -40,23 +58,30 @@ export class TfPayOthersComponent implements OnInit, OnDestroy {
     this.subscriptionContactsInfo.unsubscribe;
   }
   // the function to do external transfer
-  onSubmitExTransfer() {
-    this.successMessage = null;
-    this.errorMessage = null;
-    console.log("Submit external transfer form!");
-    this.transactionInfoService.externalTransfer(this.model).subscribe(
-      data => {
-        console.log(data);
-        this.successMessage = data['message'];
-      },
-      err => {
-        console.log(err);
-        console.log(err.status);
-        console.log(err.error.message);
-        this.errorMessage = err.error.message;
-      }
-    );
+  onSubmit() {
+    if (this.model.fromAccountNumber != '' && this.model.toAccountNumber != '') {
+      this.successMessage = null;
+      this.errorMessage = null;
+      console.log("Submit external transfer form!");
+      this.transactionInfoService.externalTransfer(this.model).subscribe(
+        data => {
+          console.log(data);
+          this.successMessage = data['message'];
+        },
+        err => {
+          console.log(err);
+          console.log(err.status);
+          console.log(err.error.message);
+          this.errorMessage = err.error.message;
+        }
+      );
+    }
   }
+
+  // the function to add contact
+  onSubmitContact() {
+    console.log("submit add contact form!");
+  } 
 
   // the function to get all accounts information
   getAllAccountInfos() {
@@ -88,6 +113,7 @@ export class TfPayOthersComponent implements OnInit, OnDestroy {
 
   // for debugging purpose 
   get diagnostic() { return JSON.stringify(this.model); }
+  get diagnostic2() {return JSON.stringify(this.modelc);}
 
   // the function to check input amount
   checkAmount():boolean {

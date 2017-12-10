@@ -17,7 +17,7 @@
     <div class="background">
         <img src="assets/images/pay-others.png">
     </div>
-    <form (ngSubmit)="onSubmitExTransfer()" #eForm="ngForm">
+    <form (ngSubmit)="onSubmit()" #eForm="ngForm">
         <div class="title">
             <span>Pay People You Know</span>
         </div>
@@ -42,56 +42,70 @@
             <button (click)="hideform()">{{hide ? 'Cancel' : 'Add A Contact'}}</button>
         </div>
         <div *ngIf="hide" class="addcontactform">
-            <table>
-                <tr>
-                    <td><label>First Name:</label><span>*</span></td>
-                    <td>
-                        <input type="text">
-                    </td>
-                    <td><label>Last Name:</label><span>*</span></td>
-                    <td>
-                        <input type="text">
-                    </td>
-                </tr>
-                <tr>
-                    <td><label>Account Type:</label><span>*</span></td>
-                    <td colspan="3">
-                        <select>
-                            <option disabled selected>Select An Account Type</option>
-                          </select>
-                    </td>
-                </tr>
-            </table>
-            <div class="accounthelp">
-                <img src="assets/images/accounthelp.png">
-            </div>
-            <div class="arrowsection">
-                <img class="arrowleft" src="assets/images/downarrow.png">
-                <img class="arrowright" src="assets/images/downarrow.png">
-            </div>
-            <table class="bottomtable">
-                <tr>
-                    <td colspan="2">
-                        <label>Routing Number:</label><span>*</span>
-                        <input type="text">
-                    </td>
-                    <td colspan="2">
-                        <label>Account Number:</label><span>*</span>
-                        <input type="text">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2"></td>
-                    <td colspan="2">
-                        <label>Confirm Account Number:</label><span>*</span>
-                        <input type="text">
-                    </td>
-                </tr>
-            </table>
-            <div class="buttons">
-                <button (click)="hideform()">Cancel</button>
-                <button>Add The Contact</button>
-            </div>
+            <form (ngSubmit)="onSubmitContact()" #cForm="ngForm">
+                <table>
+                    <tr>
+                        <td><label>First Name:</label><span>*</span></td>
+                        <td>
+                            <input type="text" required [(ngModel)]="modelc.firstName" name="firstName" #firstName="ngModel">
+                            <div [hidden]="firstName.valid || firstName.pristine" class="alert">First Name is required!</div>
+                        </td>
+                        <td><label>Last Name:</label><span>*</span></td>
+                        <td>
+                            <input type="text" required [(ngModel)]="modelc.lastName" name="lastName" #lastName="ngModel">
+                            <div [hidden]="lastName.valid || lastName.pristine" class="alert">Last Name is required!</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Account Type:</label><span>*</span></td>
+                        <td colspan="3">
+                            <select id="accountType" required [(ngModel)]="modelc.accountType" name="accountType">
+                                    <option disabled selected>Select An Account Type</option>
+                                    <option value="checking">checking</option>
+                                    <option value="saving">saving</option>
+                                    <option value="lending">lending</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <div class="accounthelp">
+                    <img src="assets/images/accounthelp.png">
+                </div>
+                <div class="arrowsection">
+                    <img class="arrowleft" src="assets/images/downarrow.png">
+                    <img class="arrowright" src="assets/images/downarrow.png">
+                </div>
+                <table class="bottomtable">
+                    <tr>
+                        <td colspan="2">
+                            <label>Routing Number:</label><span>*</span>
+                            <input type="text" required [(ngModel)]="modelc.routingNumber" name="routingNumber" #routingNumber="ngModel">
+                            <div [hidden]="routingNumber.valid || routingNumber.pristine" class="alert">Routing Number is required!</div>
+                            <div *ngIf="!checkRNumber()" class="alert">16-digit number is required!</div>
+                        </td>
+                        <td colspan="2">
+                            <label>Account Number:</label><span>*</span>
+                            <input type="text" required [(ngModel)]="modelc.accountNumber" name="accountNumber1" #accountNumber1="ngModel">
+                            <div [hidden]="accountNumber1.valid || accountNumber1.pristine" class="alert">Account Number is required!</div>
+                            <div *ngIf="!checkANumber()" class="alert">16-digit number is required!</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td colspan="2">
+                            <label>Confirm Account Number:</label><span>*</span>
+                            <input type="text" required [(ngModel)]="secondAcctNum" name="accountNumber2" #accountNumber2="ngModel">
+                            <div [hidden]="accountNumber2.valid || accountNumber2.pristine" class="alert">Please re-enter account number!</div>
+                            <div *ngIf="!checkMatch()">Account Number doesn't match</div>
+                        </td>
+                    </tr>
+                </table>
+                <div class="buttons">
+                    <button (click)="hideform()">Cancel</button>
+                    <button type="submit" [disabled]="!cForm.valid || !checkMatch() || !checkRNumber() || !checkANumber()">Add The Contact</button>
+                </div>
+                {{diagnostic2}} {{secondAcctNum}}
+            </form>
         </div>
         <div class="step">
             <span>Step 2: Enter Transfer Amount</span>

@@ -189,7 +189,7 @@
     }
     .addcontactform {
         width: 95%;
-        height: 100vh;
+        height: 110vh;
         // background-color: gray;
         margin: 0 auto;
         label {
@@ -287,6 +287,11 @@
             button:hover {
                 color: white;
                 background-color: #b79344 !important;
+            }
+            button:disabled {
+                background-color: #dddddd !important;
+                color: #646464;
+                border: solid 2px gray;
             }
         }
     }
