@@ -14,14 +14,20 @@ import { Transaction } from '../../../app/models/transaction.model';
 })
 export class TfCheckDepositComponent implements OnInit, OnDestroy {
   owner:string = 'senw@andrew.cmu.edu';
+  checkNumber:string = '1234567812345678';
+  date:string = '2017-12-25';
   accounts: AccountInfo[] = [];
   subscriptionAccountInfo: Subscription;
 
-  model: Transaction = new Transaction('','','',this.owner,'',true,0.00,'');
+  model: Transaction = new Transaction('',this.checkNumber,'',this.owner,this.date,true,0.00,'');
 
   // only for validation purpose
   image1:Object = null;
   image2:Object = null;
+
+  successMessage:string = null;
+  errorMessage:string = null;
+
   // for debugging purpose 
   get diagnostic() { return JSON.stringify(this.model); }
 
@@ -62,6 +68,19 @@ export class TfCheckDepositComponent implements OnInit, OnDestroy {
   }
   onSubmit() {
     console.log("submit the form");
+    this.successMessage = null;
+    this.transactionInfoService.checkDeposit(this.model).subscribe(
+      data => {
+        console.log(data);
+        this.successMessage = data['message'];
+      },
+      err => {
+        console.log(err);
+        console.log(err.status);
+        console.log(err.error.message);
+        this.errorMessage = err.error.message;
+      }
+    );
   }
 
   onUploadFinished1($event) {

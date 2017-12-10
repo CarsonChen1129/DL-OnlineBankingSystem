@@ -246,6 +246,27 @@
             color: white !important;
         }
     }
+    .messageArea {
+        // background-color: gray;
+        border-radius: 10px;
+        border: solid 2px #b79344;
+        width: 45%;
+        margin: 0 auto;
+        height: 15vh;
+        margin-top: 12vh;
+        padding: 3vh 4vh;
+        text-align: center;
+        .successArea {
+            color: green;
+            font-weight: bold;
+            font-size: 4vh;
+        }
+        .errorArea {
+            color: red;
+            font-weight: bold;
+            font-size: 4vh;
+        }
+    }
 }
 
 .customClass {

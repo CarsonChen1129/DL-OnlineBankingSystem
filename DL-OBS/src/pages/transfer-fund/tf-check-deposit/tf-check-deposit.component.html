@@ -70,12 +70,15 @@
                 </tr>
             </table>
         </div>
+        <div *ngIf="successMessage || errorMessage" class=messageArea>
+            <div class="successArea">{{successMessage}}</div>
+            <div class="errorArea">{{errorMessage}}</div>
+        </div>
         <div class="bottom-buttons">
             <a href="transfer-fund/dashboard">
                 <div class="bottom-button"><span>Cancel</span></div>
             </a>
             <button type="submit" id="confirmbutton" [disabled]="!dForm.valid || !checkImages() || !checkAmount()">Deposit Check</button>
         </div>
-        {{diagnostic}}
     </form>
 </div>

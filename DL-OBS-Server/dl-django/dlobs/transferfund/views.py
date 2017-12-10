@@ -204,3 +204,65 @@ class handleInternalTransfer(views.APIView):
                 'status': 'Precondition invalid',
                 'message': 'Internal Error: cannot find from/to account!'
             }, headers=headers, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+# the function to handle check deposit
+class handleCheckDeposit(views.APIView):
+    print("[handleCheckDeposit view ready]")
+
+    @csrf_exempt
+    def get_permissions(self):
+        if self.request.method in permissions.SAFE_METHODS:
+            return (permissions.AllowAny(),)
+
+        if self.request.method == 'POST':
+            return (permissions.AllowAny(),)
+
+        return (permissions.IsAuthenticated(), IsAccountOwner(),)
+
+    @csrf_exempt
+    def post(self,request, format=None):
+        data = json.loads(request.body)
+        print('--------------------')
+        print(data['fromAccountNumber'])
+        print(data['toAccountNumber'])
+        print(data['owner'])
+        print(data['amount'])
+        print(data['date'])
+        print(data['pending'])
+        print('--------------------')
+        fromAccountNumber = data.get('fromAccountNumber', None)
+        toAccountNumber = data.get('toAccountNumber', None)
+        owner = data.get('owner', None)
+        amount = data.get('amount', None)
+        date = data.get('date', None)
+        pending = data.get('pending', None)
+
+        headers = {'Content-Type':'application/json'}
+        if (fromAccountNumber == None or toAccountNumber == None or owner == None \
+            or amount == None or date == None or pending == None):
+            return Response({
+                'status': 'Not acceptable',
+                'message': 'Cannot find request parameters!'
+            }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
+        
+        # validate the account information
+        try:
+            toAcct = AccountInfo.objects.get(owner = owner, accountNumber = toAccountNumber)
+            # increase the amount in to-account
+            toAcct.balance = toAcct.balance + amount
+            toAcct.save()
+            # generate one transaction record in the database
+            trans = Transaction(fromAccountNumber = toAccountNumber, \
+                toAccountNumber = fromAccountNumber, owner = owner, date = date, \
+                pending = pending, amount = amount)
+            trans.save()
+            return Response({
+                'status': 'Success',
+                'message': 'Your check has been deposited successfully!'
+            }, headers=headers, status=status.HTTP_200_OK)
+        except AccountInfo.DoesNotExist:
+            return Response({
+                'status': 'Precondition invalid',
+                'message': 'Internal Error: cannot find to account!'
+            }, headers=headers, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
