@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'', include(router.urls)),
     url(r'^auth/login', LoginView.as_view(), name='login'),
     url(r'^auth/logout', LogoutView.as_view(), name='logout'),
+    url(r'^loanmanage/',include('loanmanagement.urls'))
 ]

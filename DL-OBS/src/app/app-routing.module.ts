@@ -4,7 +4,8 @@ import {WelcomePageComponent} from '../pages/welcome-page/welcome-page';
 import {DashboardComponent} from '../pages/dashboard/dashboard';
 import {RegisterComponent} from "../pages/register/register.component";
 import {AccountpageComponent} from "../pages/account-page/account-page";
-
+import {LoanManageComponent} from "../pages/loan-manage/loan-manage";
+import {PaymentHistoryComponent} from "../pages/payment-history/payment-history";
 
 const routes: Routes = [
     {
@@ -22,7 +23,17 @@ const routes: Routes = [
     {
         path: 'account',
         component: AccountpageComponent
-    }
+    },
+    {
+        path: 'loanmanage',
+        component: LoanManageComponent
+    },
+    {
+        path: 'paymenthistory',
+        component: PaymentHistoryComponent
+    },
+
+
 ];
 
 @NgModule({
