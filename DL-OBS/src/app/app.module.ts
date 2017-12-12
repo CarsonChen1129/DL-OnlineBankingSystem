@@ -27,6 +27,7 @@ import {
   MatSnackBarRef, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule
 } from "@angular/material";
 import {AccountpageComponent} from "../pages/account-page/account-page";
+import { ProfilePageComponent } from '../pages/profile-page/profile-page.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAjyp-JugtSvYWTiV1k8tGhJE4b7HXEYeg",
@@ -49,6 +50,7 @@ export const firebaseConfig = {
     RegisterComponent,
     EqualValidator,
     ForbiddenValidatorDirective,
+    ProfilePageComponent,
   ],
   imports: [
     BrowserModule,
