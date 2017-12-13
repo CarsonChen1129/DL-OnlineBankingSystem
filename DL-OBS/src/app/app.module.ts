@@ -14,8 +14,12 @@ import { ForbiddenValidatorDirective } from '../directives/forbidden-name.direct
 import {RegisterComponent} from "../pages/register/register.component";
 import {WelcomePageComponent} from "../pages/welcome-page/welcome-page";
 import {LoginComponent} from "../pages/login/login";
+<<<<<<< HEAD
 import {LoanManageComponent} from "../pages/loan-manage/loan-manage";
 import {PaymentHistoryComponent} from "../pages/payment-history/payment-history";
+=======
+import {AutoLoanApplyComponent} from "../pages/autoloanapply/autoloanapply";
+>>>>>>> origin/AutoLoanApply
 
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule,
@@ -45,6 +49,7 @@ import { ProfilePageComponent } from '../pages/profile-page/profile-page.compone
     FooterComponent,
     WelcomePageComponent,
     LoginComponent,
+    AutoLoanApplyComponent,
     AccountpageComponent,
     DashboardComponent,
     RegisterComponent,
