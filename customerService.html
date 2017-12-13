@@ -1,0 +1,395 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Online Banking Setup: Step 1</title>
+    <style>
+        .container {
+            float:middle;
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%;
+            min-height:1330px;
+            background-color:#fff;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border: 2px solid #b79344;
+        }
+
+        .header{
+            margin-left: auto;
+            margin-right: auto;
+            width:99%;
+            height:60px;
+            background: -webkit-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
+            background: -o-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
+            background: -moz-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
+            background: linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
+        }
+        .content{
+            padding: 20px;
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+        .title {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            color: #b79244;
+        }
+        .sub-title {
+            margin-top: 10px;
+            padding-left: 25px;
+            font-size: 1em;
+            color: #b79244;
+        }
+        .sub-input {
+            margin-left: 25px;
+        }
+
+        .contact-title {
+            /*width: 180px;*/
+            width:200%;
+            padding-left: 30px;
+            padding-top: 10px;
+            text-align: left;
+            vertical-align: left;
+            font-size: 1em;
+            color: #b79244;
+        }
+        .contact-title-large {
+            width: 180px;
+            padding-left: 30px;
+            padding-top: 10px;
+            font-size: 1.3em;
+            color: #b79244;
+        }
+        .contact-input {
+            padding-left: 30px;
+        }
+        .contact-title-middle {
+            width: 190px;
+            text-align: left;
+            font-size: 1em;
+            padding-top: 10px;
+            padding-left: 25px;
+            padding-right: 25px;
+            text-align: left;
+            vertical-align: left;
+            color: #b79244;
+        }
+        .contact-title-right {
+            width: 180px;
+            padding-left: 25px;
+            padding-right: 30px;
+            font-size: 1em;
+            color: #b79244;
+        }
+        .tagBox{
+            background-color: #b79344;
+            height: 35px;
+            width: 180px;
+            margin-top: 20px;
+            margin-left: 35px;
+            margin-right: 35px;
+            border-left: 30px solid white;
+            border-right: 30px solid white;
+            /*border-left: 35px*/
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            text-align: center;
+            vertical-align: center;
+            column-gap: 20px;
+            font-style: normal;
+            font-size: 10pt;
+            color: #fff;
+        }
+        td {
+            margin-right: 5px;
+        }
+        .image{
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .table {
+            border-top-left-radius:19px;
+            border-top-right-radius:19px;
+            background-color: #b79344;
+            height: 33px;
+            margin-top: 30px;
+            padding-left: 20px;
+            padding-top: 9px;
+            padding-bottom: 5px;
+            font-size: 1.4em;
+            color: #fff;
+        }
+        .number {
+            font-size: 1.2em;
+            color:#4b4b4b;
+            padding-top: 18px;
+            padding-bottom: 7px;
+        }
+        .star {
+            color:red;
+            vertical-align:sub;
+            padding-left: 8px;
+            font-size:0.9em;
+
+        }
+        .dash {
+            font-size: 1.3em;
+            color: #bbbbbb;
+
+        }
+        .notify {
+            padding-left: 2px;
+            padding-top: 8px;
+            padding-bottom: 10px;
+            color: #1D3c56;
+        }
+        .tablemid {
+
+            background-color: #b79344;
+            height: 33px;
+            margin-top: 30px;
+            padding-left: 20px;
+            padding-top: 9px;
+            padding-bottom: 9px;
+            font-size: 1.4em;
+            color: #fff;
+        }
+        #usernotify {
+            width: 360px;
+            padding-left: 2px;
+            padding-top: 8px;
+            padding-bottom: 10px;
+            color: #1D3c56;
+        }
+
+        .username {
+            width: 50%;
+            float: left;
+        }
+
+        .hint {
+            width: 40%;
+            height: 200px;
+            background-color: #f8f8f8;
+            border: 1px solid #9F9F9F;
+            text-align: center;
+            border-radius: 16px;
+            float: right;
+            margin-top: 50px;
+        }
+        .form {
+            padding-left: 7px;
+            padding-right: 7px;
+        }
+
+
+        .steps {
+            color: #000;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: center;
+            z-index: 9999999;
+            margin: 1.2rem 0;
+            width: 100%;
+            width: calc(100% + 1rem);
+            font-size: 1rem;
+        }
+        .steps .step {
+            padding: 0 1.2rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .steps .step::after {
+            content: "";
+            display: block;
+            margin: 0.5rem;
+            border-radius: 50%;
+            width: 1rem;
+            height: 1rem;
+            background: #000;
+            z-index: 5;
+        }
+        .steps .step::before {
+            content: "";
+            display: block;
+            background: #000;
+            width: 100%;
+            bottom: 1rem;
+            height: 2px;
+            position: absolute;
+        }
+        .steps .step:first-of-type::before {
+            left: 50%;
+            width: 50%;
+        }
+        .steps .step:last-of-type::before {
+            right: 50%;
+            width: 50%;
+        }
+        .steps .step.done::before, .steps .step.done::after {
+            background-color: #b79344;
+        }
+
+        .buttons {
+            padding-top: 70px;
+            vertical-align: center;
+        }
+        #cancel {
+            color: #b79344;
+            font-weight: 900;
+        }
+        #string {
+            padding:10px;
+            color: #9F9F9F;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="header">
+    </div>
+    <div class="content">
+        <div class="title">
+            Contact Customer Service
+        </div>
+        <div class="input">Devonshire Lending customer service is always available to address your account and servicing needs.</div>
+        <div class="sub-title">Personal Checking & Savings</div>
+        <div class="sub-input" type="text" name="">Ask questions about your existing about managing your existing accounts, including how to apply for a checking account and debit card</div>
+        <div class="sub-title">Auto Loans & Savings</div>
+        <div class="sub-input" type="text" name="">Get help for questions a new or existing auto loan or lease</div>
+        <div class="sub-title">Mortgage Loans</div>
+        <div class="sub-input" type="text" name="">Get help with refinancing, purchasing a home or managing an existing loan.</div>
+        <div class="sub-title">Home Equity Line of Credit & Loans</div>
+        <div class="sub-input" type="text" name="">Ask about a new line of credit, or get information about your existing account.</div>
+        <div class="sub-title">Business Loans for Online Account Management</div>
+        <div class="sub-input" type="text" name="">Learn more about our Business Banking products and services, or get help with an existing business account.</div>
+        <div class="sub-title">Personal Credit Cards</div>
+        <div class="sub-input" type="text" name="">Get help with your credit cards services.</div>
+    </div>
+    <div>
+    <table>
+        <tr>
+            <td class="tagBox" type="text">Online or Mobile Banking Support(U.S. Only)</td>
+            <td class="tagBox" type="text">Commercial Banking </td>
+            <td class="tagBox" type="text">Millitary Personnel and Veterans</td>
+        </tr>
+
+        <tr>
+            <td>
+                <div class="contact-title" > Already Have an Account?
+                    <br>
+                    Call:
+                    +1-412-123-4567
+                 </div>
+                 <div class="contact-input" type="text">Mon-Fri: 8 AM - Midnight</div>
+                 <div class="contact-input" type="text">Saturday: 8 AM-8 PM ET</div>
+                 <div class="contact-input" type="text">Sunday: Closed</div>
+                 <br>
+                 <div class="contact-title" type="text">Interested in a New Account?
+                    <br>
+                    Call:
+                    +1-800-123-4567
+                     <br>
+                 </div>
+
+            </td>
+
+            <td>
+                <div class="contact-title-middle">Please call your Client Service Professional
+                    <div></div>
+                    <br><br><br><br><br><br><br>
+                </div>
+            </td>
+
+            <td>
+                <div class="contact-title-right">Domestic Millitary Service
+                <br>
+                    Call: +1-412-100-1000
+                <br>
+                    <br><br><br><br><br><br>
+                    <br>
+                </div>
+                <div class="contact-input"></div>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="tagBox" type="text">Outside the U.S.</td>
+            <td class="tagBox" type="text">Branch & ATM Map</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="contact-title" >Already Have an Account?
+                    <br>
+                    Call: +1-800-100-1234
+                </div>
+                <div class="contact-input" type="text">Mon-Fri: 8 AM - Midnight</div>
+                <div class="contact-input" type="text">Saturday: 8 AM-8 PM ET</div>
+                <div class="contact-input" type="text">Sunday: Closed</div>
+                <br>
+                <div class="contact-title" type="text">Interested in a New Account?
+                    <br>
+                    Call:
+                    +1-800-200-1234
+                    <br>
+                </div>
+
+            </td>
+            <td>
+                <!--<div class="contact-title-middle">-->
+                    <a  class="contact-title-middle" href="customerService_location.html"> Search for nearest branch/ATM</a>
+                <!--</div>-->
+
+                    <div></div>
+                    <br><br><br><br><br><br><br>
+            </td>
+
+            <!--<td>-->
+                <!--<div>-->
+                <!--<a class="contact-title" href="customerService_location.html"> Search for your nearest branches / ATMs</a>-->
+                <!--</div>-->
+                <!--<br><br><br><br><br><br><br><br>-->
+            <!--</td>-->
+        </tr>
+    </table>
+        <table>
+        <tr>
+            <td>
+                <div class="contact-title-large" > Report fraud and email concerns > </div>
+            </td>
+        </tr>
+        <br>
+        <br>
+        <tr>
+            <td>
+                <div class="contact-title-large" > Complaints and Feedback ></div>
+            </td>
+        </tr>
+
+
+    </table>
+    </div>
+</div>
+</body>
+</html>
+
+
+
+
+<!--</form>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
