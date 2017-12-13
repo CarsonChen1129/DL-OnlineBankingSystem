@@ -18,7 +18,7 @@
 
 
         .header{
-            padding-top: 10px;
+            padding-top: 20px;
             margin-left: auto;
             margin-right: auto;
             width:100%;
@@ -35,7 +35,7 @@
         }
         .title {
             margin-bottom: 10px;
-            font-size: 1.5em;
+            font-size: 1.8em;
             color: #b79244;
         }
         .sub-title {
@@ -44,7 +44,7 @@
             padding-top: 10px;
             text-align: left;
             vertical-align: left;
-            font-size: 0.8em;
+            font-size: 1em;
             color: #b79244;
         }
         .sub-input {
@@ -56,60 +56,35 @@
             width:200%;
             padding-left: 30px;
             padding-top: 10px;
+            /*padding-bottom: 5px;*/
             text-align: left;
             vertical-align: left;
             font-size: 1em;
             color: #b79244;
-        }
-
-
-        .contact-title-large {
-            padding-left: 30px;
-            padding-top: 10px;
-            font-size: 1.3em;
-            color: #b79244;
-        }
-        .contact-input {
-            padding-left: 30px;
-        }
-        .contact-title-middle {
-            font-size: 1em;
-            padding-top: 10px;
-            padding-left: 25px;
-            padding-right: 2px;
-            color: #b79244;
-        }
-        .contact-title-right {
-            padding-left: 25px;
-            padding-right: 30px;
-            font-size: 1em;
-            color: #b79244;
-        }
-        .tagBox{
-            background-color: #b79344;
-            height: 35px;
-            width: 180px;
-            margin-top: 20px;
             margin-left: 35px;
-            margin-right: 35px;
-            border-left: 25px solid white;
-            border-right: 25px solid white;
-            /*border-left: 35px*/
-            padding-left: 20px;
-            padding-right: 12px;
-            padding-top: 4px;
-            padding-bottom: 4px;
+        }
 
-            column-gap: 20px;
-            font-style: normal;
-            font-size: 10pt;
-            color: #fff;
+        .contact-input {
+            width:200%;
+            padding-left: 30px;
+            padding-top: 10px;
+            text-align: left;
+            vertical-align: left;
+            font-size: 1em;
         }
         td {
             margin-right: 5px;
         }
 
+        .getStartButton{
+            text-align: center;
+            color: white;
+            background: #b79244;
+            width: 15%;
+            height: 50px;
+            font-size: 1em;
 
+        }
         url(https://fonts.googleapis.com/css?family=Open+Sans);
 
         body{
@@ -163,7 +138,23 @@
 
         .image{
             margin-bottom: 10px;
-            text-align: center;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        /* Create two equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 40%;
+            padding: 10px;
+            height: 400px; /* Should be removed. Only for demonstration */
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
         }
         .table {
             border-top-left-radius:19px;
@@ -177,82 +168,7 @@
             font-size: 1.4em;
             color: #fff;
         }
-        .number {
-            font-size: 1.2em;
-            color:#4b4b4b;
-            padding-top: 18px;
-            padding-bottom: 7px;
-        }
-        .star {
-            color:red;
-            vertical-align:sub;
-            padding-left: 8px;
-            font-size:0.9em;
 
-        }
-        .dash {
-            font-size: 1.3em;
-            color: #bbbbbb;
-
-        }
-        .notify {
-            padding-left: 2px;
-            padding-top: 8px;
-            padding-bottom: 10px;
-            color: #1D3c56;
-        }
-        .tablemid {
-
-            background-color: #b79344;
-            height: 33px;
-            margin-top: 30px;
-            padding-left: 20px;
-            padding-top: 9px;
-            padding-bottom: 9px;
-            font-size: 1.4em;
-            color: #fff;
-        }
-        #usernotify {
-            width: 360px;
-            padding-left: 2px;
-            padding-top: 8px;
-            padding-bottom: 10px;
-            color: #1D3c56;
-        }
-
-        .username {
-            width: 50%;
-            float: left;
-        }
-
-        .hint {
-            width: 40%;
-            height: 200px;
-            background-color: #f8f8f8;
-            border: 1px solid #9F9F9F;
-            text-align: center;
-            border-radius: 16px;
-            float: right;
-            margin-top: 50px;
-        }
-        .form {
-            padding-left: 7px;
-            padding-right: 7px;
-        }
-
-
-        .steps {
-            color: #000;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            justify-content: center;
-            z-index: 9999999;
-            margin: 1.2rem 0;
-            width: 100%;
-            width: calc(100% + 1rem);
-            font-size: 1rem;
-        }
         .steps .step {
             padding: 0 1.2rem;
             position: relative;
@@ -325,49 +241,127 @@
                         ATM Services
                     </div>
                 </td>
+                <td>
+                    <div class="contact-title">
+                        Branch Services
+                    </div>
+                </td>
             </tr>
 
             <tr>
                 <td>
-                    <div class="sub-title">
+                    <div class="sub-title" style="margin-left: 35px">
                         <input type="checkbox" name="locationtype" value="ATM" >Devenshire ATM (5)<br>
                         <input type="checkbox" name="locationtype" value="Branch" checked>Devenshire Branch (4)<br>
                     </div>
 
                 </td>
                 <td>
-                    <div class="sub-title">
+                    <div class="sub-title" style="margin-left: 35px">
                         <input type="checkbox" name="locationtype" value="ATMService">24-hours access (5)<br>
-                        <input type="checkbox" name="locationtype" value="Branch" checked>Allowed deposits (2)<br>
+                        <input type="checkbox" name="locationtype" value="ATMService" checked>Allowed deposits (2)<br>
                         <input type="checkbox" name="locationtype" value="ATMService" >Drive-up (5)<br>
                     </div>
+                </td>
+
+                <td>
+                    <div class="sub-title" style="margin-left: 35px">
+                        <input type="checkbox" name="locationtype" value="BranchService">Safe deposit boxes (3)<br>
+                        <input type="checkbox" name="locationtype" value="Branch" checked>Multiple Languages Specialist<br>
+                    </div>
+
                 </td>
             </tr>
         </table>
 
-        <div class="header">Find a ATM or Branch Near Your Location</div>
+        <div class="header">Find a Devenshire ATM or Branch Near Your Location</div>
 
         <div class="search">
             <div class="search">
-                <input type="text" class="searchTerm" placeholder="Search for...">
+                <input type="text" class="searchTerm" placeholder="Please enter a ZIP code, or an adress, city and state">
                 <button type="submit" class="searchButton">Search
                     <i class="fa fa-search"></i>
-
                 </button>
             </div>
         </div>
-        <table>
-            <div class="buttoncontent"><img src="" width=90%px height=90% alt="Line"></div>
 
-        </table>
+        <div class="row">
+            <div class="column" style="">
+                <div class="image"><img src="customerService_map.png" width=120%px height=150% alt="Line"></div>
+                <!--<p>Some text..</p>-->
+            </div>
+            <div class="column" style="">
+                <!--<h2>Column 2</h2>-->
+                <table>
+                    <tr>
+                        <td>
+                            <div class="contact-title" style="margin-top: 30px; margin-left: 35px">
+                                Oakland<br>
+                                1000 Forbes Ave<br>
+                                Pittsburgh, PA 15213<br>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="contact-title" style="margin-left:45px">
+                                0.5 miles<br>
+                                Driving directions
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="contact-input" style=" margin-left: 35px">
+                                +1-412-123-4567<br>
+                                Lobby Hours<br>
+                                Monday-Friday: 8 AM -Midnight<br>
+                                Saturday: 8 AM - 8 PM ET<br>
+                                Sunday: Closed<br>
+                            </div>
+                        </td>
 
 
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="contact-title" style="margin-top: 30px; margin-left: 35px">
+                                ShadySide<br>
+                                2000 Fifth Ave<br>
+                                Pittsburgh, PA 15213<br>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="contact-title" style="margin-left:45px">
+                                1.5 miles<br>
+                                Driving directions
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="contact-input" style="margin-left: 35px">
+                                +1-412-100-7890<br>
+                                Lobby Hours<br>
+                                Monday-Friday: 8 AM -Midnight<br>
+                                Saturday: 8 AM - 8 PM ET<br>
+                                Sunday: Closed<br>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
 
+            </div>
+        </div>
 
-
-
-        <table>
-        </table>
+        <div class="title" style="margin-top: 50px";>
+            Open a Chase checking account today!
+        </div>
+        <div style="margin-top: 20px">
+            Find the one that's right for you.
+            <br>
+            <button type="submit" style="margin-top: 10px" class="getStartButton">Get Started
+                <i class="fa fa-search"></i>
+            </button>
+           </div>
     </div>
 </div>
 </body>
