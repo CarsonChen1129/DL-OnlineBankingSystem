@@ -45,7 +45,7 @@ export class WelcomePageComponent implements OnInit {
     console.log(formData);
     if (formData.valid) {
       console.log(formData.value);
-      this.auth.checkRegistrationStatus(formData.value.email,formData.value.pin).subscribe((data)=>{
+      this.auth.checkRegistrationStatus(formData.value.email, formData.value.pin).subscribe((data)=>{
         console.log("data:");
         console.log(data);
       }, (error)=>{

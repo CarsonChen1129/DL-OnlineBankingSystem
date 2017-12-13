@@ -52,6 +52,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     EqualValidator,
     ForbiddenValidatorDirective,
     PaymentHistoryComponent,
+    LoanManageComponent,
+    PaymentHistoryComponent
   ],
   imports: [
     BrowserModule,
