@@ -28,7 +28,7 @@ import {
 import {AccountpageComponent} from "../pages/account-page/account-page";
 import {AuthenticationService} from "../providers/authentication.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-
+import { ProfilePageComponent } from '../pages/profile-page/profile-page.component';
 // export const firebaseConfig = {
 //   apiKey: "AIzaSyAjyp-JugtSvYWTiV1k8tGhJE4b7HXEYeg",
 //   authDomain: "dl-onlinebankingsystem.firebaseapp.com",
@@ -53,7 +53,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     ForbiddenValidatorDirective,
     PaymentHistoryComponent,
     LoanManageComponent,
-    PaymentHistoryComponent
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,

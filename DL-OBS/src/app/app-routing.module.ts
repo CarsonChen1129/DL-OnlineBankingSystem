@@ -7,6 +7,7 @@ import {RegisterComponent} from "../pages/register/register.component";
 import {AccountpageComponent} from "../pages/account-page/account-page";
 import {LoanManageComponent} from "../pages/loan-manage/loan-manage";
 import {PaymentHistoryComponent} from "../pages/payment-history/payment-history";
+import {ProfilePageComponent} from "../pages/profile-page/profile-page.component";
 
 const routes: Routes = [
     {
@@ -33,8 +34,10 @@ const routes: Routes = [
         path: 'paymenthistory',
         component: PaymentHistoryComponent
     },
-
-
+    {
+        path: 'profile',
+        component: ProfilePageComponent
+    }
 ];
 
 @NgModule({
