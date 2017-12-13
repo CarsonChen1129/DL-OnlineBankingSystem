@@ -27,17 +27,12 @@ from transferfund.views import getContactsInfoView
 from transferfund.views import handleExternalTransfer
 from transferfund.views import addContactView
 
-router = routers.SimpleRouter()
-router.register(r'accounts', AccountViewSet)
-
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'', include(router.urls)),
+    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^account', AccountViewSet.as_view(), name='account'),
     url(r'^auth/login', LoginView.as_view(), name='login'),
     url(r'^auth/logout', LogoutView.as_view(), name='logout'),
-<<<<<<< HEAD
-    url(r'^loanmanage/',include('loanmanagement.urls'))
-=======
+    url(r'^loanmanage/',include('loanmanagement.urls')),
     url(r'^transferfund/getAccountInfo', getAccountInfoView.as_view(), name="getAccountInfo"),
     url(r'^transferfund/getAllAccounts', getAllAccountsView.as_view(), name="getAllAccounts"),
     url(r'^transferfund/getTransactionHistory', getTransactionHistoryView.as_view(), name="getTransactionHistory"),
@@ -46,5 +41,4 @@ urlpatterns = [
     url(r'^transferfund/getContactsInfo', getContactsInfoView.as_view(), name="getContactsInfo"),
     url(r'^transferfund/externalTransfer', handleExternalTransfer.as_view(), name="handleExternalTransfer"),
     url(r'^transferfund/addContact', addContactView.as_view(), name="addContactView"),
->>>>>>> transfer-fund(SenWang)
 ]

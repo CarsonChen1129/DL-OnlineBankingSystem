@@ -47,10 +47,13 @@ class AccountSerializer(serializers.ModelSerializer):
             'security_question_3',
             'security_answer_3',
             'language',
-            'created_at',
-            'updated_at',
+            'date_registered',
+            'last_login',
             'password',
-            'confirm_password',)
+            'confirm_password',
+            'pin_code',
+            'registration_status'
+        )
         read_only_fields = ('created_at', 'updated_at',)
 
         def create(self, validated_data):

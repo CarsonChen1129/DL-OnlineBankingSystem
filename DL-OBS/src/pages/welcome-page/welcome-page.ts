@@ -3,6 +3,7 @@ import {Observable} from "rxjs/Observable";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatSnackBar} from "@angular/material";
 import {AuthenticationService} from "../../providers/authentication.service";
+import {LocalStorage} from "../../providers/localstorage.service";
 
 @Component({
     selector: 'page-welcome',
@@ -18,13 +19,23 @@ export class WelcomePageComponent implements OnInit {
     {title: 'Devonshire Mobile Banking', description: 'The Latest mobile banking app built around you. It\'s simple, rewarding, and secure.', img: 'assets/images/dl-mobile.png'}
   ];
 
+  user;
+
   error: any;
   constructor(private auth: AuthenticationService,
+              private storage: LocalStorage,
               private router: Router,
               private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.storage.getObjectObservable("user").subscribe((data)=>{
+      if(data){
+        this.user = data;
+      }
+    }, (error)=>{
+      console.log(error);
+    });
     // if (localStorage.getItem('user') != null) {
     //   this.user = JSON.parse(localStorage.getItem('user'));
     // }
@@ -45,27 +56,14 @@ export class WelcomePageComponent implements OnInit {
     console.log(formData);
     if (formData.valid) {
       console.log(formData.value);
-      this.auth.checkRegistrationStatus(formData.value.email, formData.value.pin).subscribe((data)=>{
-        console.log("data:");
+      this.auth.login(formData).subscribe((data) => {
         console.log(data);
-      }, (error)=>{
-        console.log("error:");
+        this.storage.setObject('user', data);
+        this.router.navigate(['account']);
+      }, (error) => {
         console.log(error);
+        this.error = error.error.message;
       });
-      // this.afAuth.auth.signInWithEmailAndPassword(
-      //   formData.value.email,
-      //   formData.value.password
-      // ).then(
-      //   (success) => {
-      //     console.log(success);
-      //     localStorage.setItem('user', JSON.stringify({name: success.displayName, email: success.email, uid: success.uid}));
-      //     this.router.navigate(['dashboard']);
-      //   }).catch(
-      //   (err) => {
-      //     console.log(err);
-      //     this.error = err;
-      //   }
-      // );
     }
   }
 }

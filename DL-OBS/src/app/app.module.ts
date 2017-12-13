@@ -39,6 +39,8 @@ import {AccountinfoserviceService} from '../app/services/accountinfoservice.serv
 import { TransactioninfoService } from '../app/services/transactioninfo.service';
 import { ContactinfoService } from '../app/services/contactinfo.service';
 import { displayShortLabelPipe } from '../app/models/transaction.pipe';
+import {CustomerServiceComponent} from "../pages/customer-services/customerServiceComponent";
+import {LocalStorage} from "../providers/localstorage.service";
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { displayShortLabelPipe } from '../app/models/transaction.pipe';
     TfPayOthersComponent,
     TfCheckDepositComponent,
     displayShortLabelPipe,
+    CustomerServiceComponent
   ],
   imports: [
     BrowserModule,
@@ -105,7 +108,7 @@ import { displayShortLabelPipe } from '../app/models/transaction.pipe';
     MatStepperModule,
     ImageUploadModule.forRoot(),
   ],
-  providers: [AuthenticationService, HttpClient, TransactioninfoService, ContactinfoService],
+  providers: [AuthenticationService, HttpClient, TransactioninfoService, ContactinfoService, AccountinfoserviceService, LocalStorage],
   bootstrap: [AppComponent]
 })
 

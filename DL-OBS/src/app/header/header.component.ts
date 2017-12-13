@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {Router} from "@angular/router";
 import {Observable} from "rxjs/Observable";
+import {AuthenticationService} from "../../providers/authentication.service";
+import {LocalStorage} from "../../providers/localstorage.service";
 
 @Component({
   selector: 'dl-header',
@@ -12,7 +14,9 @@ export class HeaderComponent implements OnInit {
 
   user: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private auth: AuthenticationService,
+              private storage: LocalStorage) {
   }
 
   ngOnInit() {
@@ -20,7 +24,15 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    console.log("logout pressed");
     console.log(this.user);
+    this.auth.logout().subscribe((data)=>{
+      console.log(data);
+      this.storage.remove('user');
+      this.router.navigate(['']);
+    },(error)=>{
+      console.log(error);
+    })
     // this.afAuth.auth.signOut().then((success) => {
     //   console.log("Success");
     //   console.log(success);

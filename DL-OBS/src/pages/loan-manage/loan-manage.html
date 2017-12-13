@@ -4,13 +4,13 @@
     <table id="headertable">
       <tr>
         <td id="lefthead">Loan Management Dashboard</td>
-        <td id="righthead"><img src="assets/images/icon.png" width=25px height=25px alt="Icon">&nbsp;&nbsp;Hello Tony Qin!</td>
+        <td id="righthead"><img src="assets/images/icon.png" width=25px height=25px alt="Icon">&nbsp;&nbsp;Hello {{user.first_name}}!</td>
       </tr>
     </table>
   </div>
   <div class="content">
-    
-    
+
+
 
       <div class="form">
       <div class="card">
@@ -33,7 +33,7 @@
                 <td class="description">Average Interest Rate</td>
                 <td class="description">Total Monthly Payment</td>
               </tr>
-            
+
             </table>
 
             <table id="cardtable">
@@ -66,7 +66,7 @@
                                 <div class="fill"></div>
                             </div>
                         </div>
-                  
+
                 </td>
                 <td class="description reviewfour" rowspan="3">
                   25% of your loan has been completed.
@@ -75,8 +75,8 @@
               <tr>
                 <td class="description reviewone">Total Loans</td>
                 <td class="description reviewtwo">Total Balance</td>
-              
-              
+
+
               </tr>
             </table>
         </div>
@@ -88,13 +88,13 @@
       <table class="buttontable">
         <tr>
           <td>
-            <div class="buttoncontent"><img src="assets/images/apply.png" width=90%px height=90% alt="Line"></div>
+            <div class="buttoncontent"><a href="/autoloanapply"><img src="assets/images/apply.png" width=90%px height=90% alt="Line"></a></div>
           </td>
           <td>
-            <div class="buttoncontent"><img src="assets/images/makepayment.png" width=90% height=90% alt="Line"></div>
+            <div class="buttoncontent"><a href="/transfer-fund/dashboard"><img src="assets/images/makepayment.png" width=90% height=90% alt="Line"></a></div>
           </td>
           <td>
-            <div class="buttoncontent"><img src="assets/images/paymenthistory.png" width=90% height=90% alt="Line"></div>
+            <div class="buttoncontent"><a href="/paymenthistory"><img src="assets/images/paymenthistory.png" width=90% height=90% alt="Line"></a></div>
           </td>
           </tr>
         </table>
@@ -189,7 +189,7 @@
         </td>
         </tr>
 
-      
+
 
       </table>
     </div>

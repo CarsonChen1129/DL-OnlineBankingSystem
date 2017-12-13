@@ -13,6 +13,7 @@ import {TfDashboardComponent} from '../pages/transfer-fund/tf-dashboard/tf-dashb
 import {TfInternalTransferComponent} from '../pages/transfer-fund/tf-internal-transfer/tf-internal-transfer.component';
 import {TfCheckDepositComponent} from '../pages/transfer-fund/tf-check-deposit/tf-check-deposit.component';
 import {TfPayOthersComponent} from '../pages/transfer-fund/tf-pay-others/tf-pay-others.component';
+import {CustomerServiceComponent} from "../pages/customer-services/customerServiceComponent";
 
 const routes: Routes = [
     {
@@ -40,8 +41,9 @@ const routes: Routes = [
         component: PaymentHistoryComponent
     },
     {
-        path: 'profile',
-        component: ProfilePageComponent
+      path: 'profile',
+      component: ProfilePageComponent
+    },
    {
         path: 'transfer-fund/dashboard',
         component: TfDashboardComponent
@@ -61,7 +63,11 @@ const routes: Routes = [
     {
         path: 'autoloanapply',
         component: AutoLoanApplyComponent
-    }
+    },
+  {
+    path: 'customerservice',
+    component: CustomerServiceComponent
+  }
 ];
 
 @NgModule({

@@ -5,6 +5,7 @@ import {NgForm} from "@angular/forms";
 import {Observable} from "rxjs/Observable";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../providers/authentication.service";
+import {LocalStorage} from "../../providers/localstorage.service";
 
 @Component({
   selector:'page-register',
@@ -48,7 +49,8 @@ export class RegisterComponent implements OnInit {
   pin = '';
 
   constructor(private auth: AuthenticationService,
-              private router: Router) {
+              private router: Router,
+              private storage: LocalStorage) {
   }
 
   ngOnInit(): void {
@@ -98,38 +100,11 @@ export class RegisterComponent implements OnInit {
       console.log(this.user);
       this.auth.register(this.user).subscribe((data) => {
         console.log(data);
-        this.router.navigate(['']);
+        this.storage.setObject('user', data);
+        this.router.navigate(['account']);
       }, (error) => {
         console.log(error);
       });
-      // this.afAuth.auth.createUserWithEmailAndPassword(this.model.email, this.model.password)
-      //   .then((success) => {
-      //   console.log(success);
-      //     localStorage.setItem('user', JSON.stringify({name: this.model.name, email: this.model.email, uid: success.uid}));
-      //     this.router.navigate(['dashboard']);
-      //   // this.afAuth.authState.subscribe(authState => {
-      //   //   authState.updateProfile({displayName: this.model.name, photoURL: ''})
-      //   //     .then((res) => {
-      //   //       console.log(res);
-      //   //       console.log({name: res.displayName, email: res.email});
-      //   //       /* TODO: res is undefined */
-      //   //       localStorage.setItem('user', JSON.stringify({name: res.displayName, email: res.email, uid: res.uid}));
-      //   //       this.router.navigate(['dashboard']);
-      //   //   }).catch((error) => {
-      //   //     console.log(error);
-      //   //   });
-      //   // });
-      //   // this.afs.doc(`users/$(success.uid`).set({displayName: this.model.name, phoneNumber: this.model.phone})
-      //   //   .then((res) => {
-      //   //     console.log(res);
-      //   //     // localStorage.setItem('user',)
-      //   //     this.router.navigate(['dashboard']);
-      //   // }).catch((error) => {
-      //   //   console.log(error);
-      //   // });
-      //   }).catch((error) => {
-      //   console.log(error);
-      //   });
     }
   }
 }

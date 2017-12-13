@@ -3,11 +3,7 @@ import {Component, OnInit, ViewChild} from "@angular/core";
 import {LoanApply} from "./LoanApply";
 import {NgForm} from "@angular/forms";
 import {Observable} from "rxjs/Observable";
-import {AngularFireDatabase, AngularFireList} from "angularfire2/database";
-import {AngularFireAuth} from "angularfire2/auth";
-import * as firebase from "firebase";
 import {Router} from "@angular/router";
-import {AngularFirestore} from "angularfire2/firestore";
 
 @Component({
   selector:'autoloan-application',
@@ -57,14 +53,11 @@ export class AutoLoanApplyComponent implements OnInit {
 
   model = new LoanApply('', '', '', null, '', '','', null, null,  null, '', null, '',null,null,null,null,null,null,null);
 
-  user: Observable<firebase.User>;
-  items: AngularFireList<any[]>;
+  user;
+  items;
   error: any;
 
-  constructor(public afAuth: AngularFireAuth,
-              public af: AngularFireDatabase,
-              private router: Router) {
-    this.user = this.afAuth.authState;
+  constructor(private router: Router) {
   }
 
   ngOnInit(): void {
@@ -90,35 +83,35 @@ export class AutoLoanApplyComponent implements OnInit {
   }
 
   submit() {
-    if (this.model.email !== null && this.model.password !== null && this.model.name !== null) {
-      this.afAuth.auth.createUserWithEmailAndPassword(this.model.email, this.model.password)
-        .then((success) => {
-        console.log(success);
-          localStorage.setItem('user', JSON.stringify({name: this.model.name, email: this.model.email, uid: success.uid}));
-          this.router.navigate(['dashboard']);
-        // this.afAuth.authState.subscribe(authState => {
-        //   authState.updateProfile({displayName: this.model.name, photoURL: ''})
-        //     .then((res) => {
-        //       console.log(res);
-        //       console.log({name: res.displayName, email: res.email});
-        //       /* TODO: res is undefined */
-        //       localStorage.setItem('user', JSON.stringify({name: res.displayName, email: res.email, uid: res.uid}));
-        //       this.router.navigate(['dashboard']);
-        //   }).catch((error) => {
-        //     console.log(error);
-        //   });
-        // });
-        // this.afs.doc(`users/$(success.uid`).set({displayName: this.model.name, phoneNumber: this.model.phone})
-        //   .then((res) => {
-        //     console.log(res);
-        //     // localStorage.setItem('user',)
-        //     this.router.navigate(['dashboard']);
-        // }).catch((error) => {
-        //   console.log(error);
-        // });
-        }).catch((error) => {
-        console.log(error);
-        });
+    // if (this.model.email !== null && this.model.password !== null && this.model.name !== null) {
+    //   this.afAuth.auth.createUserWithEmailAndPassword(this.model.email, this.model.password)
+    //     .then((success) => {
+    //     console.log(success);
+    //       localStorage.setItem('user', JSON.stringify({name: this.model.name, email: this.model.email, uid: success.uid}));
+    //       this.router.navigate(['dashboard']);
+    //     // this.afAuth.authState.subscribe(authState => {
+    //     //   authState.updateProfile({displayName: this.model.name, photoURL: ''})
+    //     //     .then((res) => {
+    //     //       console.log(res);
+    //     //       console.log({name: res.displayName, email: res.email});
+    //     //       /* TODO: res is undefined */
+    //     //       localStorage.setItem('user', JSON.stringify({name: res.displayName, email: res.email, uid: res.uid}));
+    //     //       this.router.navigate(['dashboard']);
+    //     //   }).catch((error) => {
+    //     //     console.log(error);
+    //     //   });
+    //     // });
+    //     // this.afs.doc(`users/$(success.uid`).set({displayName: this.model.name, phoneNumber: this.model.phone})
+    //     //   .then((res) => {
+    //     //     console.log(res);
+    //     //     // localStorage.setItem('user',)
+    //     //     this.router.navigate(['dashboard']);
+    //     // }).catch((error) => {
+    //     //   console.log(error);
+    //     // });
+    //     }).catch((error) => {
+    //     console.log(error);
+    //     });
     }
   }
 }

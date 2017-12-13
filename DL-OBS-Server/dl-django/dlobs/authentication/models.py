@@ -105,9 +105,11 @@ class Account(AbstractBaseUser, models.Model):
     security_question_3     = models.IntegerField(blank=False)
     security_answer_3       = models.CharField(max_length=1024, blank=False, null=False)
     language                = models.CharField(max_length=1,blank=False)
+    pin_code                = models.CharField(max_length=16,blank=False,null=False,default='')
+    registration_status     = models.BooleanField(default=False)
 
-    created_at  = models.DateTimeField(auto_now_add=True)
-    updated_at  = models.DateTimeField(auto_now=True)
+    date_registered  = models.DateTimeField(null=True)
+    last_login  = models.DateTimeField(auto_now=True)
 
     objects = AccountManager()
 
@@ -134,8 +136,6 @@ class Account(AbstractBaseUser, models.Model):
                 raise ValidationError('The middle name %s contains invalid characters' % self.middle_name)
         if re.match('[!@#$%^&*\'"();<>,+=/?0-9]\w+',self.last_name):
             raise ValidationError('The last name %s contains invalid characters' % self.last_name)
-        if self.age < 0 or self.age > 200:
-            raise ValidationError('%s is not a valid age.' % self.age)
         super(Account, self).clean(*args, **kwargs)
 
     def save(self, *args, **kwargs):

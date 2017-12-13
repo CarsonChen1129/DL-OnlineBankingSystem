@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import uuid
+from transferfund.init_data import init_data
 
 
 class Migration(migrations.Migration):
@@ -28,6 +29,7 @@ class Migration(migrations.Migration):
                 ('routingNumber', models.CharField(blank=True, default='', max_length=50)),
             ],
         ),
+        migrations.RunPython(init_data),
         migrations.CreateModel(
             name='Contact',
             fields=[

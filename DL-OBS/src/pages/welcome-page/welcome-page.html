@@ -8,15 +8,14 @@
     <img src="" class="">
     <![endif]-->
   </video>
-<<<<<<< HEAD
   <div class="slogan-text">
     <h1>We do loan right.</h1>
     <h5>Just apply and we will take care of it.</h5>
   </div>
   <div class="login-form">
     <div *ngIf="user != null" class="col s12 logged-in">
-      <div>Welcome back, {{user.name}}</div>
-      <button routerLink="/dashboard" routerLinkActive="active" class="btn waves-effect waves-light s12" type="button">Dashboard</button>
+      <div>Welcome back, {{user.first_name}}</div>
+      <button routerLink="/account" routerLinkActive="active" class="btn waves-effect waves-light s12" type="button">Account</button>
     </div>
     <form *ngIf="user == null" class="col s12 login" #formData="ngForm" (ngSubmit)="onSubmit(formData)">
       <span class="error" *ngIf="error">{{ error }}</span>
@@ -48,74 +47,8 @@
       <a href="#">Forgot username/password? ></a>
       <br>
       <a routerLink="/register" routerLinkActive="active">Not registered? Sign up now. ></a>
-=======
-    <div class="slogan-text">
-        <h1>We do loan right.</h1>
-        <h5>Just apply and we will take care of it.</h5>
->>>>>>> login-register
     </div>
-    <div class="login-form">
-        <form class="col s12" #formData="ngForm" (ngSubmit)="onSubmit(formData)">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="email" name="email" ngModel type="email" class="validate" required>
-                    <label for="email">Username</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="password" name="password" (ngModel)="password" type="password" class="validate" required>
-                    <label for="password">Password</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <input type="checkbox" id="remember">
-                    <label for="remember">Remember Me</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s12">
-                    <button class="btn waves-effect waves-light s12" type="submit" [disabled]="!formData.valid">Sign in</button>
-                </div>
-            </div>
-        </form>
-        <div class="center-align">
-            <a href="#">Forgot username/password? ></a>
-            <br>
-            <a href="#">Not registered? Sign up now. ></a>
-        </div>
-        <div class="login-form">
-            <form class="col s12" #formData="ngForm" (ngSubmit)="onSubmit(formData)">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="email" name="email" ngModel type="email" class="validate" required>
-                        <label for="email">Username</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="password" name="password" (ngModel)="password" type="password" class="validate" required>
-                        <label for="password">Password</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12">
-                        <input type="checkbox" id="remember">
-                        <label for="remember">Remember Me</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12">
-                        <button class="btn waves-effect waves-light s12" type="submit" [disabled]="!formData.valid">Sign in</button>
-                    </div>
-                </div>
-            </form>
-            <div class="center-align">
-                <a href="#">Forgot username/password? ></a>
-                <br>
-                <a href="#">Not registered? Sign up now. ></a>
-            </div>
+  </div>
 </section>
 <section class="product-section">
     <div *ngFor="let product of products; let i = index">
@@ -134,7 +67,7 @@
                             <p>{{product.description}}</p>
                         </div>
                         <div class="card-action center-align" *ngIf="i != products.length - 1;">
-                            <button class="btn waves-light waves-effect s12">Learn More</button>
+                            <button class="btn waves-light waves-effect s12" routerLink="/autoloanapply" routerLinkActive="active">Learn More</button>
                         </div>
                         <div class="card-action center-align" *ngIf="i == products.length - 1;">
 
@@ -160,6 +93,5 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </section>

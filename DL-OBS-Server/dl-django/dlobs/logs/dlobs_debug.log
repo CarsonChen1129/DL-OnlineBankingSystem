@@ -77,47 +77,83 @@ Not Found: /auth/accounts/
 Not Found: /auth/accounts
 Not Found: /auth/accounts
 Not Found: /auth/accounts/
-Not Found: /
-Not Found: /favicon.ico
-Not Found: /loanmanage
-Not Found: /loanmanage/
-Not Found: /loanmanage/all/2
-Not Found: /loanmanage/all/2/
-Internal Server Error: /loanmanage/2/
+Internal Server Error: /accounts/
 Traceback (most recent call last):
-  File "/Users/tonyqin/Desktop/tonyqindjango/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
     response = get_response(request)
-  File "/Users/tonyqin/Desktop/tonyqindjango/lib/python2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
     response = self._get_response(request)
-  File "/Users/tonyqin/Desktop/tonyqindjango/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
     response = self.process_exception_by_middleware(e, request)
-  File "/Users/tonyqin/Desktop/tonyqindjango/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/Users/tonyqin/Desktop/tonyqindjango/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
     return view_func(*args, **kwargs)
-  File "/Users/tonyqin/Desktop/task6code/DL-OBS-Server/dl-django/dlobs/loanmanagement/views.py", line 34, in loan_detail
-    loans = Loan.objects.get(user_id=user_id)
-  File "/Users/tonyqin/Desktop/tonyqindjango/lib/python2.7/site-packages/django/db/models/manager.py", line 85, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "/Users/tonyqin/Desktop/tonyqindjango/lib/python2.7/site-packages/django/db/models/query.py", line 384, in get
-    (self.model._meta.object_name, num)
-MultipleObjectsReturned: get() returned more than one Loan -- it returned 2!
-Internal Server Error: /loanmanage/2/
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/viewsets.py", line 90, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/views.py", line 500, in options
+    data = self.metadata_class().determine_metadata(request, self)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/metadata.py", line 69, in determine_metadata
+    actions = self.determine_actions(request, view)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/metadata.py", line 95, in determine_actions
+    actions[method] = self.get_serializer_info(serializer)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/metadata.py", line 112, in get_serializer_info
+    for field_name, field in serializer.fields.items()
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/serializers.py", line 1018, in get_fields
+    source, info, model, depth
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/serializers.py", line 1152, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/serializers.py", line 1264, in build_unknown_field
+    (field_name, model_class.__name__)
+ImproperlyConfigured: Field name `created_at` is not valid for model `Account`.
+Internal Server Error: /accounts/
 Traceback (most recent call last):
-  File "/Users/tonyqin/Desktop/tonyqindjango/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
     response = get_response(request)
-  File "/Users/tonyqin/Desktop/tonyqindjango/lib/python2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
     response = self._get_response(request)
-  File "/Users/tonyqin/Desktop/tonyqindjango/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
     response = self.process_exception_by_middleware(e, request)
-  File "/Users/tonyqin/Desktop/tonyqindjango/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/Users/tonyqin/Desktop/tonyqindjango/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
     return view_func(*args, **kwargs)
-  File "/Users/tonyqin/Desktop/task6code/DL-OBS-Server/dl-django/dlobs/loanmanagement/views.py", line 34, in loan_detail
-    loans = Loan.objects.get(user_id=int(user_id))
-  File "/Users/tonyqin/Desktop/tonyqindjango/lib/python2.7/site-packages/django/db/models/manager.py", line 85, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "/Users/tonyqin/Desktop/tonyqindjango/lib/python2.7/site-packages/django/db/models/query.py", line 384, in get
-    (self.model._meta.object_name, num)
-MultipleObjectsReturned: get() returned more than one Loan -- it returned 2!
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/viewsets.py", line 90, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/views.py", line 500, in options
+    data = self.metadata_class().determine_metadata(request, self)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/metadata.py", line 69, in determine_metadata
+    actions = self.determine_actions(request, view)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/metadata.py", line 95, in determine_actions
+    actions[method] = self.get_serializer_info(serializer)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/metadata.py", line 112, in get_serializer_info
+    for field_name, field in serializer.fields.items()
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/serializers.py", line 363, in fields
+    for key, value in self.get_fields().items():
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/serializers.py", line 1018, in get_fields
+    source, info, model, depth
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/serializers.py", line 1152, in build_field
+    return self.build_unknown_field(field_name, model_class)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/rest_framework/serializers.py", line 1264, in build_unknown_field
+    (field_name, model_class.__name__)
+ImproperlyConfigured: Field name `created_at` is not valid for model `Account`.
+Not Found: /transferfund/getAccountInfo
+Not Found: /transferfund/getAccountInfo
+Not Found: /transferfund/getAccountInfo
+Not Found: /transferfund/getAccountInfo
+Not Found: /transferfund/getAccountInfo
+Not Found: /transferfund/getAccountInfo

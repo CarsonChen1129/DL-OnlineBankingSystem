@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { AccountInfo } from '../../app/models/accountinfo.model';
 import { Transaction } from '../../app/models/transaction.model';
+import {LocalStorage} from "../../providers/localstorage.service";
 
 @Component({
     selector:'page-account',
@@ -12,7 +13,8 @@ import { Transaction } from '../../app/models/transaction.model';
 })
 
 export class AccountpageComponent implements OnInit, OnDestroy {
-    owner:string = 'senw@andrew.cmu.edu';
+    user;
+    owner:string = 'shuai@gmail.com';
     accountType:string = 'checking';
 
     checkingAccount: AccountInfo = null;
@@ -23,10 +25,19 @@ export class AccountpageComponent implements OnInit, OnDestroy {
     pastTransactions: Transaction[] = [];
     subscriptionAccountInfo: Subscription;
     subscriptionTransaction: Subscription;
-    constructor(private accountInfoService: AccountinfoserviceService) {}
-    
+    constructor(private accountInfoService: AccountinfoserviceService, private storage: LocalStorage) {}
+
     ngOnInit() {
-        this.getThreeAccountInfos();
+      this.storage.getObjectObservable("user").subscribe((data)=>{
+        console.log("User "+data);
+        if(data){
+          this.user = data;
+          this.owner = this.user.email;
+          this.getThreeAccountInfos();
+        }
+      }, (error)=>{
+        console.log(error);
+      });
         // this.getTransactionsHistory(this.checkingAccount.accountNumber);
     }
 
@@ -38,21 +49,21 @@ export class AccountpageComponent implements OnInit, OnDestroy {
         this.subscriptionAccountInfo = this.accountInfoService.getAccountInfo(this.owner, 'checking').subscribe(
             data => {
                 console.log(data);
-                this.checkingAccount =  new AccountInfo(data.id, data.accountNumber, 
+                this.checkingAccount =  new AccountInfo(data.id, data.accountNumber,
                     data.firstName, data.lastName, data.owner, data.balance, data.accountType, data.interestRate, data.routingNumber);
             }
         );
         this.subscriptionAccountInfo = this.accountInfoService.getAccountInfo(this.owner, 'saving').subscribe(
             data => {
                 console.log(data);
-                this.savingAccount =  new AccountInfo(data.id, data.accountNumber, 
+                this.savingAccount =  new AccountInfo(data.id, data.accountNumber,
                     data.firstName, data.lastName, data.owner, data.balance, data.accountType, data.interestRate, data.routingNumber);
             }
         );
         this.subscriptionAccountInfo = this.accountInfoService.getAccountInfo(this.owner, 'lending').subscribe(
             data => {
                 console.log(data);
-                this.lendingAccount =  new AccountInfo(data.id, data.accountNumber, 
+                this.lendingAccount =  new AccountInfo(data.id, data.accountNumber,
                     data.firstName, data.lastName, data.owner, data.balance, data.accountType, data.interestRate, data.routingNumber);
             }
         );
