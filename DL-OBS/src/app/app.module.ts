@@ -14,12 +14,9 @@ import { ForbiddenValidatorDirective } from '../directives/forbidden-name.direct
 import {RegisterComponent} from "../pages/register/register.component";
 import {WelcomePageComponent} from "../pages/welcome-page/welcome-page";
 import {LoginComponent} from "../pages/login/login";
-<<<<<<< HEAD
 import {LoanManageComponent} from "../pages/loan-manage/loan-manage";
 import {PaymentHistoryComponent} from "../pages/payment-history/payment-history";
-=======
 import {AutoLoanApplyComponent} from "../pages/autoloanapply/autoloanapply";
->>>>>>> origin/AutoLoanApply
 
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule,
@@ -33,14 +30,15 @@ import {AccountpageComponent} from "../pages/account-page/account-page";
 import {AuthenticationService} from "../providers/authentication.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { ProfilePageComponent } from '../pages/profile-page/profile-page.component';
-// export const firebaseConfig = {
-//   apiKey: "AIzaSyAjyp-JugtSvYWTiV1k8tGhJE4b7HXEYeg",
-//   authDomain: "dl-onlinebankingsystem.firebaseapp.com",
-//   databaseURL: "https://dl-onlinebankingsystem.firebaseio.com",
-//   projectId: "dl-onlinebankingsystem",
-//   storageBucket: "dl-onlinebankingsystem.appspot.com",
-//   messagingSenderId: "774948489055"
-// };
+import { TfDashboardComponent } from './../pages/transfer-fund/tf-dashboard/tf-dashboard.component';
+import { TfInternalTransferComponent } from './../pages/transfer-fund/tf-internal-transfer/tf-internal-transfer.component';
+import { TfPayOthersComponent } from './../pages/transfer-fund/tf-pay-others/tf-pay-others.component';
+import { TfCheckDepositComponent } from './../pages/transfer-fund/tf-check-deposit/tf-check-deposit.component';
+import { ImageUploadModule } from "angular2-image-upload";
+import {AccountinfoserviceService} from '../app/services/accountinfoservice.service';
+import { TransactioninfoService } from '../app/services/transactioninfo.service';
+import { ContactinfoService } from '../app/services/contactinfo.service';
+import { displayShortLabelPipe } from '../app/models/transaction.pipe';
 
 @NgModule({
   declarations: [
@@ -58,7 +56,12 @@ import { ProfilePageComponent } from '../pages/profile-page/profile-page.compone
     ForbiddenValidatorDirective,
     PaymentHistoryComponent,
     LoanManageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    TfDashboardComponent,
+    TfInternalTransferComponent,
+    TfPayOthersComponent,
+    TfCheckDepositComponent,
+    displayShortLabelPipe,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +69,7 @@ import { ProfilePageComponent } from '../pages/profile-page/profile-page.compone
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     FormsModule,
     CommonModule,
     MatAutocompleteModule,
@@ -100,8 +103,9 @@ import { ProfilePageComponent } from '../pages/profile-page/profile-page.compone
     MatToolbarModule,
     MatTooltipModule,
     MatStepperModule,
+    ImageUploadModule.forRoot(),
   ],
-  providers: [AuthenticationService, HttpClient],
+  providers: [AuthenticationService, HttpClient, TransactioninfoService, ContactinfoService],
   bootstrap: [AppComponent]
 })
 

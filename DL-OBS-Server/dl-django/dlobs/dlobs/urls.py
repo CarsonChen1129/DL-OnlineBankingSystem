@@ -18,12 +18,33 @@ from django.contrib import admin
 from rest_framework import routers
 from authentication.views import AccountViewSet, LoginView, LogoutView
 
+from transferfund.views import getAccountInfoView
+from transferfund.views import getAllAccountsView
+from transferfund.views import getTransactionHistoryView
+from transferfund.views import handleInternalTransfer
+from transferfund.views import handleCheckDeposit
+from transferfund.views import getContactsInfoView
+from transferfund.views import handleExternalTransfer
+from transferfund.views import addContactView
+
 router = routers.SimpleRouter()
 router.register(r'accounts', AccountViewSet)
 
 urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
     url(r'', include(router.urls)),
     url(r'^auth/login', LoginView.as_view(), name='login'),
     url(r'^auth/logout', LogoutView.as_view(), name='logout'),
+<<<<<<< HEAD
     url(r'^loanmanage/',include('loanmanagement.urls'))
+=======
+    url(r'^transferfund/getAccountInfo', getAccountInfoView.as_view(), name="getAccountInfo"),
+    url(r'^transferfund/getAllAccounts', getAllAccountsView.as_view(), name="getAllAccounts"),
+    url(r'^transferfund/getTransactionHistory', getTransactionHistoryView.as_view(), name="getTransactionHistory"),
+    url(r'^transferfund/internalTransfer', handleInternalTransfer.as_view(), name="handleInternalTransfer"),
+    url(r'^transferfund/checkDeposit', handleCheckDeposit.as_view(), name="handleCheckDeposit"),
+    url(r'^transferfund/getContactsInfo', getContactsInfoView.as_view(), name="getContactsInfo"),
+    url(r'^transferfund/externalTransfer', handleExternalTransfer.as_view(), name="handleExternalTransfer"),
+    url(r'^transferfund/addContact', addContactView.as_view(), name="addContactView"),
+>>>>>>> transfer-fund(SenWang)
 ]

@@ -5,13 +5,14 @@ import {LoginComponent} from '../pages/login/login';
 import {DashboardComponent} from '../pages/dashboard/dashboard';
 import {RegisterComponent} from "../pages/register/register.component";
 import {AccountpageComponent} from "../pages/account-page/account-page";
-<<<<<<< HEAD
 import {LoanManageComponent} from "../pages/loan-manage/loan-manage";
 import {PaymentHistoryComponent} from "../pages/payment-history/payment-history";
 import {ProfilePageComponent} from "../pages/profile-page/profile-page.component";
-=======
 import {AutoLoanApplyComponent} from "../pages/autoloanapply/autoloanapply";
->>>>>>> origin/AutoLoanApply
+import {TfDashboardComponent} from '../pages/transfer-fund/tf-dashboard/tf-dashboard.component';
+import {TfInternalTransferComponent} from '../pages/transfer-fund/tf-internal-transfer/tf-internal-transfer.component';
+import {TfCheckDepositComponent} from '../pages/transfer-fund/tf-check-deposit/tf-check-deposit.component';
+import {TfPayOthersComponent} from '../pages/transfer-fund/tf-pay-others/tf-pay-others.component';
 
 const routes: Routes = [
     {
@@ -31,7 +32,6 @@ const routes: Routes = [
         component: AccountpageComponent
     },
     {
-<<<<<<< HEAD
         path: 'loanmanage',
         component: LoanManageComponent
     },
@@ -42,13 +42,26 @@ const routes: Routes = [
     {
         path: 'profile',
         component: ProfilePageComponent
-    }
-=======
+   {
+        path: 'transfer-fund/dashboard',
+        component: TfDashboardComponent
+    },
+    {
+        path: 'transfer-fund/internal-transfer',
+        component: TfInternalTransferComponent
+    },
+    {
+        path: 'transfer-fund/check-deposit',
+        component: TfCheckDepositComponent
+    },
+    {
+        path: 'transfer-fund/pay-others',
+        component: TfPayOthersComponent
+    },
+    {
         path: 'autoloanapply',
         component: AutoLoanApplyComponent
-    },
-
->>>>>>> origin/AutoLoanApply
+    }
 ];
 
 @NgModule({

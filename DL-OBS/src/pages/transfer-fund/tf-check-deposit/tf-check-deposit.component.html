@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="header"></div>
+    <div class="buttons-group">
+        <a href="transfer-fund/internal-transfer">
+            <div class="button"><span>Internal Transfer</span></div>
+        </a>
+        <a href="transfer-fund/check-deposit">
+            <div class="button"><span>Check Deposit</span></div>
+        </a>
+        <a href="transfer-fund/pay-others">
+            <div class="button"><span>Pay Other People</span></div>
+        </a>
+    </div>
+    <div class="selection">
+        <img src="assets/images/arrow.png">
+    </div>
+    <div class="background">
+        <img src="assets/images/check-deposit.jpg">
+    </div>
+    <form (ngSubmit)="onSubmit()" #dForm="ngForm">
+        <div class="title">
+            <span>Deposit Your Check</span>
+        </div>
+        <div class="step">
+            <span>Step 1: Select A To Account</span>
+        </div>
+        <div class="account">
+            <table>
+                <tr>
+                    <td><label>To Account:</label><span>*</span></td>
+                    <td>
+                        <select id="toAccount" required [(ngModel)]="model.toAccountNumber" name="toAccountNumber">
+                          <option disabled selected>Select An Account</option>
+                          <option *ngFor="let account of accounts" [value]="account.accountNumber">{{account.accountNumber}} {{account.accountType}} Acct balance: $ {{account.balance}}</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="step">
+            <span>Step 2: Upload Front Image of Your Check</span>
+        </div>
+        <div class="imageuploader">
+            <!-- <label for="file-upload" class="uploadbar">Click Here To Upload An Image<img src="assets/images/upload-icon.png"></label>
+            <input type="file" id="file-upload" /> -->
+            <image-upload [max]="1" [extensions]="['jpg','png']" [buttonCaption]="'Click Here To Upload An Image'" [dropBoxMessage]="'or Drop your images here!'" [class]="'customClass'" [clearButtonCaption]="'Delete'" (uploadFinished)="onUploadFinished1($event)"
+                (removed)="onRemoved1($event)"></image-upload>
+        </div>
+        <div class="step">
+            <span>Step 3: Upload Back Image of Your Check</span>
+        </div>
+        <div class="imageuploader">
+            <!-- <label for="file-upload" class="uploadbar">Click Here To Upload An Image<img src="assets/images/upload-icon.png"></label>
+            <input type="file" id="file-upload" /> -->
+            <image-upload [max]="1" [extensions]="['jpg','png']" [buttonCaption]="'Click Here To Upload An Image'" [dropBoxMessage]="'or Drop your images here!'" [class]="'customClass'" [clearButtonCaption]="'Delete'" (uploadFinished)="onUploadFinished2($event)"
+                (removed)="onRemoved2($event)"></image-upload>
+        </div>
+        <div class="step">
+            <span>Step 4: Match Your Amount Of Fund With Your Check</span>
+        </div>
+        <div class="account">
+            <table>
+                <tr>
+                    <td><label>Amount:</label><span>*</span></td>
+                    <td>
+                        <input type="number" placeholder="$ 300.00" required [(ngModel)]="model.amount" name="amount" #amount="ngModel">
+                        <div [hidden]="amount.valid || amount.pristine" class="alert">Amount is required!</div>
+                        <div *ngIf="!amount.pristine && !checkAmount()" class="alert">Amount has to be a positive number!</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div *ngIf="successMessage || errorMessage" class=messageArea>
+            <div class="successArea">{{successMessage}}</div>
+            <div class="errorArea">{{errorMessage}}</div>
+        </div>
+        <div class="bottom-buttons">
+            <a href="transfer-fund/dashboard">
+                <div class="bottom-button"><span>Cancel</span></div>
+            </a>
+            <button type="submit" id="confirmbutton" [disabled]="!dForm.valid || !checkImages() || !checkAmount()">Deposit Check</button>
+        </div>
+    </form>
+</div>
