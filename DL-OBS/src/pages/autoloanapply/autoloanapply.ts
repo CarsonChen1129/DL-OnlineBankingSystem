@@ -1,6 +1,6 @@
 
 import {Component, OnInit, ViewChild} from "@angular/core";
-import {User} from "./User";
+import {LoanApply} from "./LoanApply";
 import {NgForm} from "@angular/forms";
 import {Observable} from "rxjs/Observable";
 import {AngularFireDatabase, AngularFireList} from "angularfire2/database";
@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 import {AngularFirestore} from "angularfire2/firestore";
 
 @Component({
-  selector:'page-register',
+  selector:'autoloan-application',
   templateUrl: 'autoloanapply.html',
   styleUrls: ['autoloanapply.scss']
 })
@@ -22,29 +22,40 @@ export class AutoLoanApplyComponent implements OnInit {
 @ViewChild('formDataFive') formDataFive : NgForm;
   step = 1;
   userAgreement = false;
-  securityOneQuestions = [
-    {value: 1, question: 'In what city or town did your mother and father meet?'},
-    {value: 2, question: 'What is the name of your favorite childhood friend?'},
-    {value: 3, question: 'What is your favorite team?'},
-    {value: 4, question: 'What was your favorite food as a child?'},
-    {value: 5, question: 'Who is your childhood sports hero?'}
+  employmentStatus=[
+    {value: 1, status: 'Full-time'},
+    {value: 2, status: 'Part-time'},
+    {value: 3, status: 'Self-employed'},
+    {value: 4, status: 'Others'},
   ];
-  securityTwoQuestions = [
-    {value: 1, question: 'When is your youngest sibling’s birthday (MM/DD)?'},
-    {value: 2, question: 'What was your favorite sport in high school?'},
-    {value: 3, question: 'What is the middle name of your oldest child?'},
-    {value: 4, question: 'What was the name of the hospital where you were born?'},
-    {value: 5, question: 'What school did you attend for sixth grade?'}
+  terms=[
+    {value: 1, term: '48'},
+    {value: 2, term: '60'},
+    {value: 3, term: '72'},
   ];
-  securityThreeQuestions = [
-    {value: 1, question: 'What is your grand father’s first name?'},
-    {value: 2, question: 'In what town was your first job?'},
-    {value: 3, question: 'What is the first name of your best friend in high school?'},
-    {value: 4, question: 'What is your favorite color?'},
-    {value: 5, question: 'Which is your favorite web browser?'}
+  years=[
+    {value: 1, year: 'Less than 1 year'},
+    {value: 2, year: 'Between 1 year and 2 years'},
+    {value: 3, year: 'Between 2 years and 3 years'},
+    {value: 4, year: 'Between 3 years and 4 years'},
+    {value: 4, year: 'Between 4 years and 5 years'},
+  ];
+  makes=[
+    {value: 1, make: 'Acura'},
+    {value: 2, make: 'Audi'},
+    {value: 3, make: 'BMW'},
+    {value: 4, make: 'Ford'},
+  ];
+  modelOfCars=[
+    {value: 1, modelOfCar: 'ILX'},
+    {value: 2, modelOfCar: 'MDX'},
+    {value: 3, modelOfCar: 'NSX'},
+    {value: 4, modelOfCar: 'RDX'},
   ];
 
-  model = new User(null, '', '', '', '', null, '', null, '', null, '', null, '');
+
+
+  model = new LoanApply('', '', '', null, '', '','', null, null,  null, '', null, '',null,null,null,null,null,null,null);
 
   user: Observable<firebase.User>;
   items: AngularFireList<any[]>;
