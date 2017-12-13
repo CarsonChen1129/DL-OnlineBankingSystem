@@ -14,6 +14,9 @@ import { ForbiddenValidatorDirective } from '../directives/forbidden-name.direct
 import {RegisterComponent} from "../pages/register/register.component";
 import {WelcomePageComponent} from "../pages/welcome-page/welcome-page";
 import {LoginComponent} from "../pages/login/login";
+import {LoanManageComponent} from "../pages/loan-manage/loan-manage";
+import {PaymentHistoryComponent} from "../pages/payment-history/payment-history";
+
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule,
   MatDatepickerModule, MatDialogModule,
@@ -45,8 +48,10 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     AccountpageComponent,
     DashboardComponent,
     RegisterComponent,
+    LoanManageComponent,
     EqualValidator,
     ForbiddenValidatorDirective,
+    PaymentHistoryComponent,
   ],
   imports: [
     BrowserModule,
