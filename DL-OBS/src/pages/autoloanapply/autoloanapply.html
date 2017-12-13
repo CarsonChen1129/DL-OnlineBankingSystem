@@ -1,0 +1,579 @@
+<section [ngSwitch]="step">
+
+    <ng-container *ngSwitchCase="1">
+        <div class="container step1" >
+          <div class="header">
+          </div>
+          <div class="content">
+            <div class="title">Auto Loan Application</div>
+            
+            <div class="image"><img src="assets/images/autoloanindex.png" width=100% height=200px alt="Image"></div>
+
+            <div class="titletwo">APPLYING IS EASY. APPROVALS ARE FAST. RATES ARE COMPETITIVE.</div>
+            <div class="notify">We just need to verify that all your information that you submitted is valid and ture. We ask you to
+                provide all fields and documentations on the form to evaluate your credit worthiness.
+                If you’d like to learn more about how we collect and use your data, please refer our Privacy Policy.</div>
+                <div class="table">Personal information</div>
+                <div class="form">
+                  <div class="right">
+                      <p><strong>You need to provide the following information:</strong></p>
+                      <p>	&bull;Personal information (e.g., name, Social Security Number,
+                          date of birth </p>
+                      <p>	&bull;Contact information</p>
+                      <p>	&bull;Current employment and income information </p>
+                      <p>	&bull;Vehicle year, make and model</p>
+                  </div>
+              </div>
+
+              
+              <form  #formData="ngForm">
+              <div class="form">
+                <table class="mid">
+                  <tr>
+                    <td>
+                    <div class="tablemid">Are you a Devonshire Online Banking customer?</div>
+                  </td>
+                  </tr>
+                </table>
+                
+                
+          <div class="tacbox">
+              <input id="agree" type="checkbox" name="userAgreement" ngModel required>
+              <label for="agree" class="boxcontainer">Yes, I would like to sign in to prefill my information.
+              </label>
+            </div>
+
+
+                <div class="continue">
+                  <table class="buttons">
+                    <tr>
+                      <td>
+                        <button class="continue-button" type="button"  (click)="nextPage()">Start</button><br>
+                      </td>
+                      <td class="string">|</td>
+                      <td class="cancel">Cancel</td>
+                  </table>
+                </div>
+    
+              </div>
+            </form>
+          </div>
+        </div>
+      </ng-container>
+
+
+  <ng-container *ngSwitchCase="2">
+    <div class="container step1" >
+      <div class="header">
+      </div>
+      <div class="content">
+         <div class="title">Auto Loan Application: Step 1</div>
+            <div class="steps">
+              <div class="step done">Personal Information</div>
+              <div class="step">Employment Information</div>
+              <div class="step">Loans&Vehicle Information</div>
+              <div class="step">Review</div>
+        </div>
+        <div class="image"><img src="assets/images/autoloanone.png" width=100% height=200px alt="Image"></div>
+        <form  #formDataTwo="ngForm">
+          <div class="table">Personal information</div>
+          <div class="form">
+
+            <table class="tables">
+            <tr>
+                <td class="leftlabel">Full Name</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="leftlabel">Suffix</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+            </tr>
+
+              <tr>
+                <td class="leftlabel">Citizenship status</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+              </tr>
+
+                <tr>
+                <td class="leftlabel">Social Security Number</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="leftlabel">Date of Birth</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="leftlabel">Social Security Number</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+              </tr>
+
+               <tr>
+                <td class="leftlabel">Do you have a Devonshire account?</td>
+                <td class="rightblanks">
+                  <form>
+                  <input type="radio" name="sex" value="male" checked>Yes&nbsp;&nbsp;
+                  <input type="radio" name="sex" value="female">No
+                  </form>
+                </td>
+              </tr>
+
+            </table>
+
+            
+          <div class="tablemid">Contact information</div>
+
+
+
+
+          <table class="tables">
+            <tr>
+                <td class="leftlabel">Street address line 1</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="leftlabel">Street address line 2</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+            </tr>
+
+              <tr>
+                <td class="leftlabel">City</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+              </tr>
+
+                <tr>
+                <td class="leftlabel">State</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="leftlabel">Zip Code</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+              </tr>
+
+              <tr>
+                <td class="leftlabel">How long have you lived at this address?</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="10" maxlength="10" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/><span>&nbsp;years&nbsp;</span>
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="10" maxlength="10" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/><span>&nbsp;months&nbsp;</span>
+                </td>
+              </tr>
+
+               <tr>
+                <td class="leftlabel">Primary residence?</td>
+                <td class="rightblanks">
+                  <form>
+                  <input type="radio" name="sex" value="male" checked>Own&nbsp;&nbsp;
+                  <input type="radio" name="sex" value="female">Rent&nbsp;&nbsp;
+                  <input type="radio" name="sex" value="female">Other&nbsp;&nbsp;
+                  </form>
+                </td>
+              </tr>
+
+                <tr>
+                <td class="leftlabel">Monthly payment</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+              </tr>
+
+                <tr>
+                <td class="leftlabel">Contact me at</td>
+                <td class="rightblanks">
+                  <form>
+                  <input type="radio" name="sex" value="male" checked>Home&nbsp;&nbsp;
+                  <input type="radio" name="sex" value="female">Work&nbsp;&nbsp;
+                  <input type="radio" name="sex" value="female">Other&nbsp;&nbsp;
+                  </form>
+                </td>
+              </tr>
+
+                <tr>
+                <td class="leftlabel">Home phone number</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+              </tr>
+
+                <tr>
+                <td class="leftlabel">Work phone number</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+              </tr>
+
+
+                <tr>
+                <td class="leftlabel">Alternative phone number</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+              </tr>
+
+               <tr>
+                <td class="leftlabel">E-mail Address</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+              </tr>
+
+                 <tr>
+                <td class="leftlabel">Confirm E-mail Address</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+              </tr>
+
+            </table>
+
+            <div class="continue">
+              <table class="buttons">
+                <tr>
+                  <td>
+                    <button class="continue-button" type="button"  (click)="nextPage()">Continue</button><br>
+                  </td>
+                  <td class="string">|</td>
+                  <td class="cancel">Cancel</td>
+              </table>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-container>
+
+  
+  <ng-container *ngSwitchCase="3">
+    <div class="container step2">
+      <div class="header">
+      </div>
+      <div class="content">
+        <div class="title">Auto Loan Application: Step 2</div>
+        <div class="steps">
+      
+              <div class="step done">Personal Information</div>
+              <div class="step done">Employment Information</div>
+              <div class="step">Loans&Vehicle Information</div>
+              <div class="step">Review</div>
+        </div>
+       
+        <div class="image">
+          <img src="assets/images/autoloantwo.png" width=100% height=200px alt="Image">
+        </div>
+        <form #formDataThree="ngForm">
+        <div class="table">Applicant's Employment Information</div>
+        <div class="form">
+         
+          <table class="tables">
+            <tr>
+                <td class="leftlabel">Current employment status</td>
+                <td class="rightblanks">
+
+                  <select id="selectone" name="securityone" required>
+                    <option value="" disabled selected>Please select</option>
+                    <option value="a">a</option>
+                    <option value="b">b</option>
+                    <option value="c">c</option>
+                    <option value="d">d</option>
+                </select>
+                
+                </td>
+            </tr>
+
+        </table>
+      </div>
+
+        <div class="tablemid">Applicant's Annual Income</div>
+
+          <div class="form">
+            <div class="notify">If you have income from employment, enter it in the “Gross annual income” field. If you have income from other
+sources then enter “0” in the “Gross annual income” field and select, “Yes” to display “Other annual income” fields.</div>
+
+          <table class="tables">
+            <tr>
+                <td class="leftlabel">Gross annual income</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+            </tr>
+
+            <tr>
+              <td colspan=2> <div class="notify"><strong>Note:</strong> If you have income from employment, enter it in the “Gross annual income” field. If you have income from other
+sources then enter “0” in the “Gross annual income” field and select, “Yes” to display “Other annual income” fields.</div></td></tr>
+  
+            <tr>
+                <td class="leftlabel">Dou you have additional income to include?</td>
+                <td class="rightblanks">
+                  <form>
+                  <input type="radio" name="sex" value="male" checked>Yes&nbsp;&nbsp;
+                  <input type="radio" name="sex" value="female">No&nbsp;&nbsp;
+                  </form>
+                </td>
+              </tr>
+
+        </table>
+
+
+          </div>
+
+          <div class="tablepanel">
+            <table class="buttons">
+              <tr>
+                <td><a class="alc"><button id="returnback" type="button" (click)="previousPage()">Back</button></a></td>
+                <td>
+                  <button class="continue-button" type="button" [disabled]="!formDataThree.valid" (click)="nextPage()">Continue</button>
+                </td>
+                <td class="string">|</td>
+                <td class="cancel">Cancel</td>
+              </tr>
+            </table>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+
+  </ng-container>
+
+  <ng-container *ngSwitchCase="4">
+    <div class="container step3" >
+      <div class="header">
+      </div>
+      <div class="content">
+        <div class="title">Auto Loan Application: Step 3</div>
+        <div class="steps">
+      
+              <div class="step done">Personal Information</div>
+              <div class="step done">Employment Information</div>
+              <div class="step done">Loans&Vehicle Information</div>
+              <div class="step">Review</div>
+        </div>
+       
+        <div class="image">
+          <img src="assets/images/autoloanthree.png" width=100% height=200px alt="Image">
+        </div>
+       
+              <form #formDataFour="ngForm">
+        <div class="table">Loan Information</div>
+  
+				  <table class="tables">
+            <tr>
+                <td class="leftlabel">Loan amount requested</td>
+                <td class="rightblanks">
+                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="model.sq2a" #answertwo="ngModel" required/>
+                </td>
+            </tr>
+
+              <tr>
+                <td class="leftlabel">Term(months)</td>
+                <td class="rightblanks">
+                  <select id="selectone" name="securityone" required>
+                    <option value="" disabled selected>Please select</option>
+                    <option value="a">a</option>
+                    <option value="b">b</option>
+                    <option value="c">c</option>
+                    <option value="d">d</option>
+                </select>
+                </td>
+            </tr>
+
+
+          </table>               
+
+
+           <div class="tablemid">Vehicle Information</div>
+
+           <table class="tables">
+             <tr>
+              <td colspan=2> <div class="notify"><strong>Note:</strong> The vehicle vannot be more than five years older than the current model year, and its current mileage cannot
+                exceed 75,000 miles.</div></td></tr>
+
+           <tr>
+                <td class="leftlabel">Year</td>
+                <td class="rightblanks">
+                  <select id="selectone" name="securityone" required>
+                    <option value="" disabled selected>Please select</option>
+                    <option value="a">a</option>
+                    <option value="b">b</option>
+                    <option value="c">c</option>
+                    <option value="d">d</option>
+                </select>
+                </td>
+            </tr>
+             <tr>
+                <td class="leftlabel">Make</td>
+                <td class="rightblanks">
+                  <select id="selectone" name="securityone" required>
+                    <option value="" disabled selected>Please select</option>
+                    <option value="a">a</option>
+                    <option value="b">b</option>
+                    <option value="c">c</option>
+                    <option value="d">d</option>
+                </select>
+                </td>
+            </tr>
+              <tr>
+                <td class="leftlabel">Model</td>
+                <td class="rightblanks">
+                  <select id="selectone" name="securityone" required>
+                    <option value="" disabled selected>Please select</option>
+                    <option value="a">a</option>
+                    <option value="b">b</option>
+                    <option value="c">c</option>
+                    <option value="d">d</option>
+                </select>
+                </td>
+            </tr>
+          </table>
+
+
+          <div class="tablepanel">
+            <table class="buttons">
+              <tr>
+                <td><a class="alc"><button id="returnback" type="button" [disabled]="!formDataFour.valid"  (click)="previousPage()">Back</button></a></td>
+                <td>
+                  <button class="continue-button" type="button" (click)="nextPage()">Continue</button>
+                </td>
+                <td class="string">|</td>
+                <td class="cancel">Cancel</td>
+              </tr>
+            </table>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </ng-container>
+  
+  <ng-container *ngSwitchCase="5">
+    <div class="container step4">
+      <div class="header">
+      </div>
+      <div class="content">
+          <div class="title">Auto Loan Application: Step 4</div>
+          <div class="steps">
+        
+                <div class="step done">Personal Information</div>
+                <div class="step done">Employment Information</div>
+                <div class="step done">Loans&Vehicle Information</div>
+                <div class="step done">Review</div>
+          </div>
+        <div class="image">
+          <img src="assets/images/autoloanreview.png" width=100% height=200px alt="Image">
+        </div>
+        <div class="table">Review</div>
+        <form method="get">
+          <div class="form">
+
+            <div class="notify">Please review your auto loan application information below.</div>
+            <hr>
+            <table  class="tablepanel">
+              <tr>
+                <td class="label"><label>Email Address:</label></td>
+                <td class="selections">
+                  email
+                </td>
+              </tr>
+              <tr>
+                <td class="label"><label>Account Number:</label></td>
+                <td class="selections">
+                  account
+                </td>
+              </tr>
+
+              <tr>
+                <td class="label"><label>Full Name:</label></td>
+                <td class="selections">
+                  fullname
+                </td>
+              </tr>
+
+
+              <tr>
+                <td class="label"><label>Phone Number:</label></td>
+                <td class="selections">
+                  phonenumber
+                </td>
+              </tr>
+
+              <tr>
+                <td class="label"><label>Home Address:</label></td>
+                <td class="selections">
+                  address
+                </td>
+              </tr>
+
+              <tr>
+                <td class="label"><label>Security Question 1:</label></td>
+                <td class="selections">
+                  securityquestionone
+                </td>
+              </tr>
+              <tr>
+                <td class="label"><label>Security Question 2:</label></td>
+                <td class="selections">
+                 securityquestiontwo
+                </td>
+              </tr>
+
+              <tr>
+                <td class="label"><label>Security Question 3:</label></td>
+                <td class="selections">
+                  securityquestionthree
+                </td>
+              </tr>
+
+              <tr>
+                <td class="label"><label>Terms and agreements:</label></td>
+                <td class="selections">
+                  I agree with the terms and agreement.
+                </td>
+              </tr>
+
+            </table>
+            <hr>
+
+          </div>
+
+          <div class="tablepanel">
+            <table class="buttons">
+              <tr>
+                <td><a class="alc"><button class="buttonscolor" type="button" (click)="previousPage()">Back</button></a></td>
+                <td><button class="buttonscolor" type="button" (click)="submit()">Submit</button></td>
+                <td id="string">|</td>
+                <td id="cancel">Cancel</td>
+            </table>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </ng-container>
+</section>

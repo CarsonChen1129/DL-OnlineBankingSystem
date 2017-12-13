@@ -4,7 +4,7 @@ import {WelcomePageComponent} from '../pages/welcome-page/welcome-page';
 import {DashboardComponent} from '../pages/dashboard/dashboard';
 import {RegisterComponent} from "../pages/register/register.component";
 import {AccountpageComponent} from "../pages/account-page/account-page";
-
+import {AutoLoanApplyComponent} from "../pages/autoloanapply/autoloanapply";
 
 const routes: Routes = [
     {
@@ -22,7 +22,12 @@ const routes: Routes = [
     {
         path: 'account',
         component: AccountpageComponent
-    }
+    },
+    {
+        path: 'autoloanapply',
+        component: AutoLoanApplyComponent
+    },
+
 ];
 
 @NgModule({

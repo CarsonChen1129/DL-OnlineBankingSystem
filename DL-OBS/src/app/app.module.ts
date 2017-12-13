@@ -18,6 +18,8 @@ import { ForbiddenValidatorDirective } from '../directives/forbidden-name.direct
 import {RegisterComponent} from "../pages/register/register.component";
 import {WelcomePageComponent} from "../pages/welcome-page/welcome-page";
 import {LoginComponent} from "../pages/login/login";
+import {AutoLoanApplyComponent} from "../pages/autoloanapply/autoloanapply";
+
 import {
   MatAutocompleteModule, MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatChipsModule,
   MatDatepickerModule, MatDialogModule,
@@ -44,6 +46,7 @@ export const firebaseConfig = {
     FooterComponent,
     WelcomePageComponent,
     LoginComponent,
+    AutoLoanApplyComponent,
     AccountpageComponent,
     DashboardComponent,
     RegisterComponent,
