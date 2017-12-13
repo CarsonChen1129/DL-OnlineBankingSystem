@@ -1,10 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { AngularFireAuth } from 'angularfire2/auth';
 import { Observable } from 'rxjs/Observable';
-import * as firebase from 'firebase/app';
-import { error } from 'selenium-webdriver';
+import {AuthenticationService} from "../../providers/authentication.service";
 
 @Component({
   selector:'page-login',
@@ -12,34 +9,50 @@ import { error } from 'selenium-webdriver';
   styleUrls: ['login.scss']
 })
 export class LoginComponent implements OnInit {
-  user: Observable<firebase.User>;
-  items: AngularFireList<any[]>;
+  // user: Observable<firebase.User>;
+  // items: AngularFireList<any[]>;
   error: any;
-  constructor(public afAuth: AngularFireAuth,
-              public af: AngularFireDatabase,
-              private router: Router) {
-    this.user = this.afAuth.authState;
+  constructor(
+    private auth: AuthenticationService,
+    private router: Router) {
   }
 
   ngOnInit(): void {
 
   }
+
   onSubmit(formData) {
     if (formData.valid) {
       console.log(formData.value);
-      this.afAuth.auth.signInWithEmailAndPassword(
-        formData.value.email,
-        formData.value.password
-      ).then(
-        (success) => {
-        console.log(success);
-        this.router.navigate(['welcome-page']);
-      }).catch(
-        (err) => {
-          console.log(err);
-          this.error = err;
-        }
-      );
+
+      // this.auth.login(formData)
+      // this.auth.checkRegistrationStatus(formData).subscribe((data)=>{
+      //   console.log("data:");
+      //   console.log(data);
+      // }, (error)=>{
+      //   console.log("error:");
+      //   console.log(error);
+      // });
+      this.auth.login(formData).subscribe((data)=>{
+        console.log("data:");
+        console.log(data);
+      }, (error)=>{
+        console.log("error:");
+        console.log(error);
+      })
+      // this.afAuth.auth.signInWithEmailAndPassword(
+      //   formData.value.email,
+      //   formData.value.password
+      // ).then(
+      //   (success) => {
+      //   console.log(success);
+      //   this.router.navigate(['welcome-page']);
+      // }).catch(
+      //   (err) => {
+      //     console.log(err);
+      //     this.error = err;
+      //   }
+      // );
     }
   }
 

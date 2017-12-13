@@ -4,10 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { AngularFireModule } from 'angularfire2';
-// New imports to update based on AngularFire2 version 4
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -27,15 +23,17 @@ import {
   MatSnackBarRef, MatSortModule, MatStepperModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule
 } from "@angular/material";
 import {AccountpageComponent} from "../pages/account-page/account-page";
+import {AuthenticationService} from "../providers/authentication.service";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
-export const firebaseConfig = {
-  apiKey: "AIzaSyAjyp-JugtSvYWTiV1k8tGhJE4b7HXEYeg",
-  authDomain: "dl-onlinebankingsystem.firebaseapp.com",
-  databaseURL: "https://dl-onlinebankingsystem.firebaseio.com",
-  projectId: "dl-onlinebankingsystem",
-  storageBucket: "dl-onlinebankingsystem.appspot.com",
-  messagingSenderId: "774948489055"
-};
+// export const firebaseConfig = {
+//   apiKey: "AIzaSyAjyp-JugtSvYWTiV1k8tGhJE4b7HXEYeg",
+//   authDomain: "dl-onlinebankingsystem.firebaseapp.com",
+//   databaseURL: "https://dl-onlinebankingsystem.firebaseio.com",
+//   projectId: "dl-onlinebankingsystem",
+//   storageBucket: "dl-onlinebankingsystem.appspot.com",
+//   messagingSenderId: "774948489055"
+// };
 
 @NgModule({
   declarations: [
@@ -52,13 +50,11 @@ export const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
     FormsModule,
     CommonModule,
     MatAutocompleteModule,
@@ -93,7 +89,7 @@ export const firebaseConfig = {
     MatTooltipModule,
     MatStepperModule,
   ],
-  providers: [],
+  providers: [AuthenticationService, HttpClient],
   bootstrap: [AppComponent]
 })
 

@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs/Observable";
-import {AngularFireDatabase, AngularFireList} from "angularfire2/database";
-import {AngularFireAuth} from "angularfire2/auth";
 import {ActivatedRoute, Router} from "@angular/router";
-import * as firebase from "firebase";
 import {MatSnackBar} from "@angular/material";
+import {AuthenticationService} from "../../providers/authentication.service";
 
 @Component({
     selector: 'page-welcome',
@@ -20,26 +18,23 @@ export class WelcomePageComponent implements OnInit {
     {title: 'Devonshire Mobile Banking', description: 'The Latest mobile banking app built around you. It\'s simple, rewarding, and secure.', img: 'assets/images/dl-mobile.png'}
   ];
 
-  user;
-  items: AngularFireList<any[]>;
   error: any;
-  constructor(public afAuth: AngularFireAuth,
-              public af: AngularFireDatabase,
+  constructor(private auth: AuthenticationService,
               private router: Router,
               private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem('user') != null) {
-      this.user = JSON.parse(localStorage.getItem('user'));
-    }
-    this.route.params.subscribe(params => {
-       console.log("Param");
-       console.log(params['skipLocationChange']);
-       if (params['skipLocationChange']) {
-         window.location.reload();
-       }
-    });
+    // if (localStorage.getItem('user') != null) {
+    //   this.user = JSON.parse(localStorage.getItem('user'));
+    // }
+    // this.route.params.subscribe(params => {
+    //    console.log("Param");
+    //    console.log(params['skipLocationChange']);
+    //    if (params['skipLocationChange']) {
+    //      window.location.reload();
+    //    }
+    // });
   }
 
   // onDestory() {
@@ -50,20 +45,27 @@ export class WelcomePageComponent implements OnInit {
     console.log(formData);
     if (formData.valid) {
       console.log(formData.value);
-      this.afAuth.auth.signInWithEmailAndPassword(
-        formData.value.email,
-        formData.value.password
-      ).then(
-        (success) => {
-          console.log(success);
-          localStorage.setItem('user', JSON.stringify({name: success.displayName, email: success.email, uid: success.uid}));
-          this.router.navigate(['dashboard']);
-        }).catch(
-        (err) => {
-          console.log(err);
-          this.error = err;
-        }
-      );
+      this.auth.checkRegistrationStatus(formData.value.email,formData.value.pin).subscribe((data)=>{
+        console.log("data:");
+        console.log(data);
+      }, (error)=>{
+        console.log("error:");
+        console.log(error);
+      });
+      // this.afAuth.auth.signInWithEmailAndPassword(
+      //   formData.value.email,
+      //   formData.value.password
+      // ).then(
+      //   (success) => {
+      //     console.log(success);
+      //     localStorage.setItem('user', JSON.stringify({name: success.displayName, email: success.email, uid: success.uid}));
+      //     this.router.navigate(['dashboard']);
+      //   }).catch(
+      //   (err) => {
+      //     console.log(err);
+      //     this.error = err;
+      //   }
+      // );
     }
   }
 }
