@@ -1,4 +1,5 @@
 <section [ngSwitch]="step">
+<<<<<<< HEAD
 
     <ng-container *ngSwitchCase="1">
         <div class="container step1" >
@@ -48,22 +49,25 @@
 
 
   <ng-container *ngSwitchCase="2">
+=======
+  <ng-container *ngSwitchCase="1">
+>>>>>>> origin/LoanManagement-Shenlin
     <div class="container step1" >
       <div class="header">
       </div>
       <div class="content">
-        <div class="title">Online Banking Setup: Step 2</div>
+        <div class="title">Online Banking Setup: Step 1</div>
         <div class="steps">
-            <div class="step done">Identification Information</div>
-            <div class="step done">Personal Information</div>
-            <div class="step">Security Settings</div>
-            <div class="step">Terms and Conditions</div>
-            <div class="step">Review</div>
+          <div class="step done">Personal Information</div>
+          <div class="step">Security Questions</div>
+          <div class="step">Terms and Conditions</div>
+          <div class="step">Review</div>
         </div>
         <div class="image"><img src="assets/images/enrollimage1.jpg" width=100% height=200px alt="Image"></div>
+        <div class="table">Enter Identification Information</div>
         <form  #formData="ngForm">
-          <div class="table">Check your personal information</div>
           <div class="form">
+<<<<<<< HEAD
             <div class="number">1. First Name<span class="star">*</span></div>
             <input class="input" type="text" name="first_name"  size="24" maxlength="24" required [(ngModel)]="user.first_name" name="email"  #firstName="ngModel">
             <!--<div *ngIf="user.first_name.invalid && (user.first_name.dirty || user.first_name.touched)" class="alert">-->
@@ -101,12 +105,85 @@
 
             <div class="number">5. Home Address 1<span class="star">*</span></div>
             <input class="input" type="text" name="homeone"  size="38" maxlength="38" required [(ngModel)]="user.home_address_1" #address="ngModel">
+=======
+            <div class="number">1. Account Number<span class="star">*</span></div>
+            <input class="input" type="text" name="account"  size="16" minlength="10" maxlength="10" required pattern="[0-9]{10,10}" [(ngModel)]="model.account" #account="ngModel" forbiddenName="1234567890">
+            <div class="usernotify">Any Devonshire Lending checking, saving or lending account Number (10 digits).</div>
+            <div class="usernotify">*Don't have an account with us? Visit the nearest branch and start the journey with us. <a style="text-decoration: underline;color:blue;">Find Branch</a></div>
+            <div *ngIf="account.invalid && (account.dirty || account.touched)" class="alert">
+              <div *ngIf="account.errors.required">Account number is required.</div>
+              <div *ngIf="account.errors.pattern">Account number must be 10 digit numbers.</div>
+              <div *ngIf="account.errors.forbiddenName">Account number already exists, please sign in.</div>
+            </div>
+          </div>
+          <div class="tablemid">Enter your personal information</div>
+          <div class="form">
+            <div class="number">2. Email Address<span class="star">*</span></div>
+            <input class="input" type="text" name="email"  size="24" maxlength="24" required [(ngModel)]="model.email" name="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #email="ngModel" forbiddenName="team8@gmail.com">
+            <div class="usernotify">Your Email Address will be used when you log in online banking system. </div>
+            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+              <div *ngIf="email.errors.required">Email is required.</div>
+              <div *ngIf="email.errors.pattern">Please fill in according to email format.</div>
+              <div *ngIf="email.errors.forbiddenName">Email already exists, please sign in.</div>
+            </div>
+            <table class="divide">
+              <tr>
+                <td class="lefttable">
+                  <div class="number">3. Password<span class="star">*</span></div>
+                  <input class="input" type="password" id="password" required [(ngModel)]="model.password" name="password" #password="ngModel"  size="24" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$">
+                  <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
+                    <div *ngIf="password.errors.required">Password is required.</div>
+                    <div *ngIf="password.errors.pattern">Please fill in according to Password Guidance.</div>
+                  </div>
+                  <div class="number">4. Confirm Password<span class="star">*</span></div>
+                  <input class="input" type="password"  id="confirmPassword" required validateEqual="password" [(ngModel)]="model.confirmPassword" name="confirmPassword" #confirmPassword="ngModel" size="24">
+                  <div [hidden]="confirmPassword.valid || confirmPassword.pristine" class="alert">
+                    Passwords did not match
+                  </div>
+
+                  <div class="number">5. Full Name<span class="star">*</span></div>
+                  <input class="input" type="text" name="name"  size="24" maxlength="24" required  [(ngModel)]="model.name"
+                         #name="ngModel">
+                  <div class="usernotify">Your first name and last name </div>
+                  <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+                    <div *ngIf="name.errors.required">Full name is required.</div>
+
+                  </div>
+                  <div class="number">6. Phone Number<span class="star">*</span></div>
+                  <select name="countrycode" class="browser-default">
+                    <option value="us">(+01) US or Canada</option>
+                    <option value="mexico">(+52) Mexico</option>
+                  </select>
+                  <input class="input" type="text" name="phone"  size="15" minlength="0" maxlength="14" required pattern="[0-9]{0,14}" [(ngModel)]="model.phone" #phone="ngModel">
+                  <div class="usernotify">Your country code e.g. (+1) for US and phone number</div>
+                  <div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert">
+                    <div *ngIf="phone.errors.required">Phone number is required.</div>
+                    <div *ngIf="phone.errors.pattern">Phone number should not contain alphabets.</div>
+                  </div>
+                </td>
+                <td class="righttable">
+                  <div class="right">
+                    <p><strong>Password Guidances</strong></p>
+                    <p><strong>Please create your new Password, keeping in mind that it:</strong></p>
+                    <p>	&bull;Must be 8-15 characters </p>
+                    <p>	&bull;Must contain at least one Uppercase letter</p>
+                    <p>	&bull;Must contain at least one Lowercase letter </p>
+                    <p>	&bull;Must contain at least one number</p>
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+            <div class="number">7. Home Address 1<span class="star">*</span></div>
+            <input class="input" type="text" name="homeone"  size="38" maxlength="38" required [(ngModel)]="model.address" #address="ngModel">
+>>>>>>> origin/LoanManagement-Shenlin
             <div class="usernotify">Street address, City, State and Zip code</div>
             <!--<div *ngIf="user.home_address_1.invalid && (user.home_address_1.dirty || user.home_address_1.touched)" class="alert">-->
               <!--<div *ngIf="user.home_address_1.errors.required">Home address is required.</div>-->
               <!--<div *ngIf="user.home_address_1.errors.maxlength">Home address should not exceed 38 characteristics.</div>-->
             <!--</div>-->
 
+<<<<<<< HEAD
             <div class="number">6. Home Address 2</div>
             <input class="input" type="text" name="hometwo"  size="38" maxlength="38" [(ngModel)]="user.home_address_2">
             <div class="usernotify">Apt., Floor, Unit etc. </div>
@@ -142,38 +219,51 @@
 
 
 
+=======
+            <div class="number">8. Home Address 2</div>
+            <input class="input" type="text" name="hometwo"  size="38" maxlength="38">
+            <div class="usernotify">Apt., Floor, Unit etc. </div>
+
+>>>>>>> origin/LoanManagement-Shenlin
             <div class="continue">
               <table class="buttons">
                 <tr>
                   <td>
-                    <button class="continue-button" type="button"  (click)="nextPage()">Confirm</button><br>
+                    <button class="continue-button" type="button" [disabled]="!formData.valid" (click)="nextPage()">Continue</button><br>
                   </td>
                   <td class="string">|</td>
                   <td class="cancel">Cancel</td>
               </table>
             </div>
-
           </div>
         </form>
       </div>
     </div>
   </ng-container>
-  <ng-container *ngSwitchCase="3">
+  <ng-container *ngSwitchCase="2">
     <div class="container step2">
       <div class="header">
       </div>
       <div class="content">
-        <div class="title">Online Banking Setup: Step 3</div>
+        <div class="title">Online Banking Setup: Step 2</div>
         <div class="steps">
-            <div class="step done">Identification Information</div>
-            <div class="step done">Personal Information</div>
-            <div class="step done">Security Settings</div>
-            <div class="step">Terms and Conditions</div>
-            <div class="step">Review</div>
+          <div class="step done">
+            Personal Information
+          </div>
+          <div class="step done">
+            Security Questions
+          </div>
+          <div class="step">
+            Terms and Conditions
+          </div>
+          <div class="step">
+            Review
+          </div>
         </div>
         <div class="image">
           <img src="assets/images/enrollimage3.jpg" width=100% height=200px alt="Image">
         </div>
+<<<<<<< HEAD
 
         <div class="table">Setting Password</div>
         <div class="form">
@@ -209,6 +299,9 @@
       </div>
 
         <div class="tablemid">Security Questions</div>
+=======
+        <div class="table">Security Questions</div>
+>>>>>>> origin/LoanManagement-Shenlin
         <form #formDataTwo="ngForm">
           <div class="form">
             <div class="notify">From now on we will monitor your use pattern and if we suspect it is not you logging in we will ask you to answer a few verification questions.Please take a moment to select one question from each of the three drop-down menus.Answers are not case sensitive.</div>
@@ -301,18 +394,25 @@
       </div>
     </div>
   </ng-container>
-  <ng-container *ngSwitchCase="4">
+  <ng-container *ngSwitchCase="3">
     <div class="container step3" >
       <div class="header">
       </div>
       <div class="content">
-        <div class="title">Online Banking Setup: Step 4</div>
+        <div class="title">Online Banking Setup: Step 3</div>
         <div class="steps">
-            <div class="step done">Identification Information</div>
-            <div class="step done">Personal Information</div>
-            <div class="step done">Security Settings</div>
-            <div class="step done">Terms and Conditions</div>
-            <div class="step">Review</div>
+          <div class="step done">
+            Personal Information
+          </div>
+          <div class="step done">
+            Security Questions
+          </div>
+          <div class="step done">
+            Terms and Conditions
+          </div>
+          <div class="step">
+            Review
+          </div>
         </div>
         <div class="image">
           <img src="assets/images/enrollimage4.jpg" width=100% height=200px alt="Image">
@@ -468,18 +568,25 @@ Also, if your statement shows a transfer that you did not make, tell us at once.
       </div>
     </div>
   </ng-container>
-  <ng-container *ngSwitchCase="5">
+  <ng-container *ngSwitchCase="4">
     <div class="container step4">
       <div class="header">
       </div>
       <div class="content">
-        <div class="title">Online Banking Setup: Step 5</div>
+        <div class="title">Online Banking Setup: Step 4</div>
         <div class="steps">
-            <div class="step done">Identification Information</div>
-            <div class="step done">Personal Information</div>
-            <div class="step done">Security Settings</div>
-            <div class="step done">Terms and Conditions</div>
-            <div class="step done">Review</div>
+          <div class="step done">
+            Personal Information
+          </div>
+          <div class="step done">
+            Security Questions
+          </div>
+          <div class="step done">
+            Terms and Conditions
+          </div>
+          <div class="step done">
+            Review
+          </div>
         </div>
         <div class="image">
           <img src="assets/images/enrollimage5.jpg" width=100% height=200px alt="Image">
