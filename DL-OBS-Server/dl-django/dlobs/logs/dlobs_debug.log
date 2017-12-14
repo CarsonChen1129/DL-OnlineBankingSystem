@@ -77,3 +77,225 @@ Not Found: /auth/accounts/
 Not Found: /auth/accounts
 Not Found: /auth/accounts
 Not Found: /auth/accounts/
+Internal Server Error: /accounts
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 244, in _legacy_get_response
+    response = middleware_method(request)
+  File "/Library/Python/2.7/site-packages/django/middleware/common.py", line 63, in process_request
+    path = self.get_full_path_with_slash(request)
+  File "/Library/Python/2.7/site-packages/django/middleware/common.py", line 101, in get_full_path_with_slash
+    'url': request.get_host() + new_path,
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to localhost:8000/accounts/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+Internal Server Error: /transferfund/getAccountInfo
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 477, in dispatch
+    self.initial(request, *args, **kwargs)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 395, in initial
+    self.check_permissions(request)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 328, in check_permissions
+    if not permission.has_permission(request, self):
+  File "/Library/Python/2.7/site-packages/rest_framework/permissions.py", line 141, in has_permission
+    queryset = self._queryset(view)
+  File "/Library/Python/2.7/site-packages/rest_framework/permissions.py", line 121, in _queryset
+    ).format(self.__class__.__name__)
+AssertionError: Cannot apply DjangoModelPermissionsOrAnonReadOnly on a view that does not set `.queryset` or have a `.get_queryset()` method.
+Not Found: /admin/
+Not Found: /favicon.ico
+Internal Server Error: /transferfund/getAccountInfo
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 217, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 215, in _get_response
+    response = response.render()
+  File "/Library/Python/2.7/site-packages/django/template/response.py", line 107, in render
+    self.content = self.rendered_content
+  File "/Library/Python/2.7/site-packages/rest_framework/response.py", line 72, in rendered_content
+    ret = renderer.render(self.data, accepted_media_type, context)
+  File "/Library/Python/2.7/site-packages/rest_framework/renderers.py", line 105, in render
+    allow_nan=not self.strict, separators=separators
+  File "/Library/Python/2.7/site-packages/rest_framework/utils/json.py", line 28, in dumps
+    return json.dumps(*args, **kwargs)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/__init__.py", line 250, in dumps
+    sort_keys=sort_keys, **kw).encode(obj)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/encoder.py", line 207, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/encoder.py", line 270, in iterencode
+    return _iterencode(o, 0)
+  File "/Library/Python/2.7/site-packages/rest_framework/utils/encoders.py", line 68, in default
+    return super(JSONEncoder, self).default(obj)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/json/encoder.py", line 184, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <AccountInfo: senw@andrew.cmu.edu 3539546074253649> is not JSON serializable
+Not Found: /transferfund/getAccountInfo
+Not Found: /
+Not Found: /favicon.ico
+Internal Server Error: /transferfund/getTransactionHistory
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/SenWang/ebiz/team projects/task5/DL-OnlineBankingSystem/DL-OBS-Server/dl-django/dlobs/transferfund/views.py", line 98, in post
+    fromAccountNumber = fromAccountNumber, pending = pending)
+  File "/Library/Python/2.7/site-packages/django/db/models/manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/django/db/models/query.py", line 784, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/Library/Python/2.7/site-packages/django/db/models/query.py", line 802, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/Library/Python/2.7/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "/Library/Python/2.7/site-packages/django/db/models/sql/query.py", line 1276, in _add_q
+    allow_joins=allow_joins, split_subq=split_subq,
+  File "/Library/Python/2.7/site-packages/django/db/models/sql/query.py", line 1154, in build_filter
+    lookups, parts, reffed_expression = self.solve_lookup_type(arg)
+  File "/Library/Python/2.7/site-packages/django/db/models/sql/query.py", line 1034, in solve_lookup_type
+    _, field, _, lookup_parts = self.names_to_path(lookup_splitted, self.get_meta())
+  File "/Library/Python/2.7/site-packages/django/db/models/sql/query.py", line 1352, in names_to_path
+    "Choices are: %s" % (name, ", ".join(available)))
+FieldError: Cannot resolve keyword 'accountType' into field. Choices are: amount, date, fromAccountNumber, id, notes, owner, pending, toAccountNumber
+Internal Server Error: /transferfund/getTransactionHistory
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/SenWang/ebiz/team projects/task5/DL-OnlineBankingSystem/DL-OBS-Server/dl-django/dlobs/transferfund/views.py", line 94, in post
+    if (owner != None and accountType != None and fromAccountNumber != None and pending != None):
+NameError: global name 'accountType' is not defined
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Internal Server Error: /transferfund/checkDeposit
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/SenWang/ebiz/team projects/task5/DL-OnlineBankingSystem/DL-OBS-Server/dl-django/dlobs/transferfund/views.py", line 237, in post
+    if (fromAccountNumber == None or toAccountNumber == None or owner == None \
+NameError: global name 'fromAccountNumber' is not defined
+Internal Server Error: /transferfund/checkDeposit
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/SenWang/ebiz/team projects/task5/DL-OnlineBankingSystem/DL-OBS-Server/dl-django/dlobs/transferfund/views.py", line 265, in post
+    }, headers=headers, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+NameError: global name 'headers' is not defined
+Not Found: /favicon.ico
+Not Found: /favicon.ico
+Internal Server Error: /transferfund/externalTransfer
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/django/core/handlers/exception.py", line 41, in inner
+    response = get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 249, in _legacy_get_response
+    response = self._get_response(request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/Library/Python/2.7/site-packages/django/core/handlers/base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 489, in dispatch
+    response = self.handle_exception(exc)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 449, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/Library/Python/2.7/site-packages/rest_framework/views.py", line 486, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "/Library/Python/2.7/site-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "/Users/SenWang/ebiz/team projects/task5/DL-OnlineBankingSystem/DL-OBS-Server/dl-django/dlobs/transferfund/views.py", line 325, in post
+    print(data['notes'])
+KeyError: u'notes'
+Not Found: /favicon.ico
+Not Found: /transferfund/addContact
+Not Found: /transferfund/addContact
