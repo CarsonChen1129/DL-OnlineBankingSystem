@@ -29,7 +29,8 @@ export class HeaderComponent implements OnInit {
     this.auth.logout().subscribe((data)=>{
       console.log(data);
       this.storage.remove('user');
-      this.router.navigate(['']);
+      // this.router.navigate(['']);
+      window.location.replace('');
     },(error)=>{
       console.log(error);
     })

@@ -59,7 +59,7 @@ export class WelcomePageComponent implements OnInit {
       this.auth.login(formData).subscribe((data) => {
         console.log(data);
         this.storage.setObject('user', data);
-        this.router.navigate(['account']);
+        this.router.navigate(['dashboard']);
       }, (error) => {
         console.log(error);
         this.error = error.error.message;

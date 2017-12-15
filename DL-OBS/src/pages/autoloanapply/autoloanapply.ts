@@ -112,6 +112,6 @@ export class AutoLoanApplyComponent implements OnInit {
     //     }).catch((error) => {
     //     console.log(error);
     //     });
-    }
+    // }
   }
 }
