@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { AccountInfo } from '../../app/models/accountinfo.model';
 import { Transaction } from '../../app/models/transaction.model';
 import {LocalStorage} from "../../providers/localstorage.service";
+declare var jquery:any;
+declare var $ :any;
 
 @Component({
     selector:'page-account',
@@ -28,12 +30,19 @@ export class AccountpageComponent implements OnInit, OnDestroy {
     constructor(private accountInfoService: AccountinfoserviceService, private storage: LocalStorage) {}
 
     ngOnInit() {
+      // $(document).ready(function(){
+      //   // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+      //   $('.modal').modal();
+      //   $('modal-login').modal('open');
+      // });
       this.storage.getObjectObservable("user").subscribe((data)=>{
         console.log("User "+data);
-        if(data){
+        if(data != null){
           this.user = data;
           this.owner = this.user.email;
           this.getThreeAccountInfos();
+        } else {
+          window.location.replace('');
         }
       }, (error)=>{
         console.log(error);
