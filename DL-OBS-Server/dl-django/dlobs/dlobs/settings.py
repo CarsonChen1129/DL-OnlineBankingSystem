@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 'z8##)5du5+aeektk(o&cazr_xw@6mbnim9)6r7ljx4puio=d=i'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -86,7 +84,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'dlobs.wsgi.application'
 
-
 CORS_ALLOW_METHODS = (
     'GET',
     'POST',
@@ -121,11 +118,11 @@ CORS_ALLOW_CREDENTIALS = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':'dlobs',
-        'USER':'',
-        'PASSWORD':'',
-        'HOST':'localhost',
-        'PORT':3306,
+        'NAME': 'dlobs',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': 3306,
     }
 }
 
@@ -154,7 +151,7 @@ LOGGING = {
     'loggers': {
         'django': {
             'handlers': ['console'],
-            'level':'DEBUG',
+            'level': 'DEBUG',
             'propagate': True,
         },
         'django.request': {
@@ -162,16 +159,16 @@ LOGGING = {
             'level': 'DEBUG',
             'propagate': False,
         },
-        'obs-log':{
-            'handlers':['console'],
-            'level':'DEBUG',
-            'propagate':False
+        'obs-log': {
+            'handlers': ['console'],
+            'level': 'DEBUG',
+            'propagate': False
         }
     },
 }
 
 CACHES = {
-    'default':{
+    'default': {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
         # 'LOCATION': 'unique-snowflake',
         # 'DEFAULT_CACHE_ALIAS': 'default'
@@ -185,7 +182,6 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -205,7 +201,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -218,7 +213,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/

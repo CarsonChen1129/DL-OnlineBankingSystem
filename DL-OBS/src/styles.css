@@ -1,11 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 a {
-    color: inherit;
+  color: inherit;
 }
 
 input:not([type]):focus:not([readonly]),
@@ -21,7 +20,24 @@ input[type=tel]:not(.browser-default):focus:not([readonly]),
 input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #b79344;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+  border-bottom: 1px solid #b79344;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.cdk-overlay-container {
+  position:fixed;
+}
+
+.cdk-overlay-pane {
+  position:fixed;
+}
+
+.cdk-global-overlay-wrapper {
+  position: fixed;
+}
+
+button:focus {
+  background-color:#b79344;
+  color:white;
 }

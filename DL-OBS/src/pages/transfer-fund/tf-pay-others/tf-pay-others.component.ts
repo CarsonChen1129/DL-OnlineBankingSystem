@@ -1,12 +1,12 @@
-import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
-import { AccountinfoserviceService } from '../../../app/services/accountinfoservice.service';
-import { TransactioninfoService } from '../../../app/services/transactioninfo.service';
-import { ContactinfoService } from '../../../app/services/contactinfo.service';
-import { Subscription } from 'rxjs/Subscription';
+import {Component, OnInit, ViewEncapsulation, OnDestroy} from '@angular/core';
+import {AccountinfoserviceService} from '../../../providers/accountinfoservice.service';
+import {TransactioninfoService} from '../../../providers/transactioninfo.service';
+import {ContactinfoService} from '../../../providers/contactinfo.service';
+import {Subscription} from 'rxjs/Subscription';
 
-import { AccountInfo } from '../../../app/models/accountinfo.model';
-import { Transaction } from '../../../app/models/transaction.model';
-import { Contact } from '../../../app/models/contact.model';
+import {AccountInfo} from '../../../app/models/accountinfo.model';
+import {Transaction} from '../../../app/models/transaction.model';
+import {Contact} from '../../../app/models/contact.model';
 
 @Component({
   selector: 'app-tf-pay-others',
@@ -15,41 +15,48 @@ import { Contact } from '../../../app/models/contact.model';
   encapsulation: ViewEncapsulation.None
 })
 export class TfPayOthersComponent implements OnInit, OnDestroy {
-  owner:string = 'senw@andrew.cmu.edu';
+  owner: string = 'senw@andrew.cmu.edu';
   accounts: AccountInfo[] = [];
   contacts: Contact[] = [];
   subscriptionAccountInfo: Subscription;
   subscriptionContactsInfo: Subscription;
 
-  secondAcctNum:string = '';
-  checkMatch():boolean {
+  secondAcctNum: string = '';
+
+  checkMatch(): boolean {
     if (this.secondAcctNum != '' && this.secondAcctNum != this.modelc.accountNumber) {
       return false;
     } else {
       return true;
     }
   }
-  checkRNumber():boolean {
-    var regex = new RegExp("^[0-9]{16}$");
+
+  checkRNumber(): boolean {
+    var regex = new RegExp('^[0-9]{16}$');
     return this.modelc.routingNumber == '' || regex.test(this.modelc.routingNumber);
   }
-  checkANumber():boolean {
-    var regex = new RegExp("^[0-9]{16}$");
+
+  checkANumber(): boolean {
+    var regex = new RegExp('^[0-9]{16}$');
     return this.modelc.accountNumber == '' || regex.test(this.modelc.accountNumber);
   }
 
-  successMessage:string = null;
-  errorMessage:string = null;
+  successMessage: string = null;
+  errorMessage: string = null;
 
-  successMessageC:string = null;
-  errorMessageC:string = null;
+  successMessageC: string = null;
+  errorMessageC: string = null;
 
-  model: Transaction = new Transaction('','','',this.owner,'',true,0.00,'');
-  modelc: Contact = new Contact('','','',this.owner,'','','');
+  model: Transaction = new Transaction('', '', '', this.owner, '', true, 0.00, '');
+  modelc: Contact = new Contact('', '', '', this.owner, '', '', '');
 
-  hide:boolean = false;
-  constructor(private accountInfoService: AccountinfoserviceService, 
-      private transactionInfoService: TransactioninfoService, private contactInfoService: ContactinfoService) { }
+  hide: boolean = false;
+
+  debug: boolean = false;
+
+  constructor(private accountInfoService: AccountinfoserviceService,
+              private transactionInfoService: TransactioninfoService, private contactInfoService: ContactinfoService) {
+  }
 
   ngOnInit() {
     this.getAllAccountInfos();
@@ -57,15 +64,16 @@ export class TfPayOthersComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscriptionAccountInfo.unsubscribe;
-    this.subscriptionContactsInfo.unsubscribe;
+    this.subscriptionAccountInfo.unsubscribe();
+    this.subscriptionContactsInfo.unsubscribe();
   }
+
   // the function to do external transfer
   onSubmit() {
     if (this.model.fromAccountNumber != '' && this.model.toAccountNumber != '') {
       this.successMessage = null;
       this.errorMessage = null;
-      console.log("Submit external transfer form!");
+      console.log('Submit external transfer form!');
       this.transactionInfoService.externalTransfer(this.model).subscribe(
         data => {
           console.log(data);
@@ -83,7 +91,7 @@ export class TfPayOthersComponent implements OnInit, OnDestroy {
 
   // the function to add contact
   onSubmitContact() {
-    console.log("submit add contact form!");
+    console.log('submit add contact form!');
     this.successMessageC = null;
     this.errorMessageC = null;
     this.contactInfoService.addContact(this.modelc).subscribe(
@@ -100,7 +108,7 @@ export class TfPayOthersComponent implements OnInit, OnDestroy {
         this.errorMessageC = err.error.message;
       }
     );
-  } 
+  }
 
   // the function to get all accounts information
   getAllAccountInfos() {
@@ -124,18 +132,23 @@ export class TfPayOthersComponent implements OnInit, OnDestroy {
   hideform() {
     if (this.hide) {
       this.hide = false;
-      
+
     } else {
       this.hide = true;
     }
   }
 
-  // for debugging purpose 
-  get diagnostic() { return JSON.stringify(this.model); }
-  get diagnostic2() {return JSON.stringify(this.modelc);}
+  // for debugging purpose
+  get diagnostic() {
+    return JSON.stringify(this.model);
+  }
+
+  get diagnostic2() {
+    return JSON.stringify(this.modelc);
+  }
 
   // the function to check input amount
-  checkAmount():boolean {
+  checkAmount(): boolean {
     if (this.model.amount == null || this.model.amount > 0) {
       return true;
     } else {

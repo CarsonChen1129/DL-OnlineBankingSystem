@@ -1,53 +1,54 @@
 <section [ngSwitch]="step">
-    <ng-container *ngSwitchCase="1">
-        <div class="container step1" >
-          <div class="header">
-          </div>
-          <div class="content">
-            <div class="title">Online Banking Setup: Step 1</div>
-            <div class="steps">
-              <div class="step done">Identification Information</div>
-              <div class="step">Personal Information</div>
-              <div class="step">Security Settings</div>
-              <div class="step">Terms and Conditions</div>
-              <div class="step">Review</div>
-            </div>
-            <div class="image"><img src="assets/images/OnlineBanking.jpg" width=100% height=200px alt="Image"></div>
-            <form  #formDataPre="ngForm">
-              <div class="table">Enter Identification Information</div>
-              <div class="form">
-                <div *ngIf="error" style="color:red;">{{error}}</div>
-                <div class="number">1. Email Address<span class="star">*</span></div>
-                <input class="input" type="text" name="email"  size="24" maxlength="24" required [(ngModel)]="email">
-
-
-
-                      <div class="number">2. PIN Code<span class="star">*</span></div>
-                      <input class="input" type="text" name="pin"  size="24" maxlength="24" required [(ngModel)]="pin">
-                      <div class="usernotify">We will send you an email containing the PIN code after you successfully open an account in our physical branch. </div>
-
-
-
-                <div class="continue">
-                  <table class="buttons">
-                    <tr>
-                      <td>
-                        <button class="continue-button" type="button"  (click)="checkRegistrationStatus()">Continue</button><br>
-                      </td>
-                      <td class="string">|</td>
-                      <td class="cancel">Cancel</td>
-                  </table>
-                </div>
-
-              </div>
-            </form>
-          </div>
+  <ng-container *ngSwitchCase="1">
+    <div class="container step1">
+      <div class="header">
+      </div>
+      <div class="content">
+        <div class="title">Online Banking Setup: Step 1</div>
+        <div class="steps">
+          <div class="step done">Identification Information</div>
+          <div class="step">Personal Information</div>
+          <div class="step">Security Settings</div>
+          <div class="step">Terms and Conditions</div>
+          <div class="step">Review</div>
         </div>
-      </ng-container>
+        <div class="image"><img src="assets/images/OnlineBanking.jpg" width=100% height=200px alt="Image"></div>
+        <form #formDataPre="ngForm">
+          <div class="table">Enter Identification Information</div>
+          <div class="form">
+            <div *ngIf="error" style="color:red;">{{error}}</div>
+            <div class="number">1. Email Address<span class="star">*</span></div>
+            <input class="input" type="text" name="email" size="24" maxlength="24" required [(ngModel)]="email">
+
+
+            <div class="number">2. PIN Code<span class="star">*</span></div>
+            <input class="input" type="text" name="pin" size="24" maxlength="24" required [(ngModel)]="pin">
+            <div class="usernotify">We will send you an email containing the PIN code after you successfully open an
+              account in our physical branch.
+            </div>
+
+
+            <div class="continue">
+              <table class="buttons">
+                <tr>
+                  <td>
+                    <button class="continue-button" type="button" (click)="checkRegistrationStatus()">Continue</button>
+                    <br>
+                  </td>
+                  <td class="string">|</td>
+                  <td class="cancel">Cancel</td>
+              </table>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-container>
 
 
   <ng-container *ngSwitchCase="2">
-    <div class="container step1" >
+    <div class="container step1">
       <div class="header">
       </div>
       <div class="content">
@@ -60,89 +61,80 @@
         </div>
         <div class="image"><img src="assets/images/enrollimage1.jpg" width=100% height=200px alt="Image"></div>
         <div class="table">Enter Identification Information</div>
-        <form  #formData="ngForm">
+        <form #formData="ngForm">
           <div class="form">
             <div class="number">1. First Name<span class="star">*</span></div>
-            <input class="input" type="text" name="first_name"  size="24" maxlength="24" required [(ngModel)]="user.first_name" name="email"  #firstName="ngModel">
-            <!--<div *ngIf="user.first_name.invalid && (user.first_name.dirty || user.first_name.touched)" class="alert">-->
-              <!--<div *ngIf="user.first_name.errors.required">First name is required.</div>-->
-              <!--<div *ngIf="user.first_name.errors.pattern">Please fill in according to name format.</div>-->
-              <!--<div *ngIf="user.first_name.errors.forbiddenName">First name already exists, please sign in.</div>-->
-            <!--</div>-->
+            <input class="input" type="text" name="first_name" size="24" maxlength="24" required
+                   [(ngModel)]="user.first_name" name="email" #firstName="ngModel">
 
 
+            <div class="number">2. Middle Name<span class="star">*</span></div>
+            <input class="input" type="text" name="name" size="24" maxlength="24" required
+                   [(ngModel)]="user.middle_name"
+                   #name="ngModel">
+            <div class="usernotify">Your middle name</div>
 
-                  <div class="number">2. Middle Name<span class="star">*</span></div>
-                  <input class="input" type="text" name="name"  size="24" maxlength="24" required  [(ngModel)]="user.middle_name"
-                         #name="ngModel">
-                  <div class="usernotify">Your middle name </div>
-                  <!--<div *ngIf="user.middle_name.invalid && (user.middle_name.dirty || user.middle_name.touched)" class="alert">-->
-                    <!--&lt;!&ndash;<div *ngIf="user.middle_name.errors.required">Full name is required.</div>&ndash;&gt;-->
+            <div class="number">3. LastName<span class="star">*</span></div>
+            <input class="input" type="text" name="name" size="24" maxlength="24" required [(ngModel)]="user.last_name"
+                   #name="ngModel">
+            <div class="usernotify">Your last name</div>
 
-                  <!--</div>-->
-                  <div class="number">3. LastName<span class="star">*</span></div>
-                  <input class="input" type="text" name="name"  size="24" maxlength="24" required  [(ngModel)]="user.last_name"
-                         #name="ngModel">
-                  <div class="usernotify">Your last name </div>
-                  <!--<div *ngIf="user.last_name.invalid && (user.last_name.dirty || user.last_name.touched)" class="alert">-->
-                    <!--<div *ngIf="user.last_name.errors.required">Last name is required.</div>-->
+            <div class="number">4. Phone Number<span class="star">*</span></div>
 
-                  <!--</div>-->
-                  <div class="number">4. Phone Number<span class="star">*</span></div>
-
-                  <input class="input" type="text" name="phone"  size="38" minlength="0" maxlength="14" required pattern="[0-9]{0,14}" [(ngModel)]="user.primary_phone_number" #phone="ngModel">
-                  <!--<div *ngIf="phone.invalid && (phone.dirty || phone.touched)" class="alert">-->
-                    <!--<div *ngIf="phone.errors.required">Phone number is required.</div>-->
-                    <!--<div *ngIf="phone.errors.pattern">Phone number should not contain alphabets.</div>-->
-                  <!--</div>-->
+            <input class="input" type="text" name="phone" size="38" minlength="0" maxlength="14" required
+                   pattern="[0-9]{0,14}" [(ngModel)]="user.primary_phone_number" #phone="ngModel">
 
 
             <div class="number">5. Home Address 1<span class="star">*</span></div>
-            <input class="input" type="text" name="homeone"  size="38" maxlength="38" required [(ngModel)]="user.home_address_1" #address="ngModel">
+            <input class="input" type="text" name="homeone" size="38" maxlength="38" required
+                   [(ngModel)]="user.home_address_1" #address="ngModel">
             <div class="usernotify">Street address, City, State and Zip code</div>
-            <!--<div *ngIf="user.home_address_1.invalid && (user.home_address_1.dirty || user.home_address_1.touched)" class="alert">-->
-              <!--<div *ngIf="user.home_address_1.errors.required">Home address is required.</div>-->
-              <!--<div *ngIf="user.home_address_1.errors.maxlength">Home address should not exceed 38 characteristics.</div>-->
-            <!--</div>-->
 
             <div class="number">6. Home Address 2</div>
-            <input class="input" type="text" name="hometwo"  size="38" maxlength="38" [(ngModel)]="user.home_address_2">
-            <div class="usernotify">Apt., Floor, Unit etc. </div>
+            <input class="input" type="text" name="hometwo" size="38" maxlength="38" [(ngModel)]="user.home_address_2">
+            <div class="usernotify">Apt., Floor, Unit etc.</div>
 
             <div class="number">7. Mail Address 1<span class="star">*</span></div>
-            <input class="input" type="text" name="mailone"  size="38" maxlength="38" required [(ngModel)]="user.mail_address_1">
+            <input class="input" type="text" name="mailone" size="38" maxlength="38" required
+                   [(ngModel)]="user.mail_address_1">
             <div class="usernotify">Street address, City, State and Zip code</div>
 
 
             <div class="number">8. Mail Address 2</div>
-            <input class="input" type="text" name="mailtwo"  size="38" maxlength="38"  [(ngModel)]="user.mail_address_2">
+            <input class="input" type="text" name="mailtwo" size="38" maxlength="38" [(ngModel)]="user.mail_address_2">
             <div class="usernotify">Apt., Floor, Unit etc.</div>
 
 
             <div class="number">9. License Type<span class="star">*</span></div>
-            <input class="input" type="text" name="licensetype"  size="38" maxlength="38" required [(ngModel)]="user.license_type">
+            <input class="input" type="text" name="licensetype" size="38" maxlength="38" required
+                   [(ngModel)]="user.license_type">
 
 
             <div class="number">10. License Number<span class="star">*</span></div>
-            <input class="input" type="text" name="licensenumber"  size="38" maxlength="38" required [(ngModel)]="user.license_number">
+            <input class="input" type="text" name="licensenumber" size="38" maxlength="38" required
+                   [(ngModel)]="user.license_number">
 
 
             <div class="number">11. Occupation<span class="star">*</span></div>
-            <input class="input" type="text" name="occupation"  size="38" maxlength="38" required [(ngModel)]="user.occupation">
+            <input class="input" type="text" name="occupation" size="38" maxlength="38" required
+                   [(ngModel)]="user.occupation">
 
 
             <div class="number">12. Annual Income<span class="star">*</span></div>
-            <input class="input" type="text" name="annualincome"  size="38" maxlength="38" required [(ngModel)]="user.annual_income">
+            <input class="input" type="text" name="annualincome" size="38" maxlength="38" required
+                   [(ngModel)]="user.annual_income">
 
 
             <div class="number">13. Employee<span class="star">*</span></div>
-            <input class="input" type="text" name="employee"  size="38" maxlength="38" required [(ngModel)]="user.employee">
+            <input class="input" type="text" name="employee" size="38" maxlength="38" required
+                   [(ngModel)]="user.employee">
 
             <div class="continue">
               <table class="buttons">
                 <tr>
                   <td>
-                    <button class="continue-button" type="button" (click)="nextPage()">Continue</button><br>
+                    <button class="continue-button" type="button" (click)="nextPage()">Continue</button>
+                    <br>
                   </td>
                   <td class="string">|</td>
                   <td class="cancel">Cancel</td>
@@ -179,41 +171,46 @@
 
         <div class="table">Setting Password</div>
         <div class="form">
-        <table class="divide">
-          <tr>
-            <td class="lefttable">
-              <div class="number">1. Password<span class="star">*</span></div>
-              <input class="input" type="password" id="password" required [(ngModel)]="user.password" name="password" #password="ngModel"  size="24" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$">
-              <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
-                <div *ngIf="password.errors.required">Password is required.</div>
-                <div *ngIf="password.errors.pattern">Please fill in according to Password Guidance.</div>
-              </div>
-              <div class="number">2. Confirm Password<span class="star">*</span></div>
-              <input class="input" type="password"  id="confirmPassword" required validateEqual="password" [(ngModel)]="user.confirmPassword" name="confirmPassword" #confirmPassword="ngModel" size="24">
-              <div *ngIf="user.password != user.confirmPassword" class="alert">
-                Passwords did not match
-              </div>
+          <table class="divide">
+            <tr>
+              <td class="lefttable">
+                <div class="number">1. Password<span class="star">*</span></div>
+                <input class="input" type="password" id="password" required [(ngModel)]="user.password" name="password"
+                       #password="ngModel" size="24" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,15}$">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert">
+                  <div *ngIf="password.errors.required">Password is required.</div>
+                  <div *ngIf="password.errors.pattern">Please fill in according to Password Guidance.</div>
+                </div>
+                <div class="number">2. Confirm Password<span class="star">*</span></div>
+                <input class="input" type="password" id="confirmPassword" required validateEqual="password"
+                       [(ngModel)]="user.confirmPassword" name="confirmPassword" #confirmPassword="ngModel" size="24">
+                <div *ngIf="user.password != user.confirmPassword" class="alert">
+                  Passwords did not match
+                </div>
 
 
-            </td>
-            <td class="righttable">
-              <div class="right">
-                <p><strong>Password Guidances</strong></p>
-                <p><strong>Please create your new Password, keeping in mind that it:</strong></p>
-                <p>	&bull;Must be 8-15 characters </p>
-                <p>	&bull;Must contain at least one Uppercase letter</p>
-                <p>	&bull;Must contain at least one Lowercase letter </p>
-                <p>	&bull;Must contain at least one number</p>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </div>
+              </td>
+              <td class="righttable">
+                <div class="right">
+                  <p><strong>Password Guidances</strong></p>
+                  <p><strong>Please create your new Password, keeping in mind that it:</strong></p>
+                  <p> &bull;Must be 8-15 characters </p>
+                  <p> &bull;Must contain at least one Uppercase letter</p>
+                  <p> &bull;Must contain at least one Lowercase letter </p>
+                  <p> &bull;Must contain at least one number</p>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
 
         <div class="tablemid">Security Questions</div>
         <form #formDataTwo="ngForm">
           <div class="form">
-            <div class="notify">From now on we will monitor your use pattern and if we suspect it is not you logging in we will ask you to answer a few verification questions.Please take a moment to select one question from each of the three drop-down menus.Answers are not case sensitive.</div>
+            <div class="notify">From now on we will monitor your use pattern and if we suspect it is not you logging in
+              we will ask you to answer a few verification questions.Please take a moment to select one question from
+              each of the three drop-down menus.Answers are not case sensitive.
+            </div>
 
             <table class="tablepanel">
               <tr>
@@ -221,7 +218,9 @@
                 <td class="selections">
                   <select id="selectone" name="securityone" [(ngModel)]="user.sq1" #securityone="ngModel" required>
                     <option value="" disabled selected>Please select</option>
-                    <option *ngFor="let question of securityOneQuestions" [ngValue]="question.value">{{question.question}}</option>
+                    <option *ngFor="let question of securityOneQuestions" [ngValue]="question.value">
+                      {{question.question}}
+                    </option>
                     <!--<option name="1" value="questiononeone">In what city or town did your mother and father meet?</option>-->
                     <!--<option name="2" value="questiononetwo">What is the name of your favorite childhood friend?</option>-->
                     <!--<option name="3" value="questiononethree">What is your favorite team?</option>-->
@@ -234,7 +233,8 @@
               <tr>
                 <td class="label"><label>Answer One:</label><span class="star">*</span></td>
                 <td class="selections">
-                  <input id="answerone" class="input" type="text" name="answerone"  size="30" maxlength="30" [(ngModel)]="user.sq1a" #answerone="ngModel" required/>
+                  <input id="answerone" class="input" type="text" name="answerone" size="30" maxlength="30"
+                         [(ngModel)]="user.sq1a" #answerone="ngModel" required/>
                 </td>
               </tr>
 
@@ -243,7 +243,9 @@
                 <td class="selections">
                   <select id="selecttwo" name="securitytwo" [(ngModel)]="user.sq2" #securitytwo="ngModel" required>
                     <option value="" disabled selected>Please select</option>
-                    <option *ngFor="let question of securityTwoQuestions" [ngValue]="question.value">{{question.question}}</option>
+                    <option *ngFor="let question of securityTwoQuestions" [ngValue]="question.value">
+                      {{question.question}}
+                    </option>
                     <!--<option name="1" value="questiontwoone">When is your youngest sibling’s birthday (MM/DD)?</option>-->
                     <!--<option name="2" value="questiontwotwo">What was your favorite sport in high school?</option>-->
                     <!--<option name="3" value="questiontwothree">What is the middle name of your oldest child?</option>-->
@@ -256,15 +258,19 @@
               <tr>
                 <td class="label"><label>Answer Two:</label><span class="star">*</span></td>
                 <td class="selections">
-                  <input id="answertwo" class="input" type="text" name="answertwo"  size="30" maxlength="30" [(ngModel)]="user.sq2a" #answertwo="ngModel" required/>
+                  <input id="answertwo" class="input" type="text" name="answertwo" size="30" maxlength="30"
+                         [(ngModel)]="user.sq2a" #answertwo="ngModel" required/>
                 </td>
               </tr>
               <tr>
                 <td class="label"><label>Question Three:</label><span class="star">*</span></td>
                 <td class="selections">
-                  <select id="selectthree" name="securitythree" [(ngModel)]="user.sq3" #securitythree="ngModel" required>
+                  <select id="selectthree" name="securitythree" [(ngModel)]="user.sq3" #securitythree="ngModel"
+                          required>
                     <option value="" disabled selected>Please select</option>
-                    <option *ngFor="let question of securityThreeQuestions" [ngValue]="question.value">{{question.question}}</option>
+                    <option *ngFor="let question of securityThreeQuestions" [ngValue]="question.value">
+                      {{question.question}}
+                    </option>
                     <!--<option name="1" value="questionthreeone">What is your grand father’s first name?</option>-->
                     <!--<option name="2" value="questionthreetwo">In what town was your first job?</option>-->
                     <!--<option name="3" value="questionthreethree">What is the first name of your best friend in high school?</option>-->
@@ -277,7 +283,8 @@
               <tr>
                 <td class="label"><label>Answer Three:</label><span class="star">*</span></td>
                 <td class="selections">
-                  <input id="answerthree" class="input" type="text" name="answerthree"  size="30" maxlength="30" [(ngModel)]="user.sq3a" #answerthree="ngModel" required/>
+                  <input id="answerthree" class="input" type="text" name="answerthree" size="30" maxlength="30"
+                         [(ngModel)]="user.sq3a" #answerthree="ngModel" required/>
                 </td>
               </tr>
 
@@ -289,9 +296,13 @@
           <div class="tablepanel">
             <table class="buttons">
               <tr>
-                <td><a class="alc"><button id="returnback" type="button" (click)="previousPage()">Back</button></a></td>
+                <td><a class="alc">
+                  <button id="returnback" type="button" (click)="previousPage()">Back</button>
+                </a></td>
                 <td>
-                  <button class="continue-button" type="button" [disabled]="!formDataTwo.valid" (click)="nextPage()">Continue</button>
+                  <button class="continue-button" type="button" [disabled]="!formDataTwo.valid" (click)="nextPage()">
+                    Continue
+                  </button>
                 </td>
                 <td class="string">|</td>
                 <td class="cancel">Cancel</td>
@@ -304,7 +315,7 @@
     </div>
   </ng-container>
   <ng-container *ngSwitchCase="4">
-    <div class="container step3" >
+    <div class="container step3">
       <div class="header">
       </div>
       <div class="content">
@@ -453,22 +464,30 @@ Also, if your statement shows a transfer that you did not make, tell us at once.
 				</textarea>
 
 
-
           </div>
 
 
           <div class="tacbox">
             <input id="agree" type="checkbox" name="userAgreement" ngModel required>
-            <label for="agree" class="boxcontainer">I have read, fully understood and agreed with the terms and conditions.
+            <label for="agree" class="boxcontainer">I have read, fully understood and agreed with the terms and
+              conditions.
             </label>
           </div>
 
           <div class="tablepanel">
             <table class="buttons">
               <tr>
-                <td><button class="returnback" type="button" (click)="previousPage()">Back</button></td>
-                <td><button class="returnback" type="button" (click)="nextPage()" [disabled]="!formDataThree.valid">Continue</button></td>
-                <td><button class="returnback" type="button" >Print</button></td>
+                <td>
+                  <button class="returnback" type="button" (click)="previousPage()">Back</button>
+                </td>
+                <td>
+                  <button class="returnback" type="button" (click)="nextPage()" [disabled]="!formDataThree.valid">
+                    Continue
+                  </button>
+                </td>
+                <td>
+                  <button class="returnback" type="button">Print</button>
+                </td>
 
             </table>
           </div>
@@ -505,9 +524,10 @@ Also, if your statement shows a transfer that you did not make, tell us at once.
           <div class="form">
 
             <div class="notify">Please review your enrollment information.Once you have enrolled,
-              you can make changes to your profile in the Settings and Support section of Online Banking.</div>
+              you can make changes to your profile in the Settings and Support section of Online Banking.
+            </div>
             <hr>
-            <table  class="tablepanel">
+            <table class="tablepanel">
               <tr>
                 <td class="label"><label>Email Address:</label></td>
                 <td class="selections">
@@ -572,8 +592,12 @@ Also, if your statement shows a transfer that you did not make, tell us at once.
           <div class="tablepanel">
             <table class="buttons">
               <tr>
-                <td><a class="alc"><button class="buttonscolor" type="button" (click)="previousPage()">Back</button></a></td>
-                <td><button class="buttonscolor" type="button" (click)="submit()">Submit</button></td>
+                <td><a class="alc">
+                  <button class="buttonscolor" type="button" (click)="previousPage()">Back</button>
+                </a></td>
+                <td>
+                  <button class="buttonscolor" type="button" (click)="submit()">Submit</button>
+                </td>
                 <td id="string">|</td>
                 <td id="cancel">Cancel</td>
             </table>

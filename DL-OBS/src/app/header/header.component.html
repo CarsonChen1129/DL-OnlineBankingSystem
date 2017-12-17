@@ -8,6 +8,7 @@
             <a class="brand-logo center" href=""><img src="assets/images/dl-logo.png" class="valign-wrapper" alt="dl-logo"></a>
             <ul class="right hide-on-med-and-down">
                 <li *ngIf="hasUser()"><a (click)="logout()">Logout</a></li>
+                <li *ngIf="hasUser()"><a href="/profile">My Profile</a></li>
                 <li><a href="">ATM & Branch</a></li>
                 <li><a class="dropdown-button" href="#" data-activates="language-dropdown">Language<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a href=""><i class="material-icons right">search</i></a></li>
@@ -19,4 +20,13 @@
             <li><a href="#">Spanish</a></li>
         </ul>
     </nav>
+</div>
+<div id="modal-logout" class="modal">
+  <div class="modal-content">
+    <h4>You have successfully logged out</h4>
+    <p>Your page will be reloaded.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="" (click)="reload()" class="modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+  </div>
 </div>

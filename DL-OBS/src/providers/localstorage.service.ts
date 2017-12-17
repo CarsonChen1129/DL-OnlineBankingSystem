@@ -1,5 +1,5 @@
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs/Observable";
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 
 /**
  * @author Carson Chen
@@ -8,7 +8,8 @@ import {Observable} from "rxjs/Observable";
 @Injectable()
 export class LocalStorage {
 
-  constructor() {}
+  constructor() {
+  }
 
   set(key: string, value: any) {
     return Promise.resolve().then(() => {
@@ -41,7 +42,7 @@ export class LocalStorage {
   }
 
   getObjectPromise(key: string) {
-    return new Promise((resolve, reject) =>{
+    return new Promise((resolve, reject) => {
       resolve(localStorage.getItem(key));
     });
   }
@@ -54,10 +55,13 @@ export class LocalStorage {
       });
     });
   }
+
   existPromise(key: string) {
     return new Promise((resolve, reject) => {
       this.get(key).then((val) => {
-        if (val) {resolve(true); }
+        if (val) {
+          resolve(true);
+        }
         resolve(false);
       });
     });

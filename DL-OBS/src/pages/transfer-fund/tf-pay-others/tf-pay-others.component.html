@@ -1,179 +1,193 @@
 <div class="container">
-    <div class="header"></div>
-    <div class="buttons-group">
-        <a href="transfer-fund/internal-transfer">
-            <div class="button"><span>Internal Transfer</span></div>
-        </a>
-        <a href="transfer-fund/check-deposit">
-            <div class="button"><span>Check Deposit</span></div>
-        </a>
-        <a href="transfer-fund/pay-others">
-            <div class="button"><span>Pay Other People</span></div>
-        </a>
+  <div class="header"></div>
+  <div class="buttons-group">
+    <a href="transfer-fund/internal-transfer">
+      <div class="button"><span>Internal Transfer</span></div>
+    </a>
+    <a href="transfer-fund/check-deposit">
+      <div class="button"><span>Check Deposit</span></div>
+    </a>
+    <a href="transfer-fund/pay-others">
+      <div class="button"><span>Pay Other People</span></div>
+    </a>
+  </div>
+  <div class="selection">
+    <img src="assets/images/arrow.png">
+  </div>
+  <div class="background">
+    <img src="assets/images/pay-others.png">
+  </div>
+  <form (ngSubmit)="onSubmit()" #eForm="ngForm">
+    <div class="title">
+      <span>Pay People You Know</span>
     </div>
-    <div class="selection">
-        <img src="assets/images/arrow.png">
+    <div class="step">
+      <span>Step 1: Select/Add A Contact</span>
     </div>
-    <div class="background">
-        <img src="assets/images/pay-others.png">
+    <div class="account">
+      <table>
+        <tr>
+          <td><label>To:</label><span>*</span></td>
+          <td>
+            <select id="toAccount" required [(ngModel)]="model.toAccountNumber" name="toAccountNumber">
+              <option disabled selected>Select An Existing Contact</option>
+              <option *ngFor="let contact of contacts" [value]="contact.accountNumber">Name: {{contact.firstName}}
+                {{contact.lastName}} {{contact.accountNumber}} Type: {{contact.accountType}}
+              </option>
+            </select>
+          </td>
+        </tr>
+      </table>
     </div>
-    <form (ngSubmit)="onSubmit()" #eForm="ngForm">
-        <div class="title">
-            <span>Pay People You Know</span>
+    <div class="addcontact">
+      <div class="question">Cannot Find Your Contact?</div>
+      <button (click)="hideform()">{{hide ? 'Cancel' : 'Add A Contact'}}</button>
+    </div>
+    <div *ngIf="hide" class="addcontactform">
+      <form (ngSubmit)="onSubmitContact()" #cForm="ngForm">
+        <table>
+          <tr>
+            <td><label>First Name:</label><span>*</span></td>
+            <td>
+              <input type="text" required [(ngModel)]="modelc.firstName" name="firstName" #firstName="ngModel">
+              <div [hidden]="firstName.valid || firstName.pristine" class="alert">First Name is required!</div>
+            </td>
+            <td><label>Last Name:</label><span>*</span></td>
+            <td>
+              <input type="text" required [(ngModel)]="modelc.lastName" name="lastName" #lastName="ngModel">
+              <div [hidden]="lastName.valid || lastName.pristine" class="alert">Last Name is required!</div>
+            </td>
+          </tr>
+          <tr>
+            <td><label>Account Type:</label><span>*</span></td>
+            <td colspan="3">
+              <select id="accountType" required [(ngModel)]="modelc.accountType" name="accountType">
+                <option disabled selected>Select An Account Type</option>
+                <option value="checking">checking</option>
+                <option value="saving">saving</option>
+                <option value="lending">lending</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+        <div class="accounthelp">
+          <img src="assets/images/accounthelp.png">
         </div>
-        <div class="step">
-            <span>Step 1: Select/Add A Contact</span>
+        <div class="arrowsection">
+          <img class="arrowleft" src="assets/images/downarrow.png">
+          <img class="arrowright" src="assets/images/downarrow.png">
         </div>
-        <div class="account">
-            <table>
-                <tr>
-                    <td><label>To:</label><span>*</span></td>
-                    <td>
-                        <select id="toAccount" required [(ngModel)]="model.toAccountNumber" name="toAccountNumber">
-                              <option disabled selected>Select An Existing Contact</option>
-                              <option *ngFor="let contact of contacts" [value]="contact.accountNumber">Name: {{contact.firstName}} {{contact.lastName}} {{contact.accountNumber}} Type: {{contact.accountType}}</option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
+        <table class="bottomtable">
+          <tr>
+            <td colspan="2">
+              <label>Routing Number:</label><span>*</span>
+              <input type="text" required [(ngModel)]="modelc.routingNumber" name="routingNumber"
+                     #routingNumber="ngModel">
+              <div [hidden]="routingNumber.valid || routingNumber.pristine" class="alert">Routing Number is required!
+              </div>
+              <div *ngIf="!checkRNumber()" class="alert">16-digit number is required!</div>
+            </td>
+            <td colspan="2">
+              <label>Account Number:</label><span>*</span>
+              <input type="text" required [(ngModel)]="modelc.accountNumber" name="accountNumber1"
+                     #accountNumber1="ngModel">
+              <div [hidden]="accountNumber1.valid || accountNumber1.pristine" class="alert">Account Number is
+                required!
+              </div>
+              <div *ngIf="!checkANumber()" class="alert">16-digit number is required!</div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td colspan="2">
+              <label>Confirm Account Number:</label><span>*</span>
+              <input type="text" required [(ngModel)]="secondAcctNum" name="accountNumber2" #accountNumber2="ngModel">
+              <div [hidden]="accountNumber2.valid || accountNumber2.pristine" class="alert">Please re-enter account
+                number!
+              </div>
+              <div *ngIf="!checkMatch()">Account Number doesn't match</div>
+            </td>
+          </tr>
+        </table>
+        <div *ngIf="successMessageC || errorMessageC" class=messageArea>
+          <div class="successArea">{{successMessageC}}</div>
+          <div class="errorArea">{{errorMessageC}}</div>
         </div>
-        <div class="addcontact">
-            <div class="question">Cannot Find Your Contact?</div>
-            <button (click)="hideform()">{{hide ? 'Cancel' : 'Add A Contact'}}</button>
+        <div class="buttons">
+          <button (click)="hideform()">Cancel</button>
+          <button type="submit" [disabled]="!cForm.valid || !checkMatch() || !checkRNumber() || !checkANumber()">Add The
+            Contact
+          </button>
         </div>
-        <div *ngIf="hide" class="addcontactform">
-            <form (ngSubmit)="onSubmitContact()" #cForm="ngForm">
-                <table>
-                    <tr>
-                        <td><label>First Name:</label><span>*</span></td>
-                        <td>
-                            <input type="text" required [(ngModel)]="modelc.firstName" name="firstName" #firstName="ngModel">
-                            <div [hidden]="firstName.valid || firstName.pristine" class="alert">First Name is required!</div>
-                        </td>
-                        <td><label>Last Name:</label><span>*</span></td>
-                        <td>
-                            <input type="text" required [(ngModel)]="modelc.lastName" name="lastName" #lastName="ngModel">
-                            <div [hidden]="lastName.valid || lastName.pristine" class="alert">Last Name is required!</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><label>Account Type:</label><span>*</span></td>
-                        <td colspan="3">
-                            <select id="accountType" required [(ngModel)]="modelc.accountType" name="accountType">
-                                    <option disabled selected>Select An Account Type</option>
-                                    <option value="checking">checking</option>
-                                    <option value="saving">saving</option>
-                                    <option value="lending">lending</option>
-                            </select>
-                        </td>
-                    </tr>
-                </table>
-                <div class="accounthelp">
-                    <img src="assets/images/accounthelp.png">
-                </div>
-                <div class="arrowsection">
-                    <img class="arrowleft" src="assets/images/downarrow.png">
-                    <img class="arrowright" src="assets/images/downarrow.png">
-                </div>
-                <table class="bottomtable">
-                    <tr>
-                        <td colspan="2">
-                            <label>Routing Number:</label><span>*</span>
-                            <input type="text" required [(ngModel)]="modelc.routingNumber" name="routingNumber" #routingNumber="ngModel">
-                            <div [hidden]="routingNumber.valid || routingNumber.pristine" class="alert">Routing Number is required!</div>
-                            <div *ngIf="!checkRNumber()" class="alert">16-digit number is required!</div>
-                        </td>
-                        <td colspan="2">
-                            <label>Account Number:</label><span>*</span>
-                            <input type="text" required [(ngModel)]="modelc.accountNumber" name="accountNumber1" #accountNumber1="ngModel">
-                            <div [hidden]="accountNumber1.valid || accountNumber1.pristine" class="alert">Account Number is required!</div>
-                            <div *ngIf="!checkANumber()" class="alert">16-digit number is required!</div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"></td>
-                        <td colspan="2">
-                            <label>Confirm Account Number:</label><span>*</span>
-                            <input type="text" required [(ngModel)]="secondAcctNum" name="accountNumber2" #accountNumber2="ngModel">
-                            <div [hidden]="accountNumber2.valid || accountNumber2.pristine" class="alert">Please re-enter account number!</div>
-                            <div *ngIf="!checkMatch()">Account Number doesn't match</div>
-                        </td>
-                    </tr>
-                </table>
-                <div *ngIf="successMessageC || errorMessageC" class=messageArea>
-                    <div class="successArea">{{successMessageC}}</div>
-                    <div class="errorArea">{{errorMessageC}}</div>
-                </div>
-                <div class="buttons">
-                    <button (click)="hideform()">Cancel</button>
-                    <button type="submit" [disabled]="!cForm.valid || !checkMatch() || !checkRNumber() || !checkANumber()">Add The Contact</button>
-                </div>
-                {{diagnostic2}} {{secondAcctNum}}
-            </form>
-        </div>
-        <div class="step">
-            <span>Step 2: Enter Transfer Amount</span>
-        </div>
-        <div class="account">
-            <table>
-                <tr>
-                    <td><label>Amount:</label><span>*</span></td>
-                    <td>
-                        <input type="number" placeholder="$ 300.00" required [(ngModel)]="model.amount" name="amount" #amount="ngModel">
-                        <div [hidden]="amount.valid || amount.pristine" class="alert">Amount is required!</div>
-                        <div *ngIf="!amount.pristine && !checkAmount()" class="alert">Amount has to be a positive number!</div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="step">
-            <span>Step 3: Enter Send Date</span>
-        </div>
-        <div class="account">
-            <table>
-                <tr>
-                    <td><label>Date:</label><span>*</span></td>
-                    <td>
-                        <input type="date" id="date" required [(ngModel)]="model.date" name="date" #date="ngModel">
-                        <div [hidden]="date.valid || date.pristine" class="alert">Date is required!</div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="step">
-            <span>Step 4: Select From Account</span>
-        </div>
-        <div class="account">
-            <table>
-                <tr>
-                    <td><label>From Account:</label><span>*</span></td>
-                    <td>
-                        <select id="fromAccount" required [(ngModel)]="model.fromAccountNumber" name="fromAccountNumber">
-                            <option disabled selected>Select An Existing Account</option>
-                            <option *ngFor="let account of accounts" [value]="account.accountNumber">{{account.accountNumber}} {{account.accountType}} Acct balance: $ {{account.balance}}</option>
-                        </select>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="step">
-            <span>Step 5: Add Note to the Transaction</span>
-        </div>
-        <div class="note">
-            <div class="notetitle">Note: Optional</div>
-            <textarea type="text" name="notes" [(ngModel)]="model.notes" size="200" maxlength="200"></textarea>
-            <div class="count">{{model.notes.length}}<span>/200</span></div>
-        </div>
-        <div *ngIf="successMessage || errorMessage" class=messageArea>
-            <div class="successArea">{{successMessage}}</div>
-            <div class="errorArea">{{errorMessage}}</div>
-        </div>
-        <div class="bottom-buttons">
-            <a href="transfer-fund/dashboard">
-                <div class="bottom-button"><span>Cancel</span></div>
-            </a>
-            <button type="submit" id="confirmbutton" [disabled]="!eForm.valid || !checkAmount()">Confirm Transfer</button>
-        </div>
-        {{diagnostic}}
-    </form>
+        {{diagnostic2}} {{secondAcctNum}}
+      </form>
+    </div>
+    <div class="step">
+      <span>Step 2: Enter Transfer Amount</span>
+    </div>
+    <div class="account">
+      <table>
+        <tr>
+          <td><label>Amount:</label><span>*</span></td>
+          <td>
+            <input type="number" placeholder="$ 300.00" required [(ngModel)]="model.amount" name="amount"
+                   #amount="ngModel">
+            <div [hidden]="amount.valid || amount.pristine" class="alert">Amount is required!</div>
+            <div *ngIf="!amount.pristine && !checkAmount()" class="alert">Amount has to be a positive number!</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="step">
+      <span>Step 3: Enter Send Date</span>
+    </div>
+    <div class="account">
+      <table>
+        <tr>
+          <td><label>Date:</label><span>*</span></td>
+          <td>
+            <input type="date" id="date" required [(ngModel)]="model.date" name="date" #date="ngModel">
+            <div [hidden]="date.valid || date.pristine" class="alert">Date is required!</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="step">
+      <span>Step 4: Select From Account</span>
+    </div>
+    <div class="account">
+      <table>
+        <tr>
+          <td><label>From Account:</label><span>*</span></td>
+          <td>
+            <select id="fromAccount" required [(ngModel)]="model.fromAccountNumber" name="fromAccountNumber">
+              <option disabled selected>Select An Existing Account</option>
+              <option *ngFor="let account of accounts" [value]="account.accountNumber">{{account.accountNumber}}
+                {{account.accountType}} Acct balance: $ {{account.balance}}
+              </option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="step">
+      <span>Step 5: Add Note to the Transaction</span>
+    </div>
+    <div class="note">
+      <div class="notetitle">Note: Optional</div>
+      <textarea type="text" name="notes" [(ngModel)]="model.notes" size="200" maxlength="200"></textarea>
+      <div class="count">{{model.notes.length}}<span>/200</span></div>
+    </div>
+    <div *ngIf="successMessage || errorMessage" class=messageArea>
+      <div class="successArea">{{successMessage}}</div>
+      <div class="errorArea">{{errorMessage}}</div>
+    </div>
+    <div class="bottom-buttons">
+      <a href="transfer-fund/dashboard">
+        <div class="bottom-button"><span>Cancel</span></div>
+      </a>
+      <button type="submit" id="confirmbutton" [disabled]="!eForm.valid || !checkAmount()">Confirm Transfer</button>
+    </div>
+    <div *ngIf="debug">{{diagnostic}}</div>
+  </form>
 </div>

@@ -1,21 +1,22 @@
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {User} from './User';
+import {NgForm} from '@angular/forms';
+import {Observable} from 'rxjs/Observable';
+import {Router} from '@angular/router';
+import {AuthenticationService} from '../../providers/authentication.service';
+import {LocalStorage} from '../../providers/localstorage.service';
 
-import {Component, OnInit, ViewChild} from "@angular/core";
-import {User} from "./User";
-import {NgForm} from "@angular/forms";
-import {Observable} from "rxjs/Observable";
-import {Router} from "@angular/router";
-import {AuthenticationService} from "../../providers/authentication.service";
-import {LocalStorage} from "../../providers/localstorage.service";
+declare var Materialize: any;
 
 @Component({
-  selector:'page-register',
+  selector: 'page-register',
   templateUrl: 'register.component.html',
   styleUrls: ['register.component.scss']
 })
 export class RegisterComponent implements OnInit {
   @ViewChild('formDataPre') formDataPre: NgForm;
-@ViewChild('formData') formData: NgForm;
-@ViewChild('formDataTwo') formDataTwo: NgForm;
+  @ViewChild('formData') formData: NgForm;
+  @ViewChild('formDataTwo') formDataTwo: NgForm;
 
   step = 1;
   userAgreement = false;
@@ -45,7 +46,7 @@ export class RegisterComponent implements OnInit {
   error: any;
 
   user = {};
-  email= '';
+  email = '';
   pin = '';
 
   constructor(private auth: AuthenticationService,
@@ -54,14 +55,13 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   checkRegistrationStatus() {
     console.log(this.email);
     console.log(this.pin);
     if (this.email !== null && this.email.length > 0 && this.pin !== null && this.pin.length > 0) {
-      this.auth.checkRegistrationStatus(this.email, this.pin).subscribe((data)=>{
+      this.auth.checkRegistrationStatus(this.email, this.pin).subscribe((data) => {
         console.log(data);
         if (data) {
           this.user = data;
@@ -69,23 +69,29 @@ export class RegisterComponent implements OnInit {
         }
       }, (error) => {
         console.log(error);
-        this.error = error.error.message;
+        // this.error = error.error.message;
+        if (error.error.message) {
+          Materialize.toast(error.error.message, 4000);
+        } else {
+          Materialize.toast('Please check your internet access', 4000);
+        }
       });
     } else {
-      this.error = "Please enter the following information";
+      // this.error = 'Please enter the following information';
+      Materialize.toast('Please enter the following information', 4000);
     }
   }
 
   nextPage() {
-    console.log("Going to next page");
-    console.log("step: "+this.step);
+    console.log('Going to next page');
+    console.log('step: ' + this.step);
     this.step = this.step + 1;
-    this.error = "";
+    this.error = '';
   }
 
   previousPage() {
-    console.log("Going to previous page");
-    console.log("step: "+this.step);
+    console.log('Going to previous page');
+    console.log('step: ' + this.step);
     this.step = this.step - 1;
   }
 
@@ -101,7 +107,7 @@ export class RegisterComponent implements OnInit {
       this.auth.register(this.user).subscribe((data) => {
         console.log(data);
         this.storage.setObject('user', data);
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['dashboard'], {queryParams: {user: data}});
       }, (error) => {
         console.log(error);
       });

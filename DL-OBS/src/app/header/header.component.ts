@@ -3,6 +3,8 @@ import {Router} from "@angular/router";
 import {Observable} from "rxjs/Observable";
 import {AuthenticationService} from "../../providers/authentication.service";
 import {LocalStorage} from "../../providers/localstorage.service";
+declare var jquery:any;
+declare var $ :any;
 
 @Component({
   selector: 'dl-header',
@@ -13,6 +15,7 @@ import {LocalStorage} from "../../providers/localstorage.service";
 export class HeaderComponent implements OnInit {
 
   user: any;
+  language = 'Language';
 
   constructor(private router: Router,
               private auth: AuthenticationService,
@@ -20,7 +23,9 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    $(document).ready(function(){
+      $('.modal').modal({dismissible: false});
+    });
   }
 
   logout() {
@@ -30,26 +35,29 @@ export class HeaderComponent implements OnInit {
       console.log(data);
       this.storage.remove('user');
       // this.router.navigate(['']);
-      window.location.replace('');
+      $(document).ready(function(){
+        // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+        $('#modal-logout').modal('open');
+        // $('#modal-login').css('display', 'inline-block');
+      });
     },(error)=>{
       console.log(error);
     })
-    // this.afAuth.auth.signOut().then((success) => {
-    //   console.log("Success");
-    //   console.log(success);
-    //   localStorage.removeItem('user');
-    //   window.location.replace('/');
-    //   // this.router.navigateByUrl('', { skipLocationChange: true });
-    // }).catch((error) => {
-    //   console.log("Error");
-    //   console.log(error);
-    // });
+
   }
   hasUser(): boolean {
     if (localStorage.getItem('user') !== null) {
       return true;
     }
     return false;
+  }
+
+  switchLanguage() {
+    window.location.reload();
+  }
+
+  reload() {
+    window.location.reload();
   }
 
 }

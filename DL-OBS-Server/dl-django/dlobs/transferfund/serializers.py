@@ -3,6 +3,7 @@ from .models import Transaction
 from .models import AccountInfo
 from .models import Contact
 
+
 class AccountInfoSerializer(serializers.ModelSerializer):
     print("-->In AccountInfoSerializer<--")
 
@@ -37,6 +38,7 @@ class TransactionSerializer(serializers.ModelSerializer):
             'notes'
         )
 
+
 class ContactSerializer(serializers.ModelSerializer):
     print("-->In ContactSerializer<--")
 
@@ -51,4 +53,3 @@ class ContactSerializer(serializers.ModelSerializer):
             'routingNumber',
             'accountType'
         )
-

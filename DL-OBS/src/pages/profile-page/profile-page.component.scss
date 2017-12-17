@@ -1,68 +1,74 @@
 h1 {
-    font-size: 2rem;
-    text-align: left;
-    padding-left: 2rem;
+  font-size: 2rem;
+  text-align: left;
+  padding-left: 2rem;
 }
+
 .buttons {
-    margin-left:2rem;
-    input {
-        border:solid 1px #817b7b;
-        border-bottom:none;
-        padding: 1rem 4rem;
-        margin-right: 1rem;
-        background: #fff;
-    }
-    input[name="profile-button"]{
-        border-top:solid 5px #b79344;
-    }
+  margin-left: 2rem;
+  input {
+    border: solid 1px #817b7b;
+    border-bottom: none;
+    padding: 1rem 4rem;
+    margin-right: 1rem;
+    background: #fff;
+  }
+  input[name="profile-button"] {
+    border-top: solid 5px #b79344;
+  }
 }
-.content{
-    margin:0 0 2rem 2rem;
-    padding: 0 0 4rem 4rem;
-    border:solid 1px #dbd6d6;
-    width: 90%;
+
+.content {
+  margin: 0 0 2rem 2rem;
+  padding: 0 0 4rem 4rem;
+  border: solid 1px #dbd6d6;
+  width: 90%;
 }
 
 .sub-header {
-    margin: 2rem 0;
-    padding-bottom: 1rem;
-    width:80%;
-    border-bottom: solid #dbd6d6 1px;
-    h2{
-        font-size: 1.6rem;
-        display: inline;
-    }
-    h3{
-        font-size:1.2rem;
-        text-decoration: underline;
-        color: #743f1b;
-        display: inline;
-    }
-}
-td{
-    padding: 0;
-}
-tr {
-    padding:0;
-    height:2rem;
-}
-h4 {
+  margin: 2rem 0;
+  padding-bottom: 1rem;
+  width: 80%;
+  border-bottom: solid #dbd6d6 1px;
+  h2 {
+    font-size: 1.6rem;
+    display: inline;
+  }
+  h3 {
     font-size: 1.2rem;
-    padding: 5px 0;
+    text-decoration: underline;
+    color: #743f1b;
+    display: inline;
+  }
 }
+
+td {
+  padding: 0;
+}
+
+tr {
+  padding: 0;
+  height: 2rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+  padding: 5px 0;
+}
+
 .choose-alert {
-    .column-1 {
-        width:60%;
+  .column-1 {
+    width: 60%;
+  }
+  .column-2 {
+    width: 10%;
+  }
+  .column-3 {
+    width: 10%;
+    padding-right: 2rem;
+    input {
+      border: solid #dbd6d6 1px;
+      padding-left: 1rem;
     }
-    .column-2 {
-        width:10%;
-    }
-    .column-3 {
-        width:10%;
-        padding-right:2rem;
-        input {
-            border: solid #dbd6d6 1px; 
-            padding-left:1rem;           
-        }
-    }
+  }
 }

@@ -1,53 +1,53 @@
 .step1 {
   .container {
-    float:middle;
+    float: middle;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
     width: 60%;
-    min-height:1640px;
-    background-color:#fff;
+    min-height: 1640px;
+    background-color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: 2px solid #b79344;
   }
   .tacbox {
-    font-size:1.2rem;
-    padding-left:20px;
+    font-size: 1.2rem;
+    padding-left: 20px;
     color: #000;
   }
   .right {
     margin-top: 20px;
-    font-size:1.2rem;
+    font-size: 1.2rem;
     width: 100%;
     text-align: left;
     border-radius: 12px;
     float: right;
-    padding-left:10px;
+    padding-left: 10px;
 
   }
 
-  .header{
+  .header {
     margin-left: auto;
     margin-right: auto;
-    width:99%;
-    height:60px;
-    background: -webkit-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
-    background: -o-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
-    background: -moz-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
-    background: linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
+    width: 99%;
+    height: 60px;
+    background: -webkit-linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
+    background: -o-linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
+    background: -moz-linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
+    background: linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
   }
   input[type="radio"] {
     visibility: visible !important;
-     border:none !important;
-    width:20px !important;
-    height:auto !important;
+    border: none !important;
+    width: 20px !important;
+    height: auto !important;
     -webkit-appearance: radio !important;
-    opacity:100 !important;
+    opacity: 100 !important;
     position: relative !important;
-    pointer-events:auto !important;
+    pointer-events: auto !important;
   }
-  .content{
+  .content {
     padding: 20px;
     padding-left: 50px;
     padding-right: 50px;
@@ -56,27 +56,27 @@
     margin-bottom: 10px;
     font-size: 2.3em;
     color: #b79244;
-    text-align:center;
+    text-align: center;
   }
   .titleleft {
     margin-bottom: 10px;
     font-size: 2.3em;
     color: #b79244;
-    text-align:left;
+    text-align: left;
   }
   .titletwo {
     margin-bottom: 10px;
     font-size: 1.3em;
     color: #b79244;
-    text-align:center;
+    text-align: center;
   }
-  .image{
+  .image {
     margin-bottom: 10px;
     text-align: center;
   }
   .table {
-    border-top-left-radius:19px;
-    border-top-right-radius:19px;
+    border-top-left-radius: 19px;
+    border-top-right-radius: 19px;
     background-color: #b79344;
     height: 45px;
     margin-top: 30px;
@@ -88,76 +88,76 @@
   }
   .number {
     font-size: 1.2em;
-    color:#4b4b4b;
+    color: #4b4b4b;
     padding-top: 18px;
     padding-bottom: 1px;
   }
   .star {
-    color:red;
-    vertical-align:sub;
+    color: red;
+    vertical-align: sub;
     padding-left: 8px;
-    font-size:0.9em;
+    font-size: 0.9em;
 
   }
   input[type="text"] {
     margin: auto !important;
     height: auto !important;
-    width: auto  !important;
-    padding:8px !important;
-    padding-left:13px !important;
+    width: auto !important;
+    padding: 8px !important;
+    padding-left: 13px !important;
     padding-right: 13px !important;
     font-size: 1.3em !important;
-    border:1.5px solid #bbbbbb !important;
-    color:#b79344 !important;
+    border: 1.5px solid #bbbbbb !important;
+    color: #b79344 !important;
     border-radius: 4px !important;
   }
   input[type="text"]:focus {
     margin: auto !important;
     height: auto !important;
-    width: auto  !important;
+    width: auto !important;
     outline: none !important;
-    border:1.5px solid #b79344 !important;
+    border: 1.5px solid #b79344 !important;
     box-shadow: 0 0 10px #DDDDDD !important;
   }
 
   input[type="email"] {
     margin: auto !important;
     height: auto !important;
-    width: auto  !important;
-    padding:8px !important;
-    padding-left:13px !important;
+    width: auto !important;
+    padding: 8px !important;
+    padding-left: 13px !important;
     padding-right: 13px !important;
     font-size: 1.3em !important;
-    border:1.5px solid #bbbbbb !important;
-    color:#b79344 !important;
+    border: 1.5px solid #bbbbbb !important;
+    color: #b79344 !important;
     border-radius: 4px !important;
   }
   input[type="email"]:focus {
     margin: auto !important;
     height: auto !important;
-    width: auto  !important;
+    width: auto !important;
     outline: none !important;
-    border:1.5px solid #b79344 !important;
+    border: 1.5px solid #b79344 !important;
     box-shadow: 0 0 10px #DDDDDD !important;
   }
   input[type="tel"] {
     margin: auto !important;
     height: auto !important;
-    width: auto  !important;
-    padding:8px !important;
-    padding-left:13px !important;
+    width: auto !important;
+    padding: 8px !important;
+    padding-left: 13px !important;
     padding-right: 13px !important;
     font-size: 1.3em !important;
-    border:1.5px solid #bbbbbb !important;
-    color:#b79344 !important;
+    border: 1.5px solid #bbbbbb !important;
+    color: #b79344 !important;
     border-radius: 4px !important;
   }
   input[type="tel"]:focus {
     margin: auto !important;
     height: auto !important;
-    width: auto  !important;
+    width: auto !important;
     outline: none !important;
-    border:1.5px solid #b79344 !important;
+    border: 1.5px solid #b79344 !important;
     box-shadow: 0 0 10px #DDDDDD !important;
   }
 
@@ -170,14 +170,14 @@
     padding-left: 2px;
     padding-top: 4px;
     padding-bottom: 2px;
-    font-size:1.2rem;
+    font-size: 1.2rem;
     color: #1D3c56;
   }
-  .mid{
-    width:100% !important;
+  .mid {
+    width: 100% !important;
   }
   .tablemid {
-    width:100% !important;
+    width: 100% !important;
     background-color: #b79344;
     height: 45px;
     margin-top: 30px;
@@ -216,11 +216,11 @@
   .continue-button {
     margin: auto !important;
     height: auto !important;
-    width: auto  !important;
-    font-size: 20px    !important;
-    color: white     !important;
-    background-color: #b79344   !important;
-    width: 160px               !important;
+    width: auto !important;
+    font-size: 20px !important;
+    color: white !important;
+    background-color: #b79344 !important;
+    width: 160px !important;
     padding: 12px 10px !important;
     border-radius: 5px !important;
     border: none !important;
@@ -288,16 +288,15 @@
     font-weight: 900;
   }
   .string {
-    padding:10px;
+    padding: 10px;
     color: #9F9F9F;
   }
   .continue {
-    padding-top:30px;
+    padding-top: 30px;
     padding-bottom: 5px;
     width: 100%;
     text-align: center;
   }
-
 
   .username {
     width: 60%;
@@ -318,33 +317,33 @@
   input[type="password"] {
     margin: auto !important;
     height: auto !important;
-    width: auto  !important;
-    padding:8px !important;
-    padding-left:13px !important;
+    width: auto !important;
+    padding: 8px !important;
+    padding-left: 13px !important;
     padding-right: 13px !important;
     font-size: 1.3em !important;
-    border:1.5px solid #bbbbbb !important;
-    color:#b79344 !important;
+    border: 1.5px solid #bbbbbb !important;
+    color: #b79344 !important;
     border-radius: 4px !important;
   }
   input[type="password"]:focus {
     margin: auto !important;
     height: auto !important;
-    width: auto  !important;
+    width: auto !important;
     outline: none !important;
-    border:1.5px solid #b79344 !important;
+    border: 1.5px solid #b79344 !important;
     box-shadow: 0 0 10px #DDDDDD !important;
   }
 
   select {
     display: inherit !important;
-    padding:8px !important;
-    padding-left:13px !important;
+    padding: 8px !important;
+    padding-left: 13px !important;
     padding-right: 13px !important;
     font-size: 1.3em !important;
-    border:1.5px solid #bbbbbb !important;
+    border: 1.5px solid #bbbbbb !important;
     background-color: #fff !important;
-    color:#b79344 !important;
+    color: #b79344 !important;
     width: 220px !important;
     height: 42px !important;
     border-radius: 0 !important;
@@ -352,10 +351,10 @@
 
   select:focus {
     outline: none !important;
-    border:1.5px solid #b79344 !important;
+    border: 1.5px solid #b79344 !important;
     box-shadow: 0 0 10px #DDDDDD !important;
   }
-  .divide{
+  .divide {
     width: 100% !important;
     padding: 0px 0px !important;
   }
@@ -367,44 +366,43 @@
     width: 38%
   }
 
-
   table {
     width: auto !important;
   }
 
   .lefttable {
-    padding:0px 0px !important;
+    padding: 0px 0px !important;
   }
 
   .righttable {
-    padding:0px 0px !important;
+    padding: 0px 0px !important;
   }
 
-    .tables{
-    width:100% !important;
+  .tables {
+    width: 100% !important;
   }
-   .leftlabel {
+  .leftlabel {
     width: 25% !important;
-    font-size:1.2rem !important;
-    color:#000000 !important;
+    font-size: 1.2rem !important;
+    color: #000000 !important;
   }
-  .rightblanks{
+  .rightblanks {
     width: 75% !important;
   }
 
   .alert {
-    margin-top:5px;
+    margin-top: 5px;
     width: 370px;
     height: 40px;
     background-color: #fceeec;
     border: 1px solid #f4d4d2;
     text-align: center;
     border-radius: 8px;
-    color:#5b5a5a;
+    color: #5b5a5a;
     vertical-align: center;
     text-align: left;
     padding-left: 9px;
-    padding-top:8px;
+    padding-top: 8px;
   }
 
   .continue-button:disabled {
@@ -415,76 +413,75 @@
 .step2 {
   .container {
     overflow: auto;
-    float:middle;
+    float: middle;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
     width: 60%;
-    min-height:1140px;
-    background-color:#fff;
+    min-height: 1140px;
+    background-color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: 2px solid #b79344;
   }
 
-   input[type="radio"] {
+  input[type="radio"] {
     visibility: visible !important;
-     border:none !important;
-    width:20px !important;
-    height:auto !important;
+    border: none !important;
+    width: 20px !important;
+    height: auto !important;
     -webkit-appearance: radio !important;
-    opacity:100 !important;
+    opacity: 100 !important;
     position: relative !important;
-    pointer-events:auto !important;
+    pointer-events: auto !important;
   }
 
-  .tables{
-    width:100% !important;
+  .tables {
+    width: 100% !important;
   }
-   .leftlabel {
-   font-weight:bold !important;
+  .leftlabel {
+    font-weight: bold !important;
     width: 25% !important;
-    font-size:1.2rem !important;
-    color:#000000 !important;
+    font-size: 1.2rem !important;
+    color: #000000 !important;
   }
-  .rightblanks{
+  .rightblanks {
     width: 75% !important;
   }
 
-
   .number {
     font-size: 1.2em;
-    color:#4b4b4b;
+    color: #4b4b4b;
     padding-top: 18px;
     padding-bottom: 1px;
   }
 
   .alert {
-    margin-top:5px;
+    margin-top: 5px;
     width: 370px;
     height: 40px;
     background-color: #fceeec;
     border: 1px solid #f4d4d2;
     text-align: center;
     border-radius: 8px;
-    color:#5b5a5a;
+    color: #5b5a5a;
     vertical-align: center;
     text-align: left;
     padding-left: 9px;
-    padding-top:8px;
+    padding-top: 8px;
   }
 
-  .header{
+  .header {
     margin-left: auto;
     margin-right: auto;
-    width:99%;
-    height:60px;
-    background: -webkit-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
-    background: -o-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
-    background: -moz-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
-    background: linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
+    width: 99%;
+    height: 60px;
+    background: -webkit-linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
+    background: -o-linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
+    background: -moz-linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
+    background: linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
   }
-  .divide{
+  .divide {
     width: 100% !important;
     padding: 0px 0px !important;
   }
@@ -506,34 +503,33 @@
     text-align: left;
     border-radius: 12px;
     float: right;
-    padding-left:10px;
-    color:#444444;
+    padding-left: 10px;
+    color: #444444;
 
   }
-
 
   input[type="password"] {
     margin: auto !important;
     height: auto !important;
-    width: auto  !important;
-    padding:8px !important;
-    padding-left:13px !important;
+    width: auto !important;
+    padding: 8px !important;
+    padding-left: 13px !important;
     padding-right: 13px !important;
     font-size: 1.3em !important;
-    border:1.5px solid #bbbbbb !important;
-    color:#b79344 !important;
+    border: 1.5px solid #bbbbbb !important;
+    color: #b79344 !important;
     border-radius: 4px !important;
   }
   input[type="password"]:focus {
     margin: auto !important;
     height: auto !important;
-    width: auto  !important;
+    width: auto !important;
     outline: none !important;
-    border:1.5px solid #b79344 !important;
+    border: 1.5px solid #b79344 !important;
     box-shadow: 0 0 10px #DDDDDD !important;
   }
 
-  .content{
+  .content {
     padding: 20px;
     padding-left: 50px;
     padding-right: 50px;
@@ -543,13 +539,13 @@
     font-size: 2em;
     color: #b79244;
   }
-  .image{
+  .image {
     margin-bottom: 10px;
     text-align: center;
   }
   .table {
-    border-top-left-radius:19px;
-    border-top-right-radius:19px;
+    border-top-left-radius: 19px;
+    border-top-right-radius: 19px;
     background-color: #b79344;
     height: 45px;
     margin-top: 30px;
@@ -561,44 +557,39 @@
   }
   label {
     font-size: 1.1em;
-    color:#4b4b4b;
+    color: #4b4b4b;
     padding-top: 25px;
     padding-bottom: 7px;
     font-weight: bold;
   }
   .star {
-    color:red;
-    vertical-align:sub;
+    color: red;
+    vertical-align: sub;
     padding-left: 8px;
-    font-size:0.9em;
+    font-size: 0.9em;
 
   }
   input[type="text"] {
     margin: auto !important;
     height: 22px !important;
-    width: auto  !important;
-    padding:8px !important;
-    padding-left:13px !important;
+    width: auto !important;
+    padding: 8px !important;
+    padding-left: 13px !important;
     padding-right: 13px !important;
     font-size: 1.1em !important;
-    border:1.5px solid #bbbbbb !important;
-    color:#b79344 !important;
+    border: 1.5px solid #bbbbbb !important;
+    color: #b79344 !important;
     border-radius: 4px !important;
   }
 
   input[type="text"]:focus {
     margin: auto !important;
     height: 22px !important;
-    width: auto  !important;
+    width: auto !important;
     outline: none !important;
-    border:1.5px solid #b79344 !important;
+    border: 1.5px solid #b79344 !important;
     box-shadow: 0 0 10px #DDDDDD !important;
   }
-
-
-
-
-
 
   .dash {
     font-size: 1.3em;
@@ -650,28 +641,25 @@
     padding-right: 7px;
   }
 
-
-
   .continue-button {
     height: 50px !important;
-    width: auto  !important;
-    font-size: 20px    !important;
-    color: white     !important;
-    background-color: #b79344   !important;
-    width: 130px               !important;
+    width: auto !important;
+    font-size: 20px !important;
+    color: white !important;
+    background-color: #b79344 !important;
+    width: 130px !important;
     padding: 9px 10px !important;
     border-radius: 5px !important;
     border: none !important;
   }
 
-
   #returnback {
     height: 50px !important;
-    width: auto  !important;
-    font-size: 20px    !important;
-    color: white     !important;
-    background-color: #b79344   !important;
-    width: 130px               !important;
+    width: auto !important;
+    font-size: 20px !important;
+    color: white !important;
+    background-color: #b79344 !important;
+    width: 130px !important;
     padding: 9px 10px !important;
     border-radius: 5px !important;
     border: none !important;
@@ -735,7 +723,7 @@
     margin: 0 auto;
   }
   td {
-    padding-top:20px !important;
+    padding-top: 20px !important;
     padding-right: 6px !important;
   }
   .cancel {
@@ -743,19 +731,19 @@
     font-weight: 900;
   }
   .string {
-    padding:10px;
+    padding: 10px;
     color: #9F9F9F;
   }
 
   select {
     display: inherit !important;
-    padding:8px !important;
-    padding-left:13px !important;
+    padding: 8px !important;
+    padding-left: 13px !important;
     padding-right: 13px !important;
     font-size: 1.1em !important;
-    border:1.5px solid #bbbbbb !important;
+    border: 1.5px solid #bbbbbb !important;
     background-color: #fff !important;
-    color:#b79344 !important;
+    color: #b79344 !important;
     width: 520px !important;
     height: 42px !important;
     border-radius: 0 !important;
@@ -764,7 +752,7 @@
 
   select:focus {
     outline: none !important;
-    border:1.5px solid #b79344 !important;
+    border: 1.5px solid #b79344 !important;
     box-shadow: 0 0 10px #DDDDDD !important;
   }
 
@@ -775,7 +763,7 @@
   .label {
     width: 25%;
   }
-  .selections{
+  .selections {
     width: 75%;
   }
 
@@ -795,102 +783,100 @@
 .step3 {
   .continue-button {
     height: 50px !important;
-    width: auto  !important;
-    font-size: 20px    !important;
-    color: white     !important;
-    background-color: #b79344   !important;
-    width: 130px               !important;
+    width: auto !important;
+    font-size: 20px !important;
+    color: white !important;
+    background-color: #b79344 !important;
+    width: 130px !important;
     padding: 9px 10px !important;
     border-radius: 5px !important;
     border: none !important;
   }
 
-
   #returnback {
     height: 50px !important;
-    width: auto  !important;
-    font-size: 20px    !important;
-    color: white     !important;
-    background-color: #b79344   !important;
-    width: 130px               !important;
+    width: auto !important;
+    font-size: 20px !important;
+    color: white !important;
+    background-color: #b79344 !important;
+    width: 130px !important;
     padding: 9px 10px !important;
     border-radius: 5px !important;
     border: none !important;
   }
 
   .container {
-    float:middle;
+    float: middle;
     margin-top: 20px;
     margin-left: auto;
     margin-bottom: 20px;
     margin-right: auto;
     width: 60%;
-    min-height:1080px;
-    background-color:#fff;
+    min-height: 1080px;
+    background-color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: 2px solid #b79344;
   }
 
-    select {
+  select {
     display: inherit !important;
-    padding:8px !important;
-    padding-left:13px !important;
+    padding: 8px !important;
+    padding-left: 13px !important;
     padding-right: 13px !important;
     font-size: 1.3em !important;
-    border:1.5px solid #bbbbbb !important;
+    border: 1.5px solid #bbbbbb !important;
     background-color: #fff !important;
-    color:#b79344 !important;
+    color: #b79344 !important;
     width: 220px !important;
     height: 42px !important;
     border-radius: 0 !important;
   }
-  
+
   input[type="text"] {
     margin: auto !important;
     height: auto !important;
-    width: auto  !important;
-    padding:8px !important;
-    padding-left:13px !important;
+    width: auto !important;
+    padding: 8px !important;
+    padding-left: 13px !important;
     padding-right: 13px !important;
     font-size: 1.3em !important;
-    border:1.5px solid #bbbbbb !important;
-    color:#b79344 !important;
+    border: 1.5px solid #bbbbbb !important;
+    color: #b79344 !important;
     border-radius: 4px !important;
   }
   input[type="text"]:focus {
     margin: auto !important;
     height: auto !important;
-    width: auto  !important;
+    width: auto !important;
     outline: none !important;
-    border:1.5px solid #b79344 !important;
+    border: 1.5px solid #b79344 !important;
     box-shadow: 0 0 10px #DDDDDD !important;
   }
-   .tables{
-    width:100% !important;
+  .tables {
+    width: 100% !important;
   }
-   .leftlabel {
-   font-weight:bold !important;
+  .leftlabel {
+    font-weight: bold !important;
     width: 25% !important;
-    font-size:1.2rem !important;
-    color:#000000 !important;
+    font-size: 1.2rem !important;
+    color: #000000 !important;
   }
-  .rightblanks{
+  .rightblanks {
     width: 75% !important;
   }
 
-  .header{
+  .header {
     margin-left: auto;
     margin-right: auto;
-    width:99%;
-    height:60px;
-    background: -webkit-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
-    background: -o-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
-    background: -moz-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
-    background: linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
+    width: 99%;
+    height: 60px;
+    background: -webkit-linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
+    background: -o-linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
+    background: -moz-linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
+    background: linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
   }
 
-
-  .content{
+  .content {
     padding: 20px;
     padding-left: 50px;
     padding-right: 50px;
@@ -900,13 +886,13 @@
     font-size: 2em;
     color: #b79244;
   }
-  .image{
+  .image {
     margin-bottom: 10px;
     text-align: center;
   }
   .table {
-    border-top-left-radius:19px;
-    border-top-right-radius:19px;
+    border-top-left-radius: 19px;
+    border-top-right-radius: 19px;
     background-color: #b79344;
     height: 45px;
     margin-top: 30px;
@@ -918,28 +904,28 @@
   }
   .number {
     font-size: 1.2em;
-    color:#4b4b4b;
+    color: #4b4b4b;
     padding-top: 25px;
     padding-bottom: 7px;
   }
   .star {
-    color:red;
-    vertical-align:sub;
+    color: red;
+    vertical-align: sub;
     padding-left: 8px;
-    font-size:0.9em;
+    font-size: 0.9em;
 
   }
   input[type="password"] {
-    padding:8px;
-    padding-left:13px;
+    padding: 8px;
+    padding-left: 13px;
     padding-right: 13px;
     font-size: 1.3em;
-    border:1.5px solid #bbbbbb;
-    color:#b79344;
+    border: 1.5px solid #bbbbbb;
+    color: #b79344;
   }
   input[type="password"]:focus {
     outline: none;
-    border:1.5px solid #b79344;
+    border: 1.5px solid #b79344;
     box-shadow: 0 0 10px #DDDDDD;
   }
   .dash {
@@ -1059,7 +1045,7 @@
   }
 
   .buttons {
-    width:auto !important;
+    width: auto !important;
     padding-top: 30px;
     vertical-align: center;
     text-align: center;
@@ -1073,18 +1059,18 @@
     font-weight: 900;
   }
   .string {
-    padding:10px;
+    padding: 10px;
     color: #9F9F9F;
   }
 
   select {
-    padding:8px;
-    padding-left:13px;
+    padding: 8px;
+    padding-left: 13px;
     padding-right: 13px;
     font-size: 1.3em;
-    border:1.5px solid #bbbbbb;
+    border: 1.5px solid #bbbbbb;
     background-color: #fff;
-    color:#000000;
+    color: #000000;
     width: 280px;
     height: 45px;
     border-radius: 0;
@@ -1092,7 +1078,7 @@
 
   select:focus {
     outline: none;
-    border:1.5px solid #b79344;
+    border: 1.5px solid #b79344;
     box-shadow: 0 0 10px #DDDDDD;
   }
 
@@ -1105,11 +1091,11 @@
     padding-right: 30px;
     padding-top: 30px;
     font-family: Arial, Helvetica, sans-serif;
-    resize:none;
+    resize: none;
     font-size: 1.1em;
     width: 100%;
     height: 400px;
-    border:2px solid #b79344;
+    border: 2px solid #b79344;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -1125,8 +1111,7 @@
     vertical-align: center;
   }
 
-
-  input[type="checkbox"]{
+  input[type="checkbox"] {
     /* Double-sized Checkboxes */
     -ms-transform: scale(1.7); /* IE */
     -moz-transform: scale(1.7); /* FF */
@@ -1140,31 +1125,30 @@
 .step4 {
   .container {
     overflow: auto;
-    float:middle;
+    float: middle;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
     width: 60%;
-    min-height:1100px;
-    background-color:#fff;
+    min-height: 1100px;
+    background-color: #fff;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border: 2px solid #b79344;
   }
 
-  .header{
+  .header {
     margin-left: auto;
     margin-right: auto;
-    width:99%;
-    height:60px;
-    background: -webkit-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
-    background: -o-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
-    background: -moz-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
-    background: linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
+    width: 99%;
+    height: 60px;
+    background: -webkit-linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
+    background: -o-linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
+    background: -moz-linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
+    background: linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
   }
 
-
-  .content{
+  .content {
     padding: 20px;
     padding-left: 50px;
     padding-right: 50px;
@@ -1174,13 +1158,13 @@
     font-size: 2em;
     color: #b79244;
   }
-  .image{
+  .image {
     margin-bottom: 10px;
     text-align: center;
   }
   .table {
-    border-top-left-radius:19px;
-    border-top-right-radius:19px;
+    border-top-left-radius: 19px;
+    border-top-right-radius: 19px;
     background-color: #b79344;
     height: 45px;
     margin-top: 30px;
@@ -1192,28 +1176,28 @@
   }
   label {
     font-size: 0.9em;
-    color:#4b4b4b;
+    color: #4b4b4b;
     padding-top: 25px;
     padding-bottom: 7px;
   }
   .star {
-    color:red;
-    vertical-align:sub;
+    color: red;
+    vertical-align: sub;
     padding-left: 8px;
-    font-size:0.9em;
+    font-size: 0.9em;
 
   }
   input[type="text"] {
-    padding:8px;
-    padding-left:13px;
+    padding: 8px;
+    padding-left: 13px;
     padding-right: 13px;
     font-size: 1.1em;
-    border:1.5px solid #bbbbbb;
-    color:#b79344;
+    border: 1.5px solid #bbbbbb;
+    color: #b79344;
   }
   input[type="text"]:focus {
     outline: none;
-    border:1.5px solid #b79344;
+    border: 1.5px solid #b79344;
     box-shadow: 0 0 10px #DDDDDD;
   }
   .dash {
@@ -1268,16 +1252,15 @@
 
   .buttonscolor {
     height: 50px !important;
-    width: auto  !important;
-    font-size: 20px    !important;
-    color: white     !important;
-    background-color: #b79344   !important;
-    width: 130px               !important;
+    width: auto !important;
+    font-size: 20px !important;
+    color: white !important;
+    background-color: #b79344 !important;
+    width: 130px !important;
     padding: 9px 10px !important;
     border-radius: 5px !important;
     border: none !important;
   }
-
 
   .steps {
     color: #000;
@@ -1331,13 +1314,13 @@
   }
 
   .buttons {
-    width:auto !important;
+    width: auto !important;
     padding-top: 50px;
     vertical-align: center;
-    margin:0 auto;
+    margin: 0 auto;
   }
   td {
-    padding-top:20px;
+    padding-top: 20px;
     padding-right: 6px;
   }
   .cancel {
@@ -1345,18 +1328,18 @@
     font-weight: 900;
   }
   .string {
-    padding:10px;
+    padding: 10px;
     color: #9F9F9F;
   }
 
   select {
-    padding:8px;
-    padding-left:13px;
+    padding: 8px;
+    padding-left: 13px;
     padding-right: 13px;
     font-size: 1.1em;
-    border:1.5px solid #bbbbbb;
+    border: 1.5px solid #bbbbbb;
     background-color: #fff;
-    color:#000000;
+    color: #000000;
     width: 520px;
     height: 42px;
     border-radius: 0;
@@ -1364,7 +1347,7 @@
 
   select:focus {
     outline: none;
-    border:1.5px solid #b79344;
+    border: 1.5px solid #b79344;
     box-shadow: 0 0 10px #DDDDDD;
   }
 
@@ -1379,7 +1362,7 @@
     width: 34%;
     text-align: right;
   }
-  .selections{
+  .selections {
     padding-left: 8px;
     width: 66%;
     font-weight: bold;

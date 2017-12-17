@@ -13,6 +13,7 @@ from serializers import AccountInfoSerializer
 from serializers import TransactionSerializer
 from serializers import ContactSerializer
 
+
 # Create your views here.
 class getAccountInfoView(views.APIView):
     print("[getAccountInfo view ready]")
@@ -28,7 +29,7 @@ class getAccountInfoView(views.APIView):
         return (permissions.IsAuthenticated(), IsAccountOwner(),)
 
     @csrf_exempt
-    def post(self,request, format=None):
+    def post(self, request, format=None):
         data = json.loads(request.body)
         print(data['owner'])
         print(data['accountType'])
@@ -39,32 +40,33 @@ class getAccountInfoView(views.APIView):
         #     "second":2,
         # }
         result = None
-        headers = {'Content-Type':'application/json'}
+        headers = {'Content-Type': 'application/json'}
         if (owner != None and accountType != None):
             try:
-                result = AccountInfo.objects.get(owner = owner, accountType = accountType)
+                result = AccountInfo.objects.get(owner=owner, accountType=accountType)
                 content = {
                     "id": result.id,
                     "accountNumber": result.accountNumber,
                     "firstName": result.firstName,
-                    "lastName":result.lastName,
-                    "owner":result.owner,
-                    "balance":result.balance,
-                    "accountType":result.accountType,
-                    "interestRate":result.interestRate,
-                    "routingNumber":result.routingNumber
+                    "lastName": result.lastName,
+                    "owner": result.owner,
+                    "balance": result.balance,
+                    "accountType": result.accountType,
+                    "interestRate": result.interestRate,
+                    "routingNumber": result.routingNumber
                 }
-                return Response(content, headers = headers, status = status.HTTP_200_OK)
+                return Response(content, headers=headers, status=status.HTTP_200_OK)
             except AccountInfo.DoesNotExist:
                 return Response({
                     'status': 'Not found',
                     'message': 'Cannot find matched account info!'
-                }, headers=headers, status = status.HTTP_404_NOT_FOUND)
+                }, headers=headers, status=status.HTTP_404_NOT_FOUND)
         else:
             return Response({
                 'status': 'Not acceptable',
                 'message': 'Cannot find request parameters!'
             }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
+
 
 class getAllAccountsView(views.APIView):
     print("[getAllAccounts view ready]")
@@ -80,14 +82,14 @@ class getAllAccountsView(views.APIView):
         return (permissions.IsAuthenticated(), IsAccountOwner(),)
 
     @csrf_exempt
-    def post(self,request, format=None):
+    def post(self, request, format=None):
         data = json.loads(request.body)
         print(data['owner'])
         owner = data.get('owner', None)
         result = None
-        headers = {'Content-Type':'application/json'}
+        headers = {'Content-Type': 'application/json'}
         if (owner != None):
-            result = AccountInfo.objects.filter(owner = owner)
+            result = AccountInfo.objects.filter(owner=owner)
             serializer = AccountInfoSerializer(result, many=True)
             return Response(serializer.data, headers=headers, status=status.HTTP_200_OK)
         else:
@@ -95,6 +97,7 @@ class getAllAccountsView(views.APIView):
                 'status': 'Not acceptable',
                 'message': 'Cannot find request parameters!'
             }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
+
 
 # the function to get transaction history
 class getTransactionHistoryView(views.APIView):
@@ -111,7 +114,7 @@ class getTransactionHistoryView(views.APIView):
         return (permissions.IsAuthenticated(), IsAccountOwner(),)
 
     @csrf_exempt
-    def post(self,request, format=None):
+    def post(self, request, format=None):
         data = json.loads(request.body)
         print(data['owner'])
         print(data['fromAccountNumber'])
@@ -121,18 +124,19 @@ class getTransactionHistoryView(views.APIView):
         pending = data.get('pending', None)
 
         transactions = None
-        headers = {'Content-Type':'application/json'}
+        headers = {'Content-Type': 'application/json'}
         if (owner != None and fromAccountNumber != None and pending != None):
-            transactions = Transaction.objects.filter(owner = owner, fromAccountNumber = fromAccountNumber, pending = pending)
+            transactions = Transaction.objects.filter(owner=owner, fromAccountNumber=fromAccountNumber, pending=pending)
             serializer = TransactionSerializer(transactions, many=True)
-            return Response(serializer.data, headers=headers, status=status.HTTP_200_OK)            
+            return Response(serializer.data, headers=headers, status=status.HTTP_200_OK)
         else:
             return Response({
                 'status': 'Not acceptable',
                 'message': 'Cannot find request parameters!'
             }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
 
-# the function to handle internal transfer 
+
+# the function to handle internal transfer
 class handleInternalTransfer(views.APIView):
     print("[handleInternalTransfer view ready]")
 
@@ -147,7 +151,7 @@ class handleInternalTransfer(views.APIView):
         return (permissions.IsAuthenticated(), IsAccountOwner(),)
 
     @csrf_exempt
-    def post(self,request, format=None):
+    def post(self, request, format=None):
         data = json.loads(request.body)
         print('--------------------')
         print(data['fromAccountNumber'])
@@ -164,47 +168,48 @@ class handleInternalTransfer(views.APIView):
         date = data.get('date', None)
         pending = data.get('pending', None)
 
-        headers = {'Content-Type':'application/json'}
+        headers = {'Content-Type': 'application/json'}
         if (fromAccountNumber == None or toAccountNumber == None or owner == None \
-            or amount == None or date == None or pending == None):
+                or amount == None or date == None or pending == None):
             return Response({
                 'status': 'Not acceptable',
                 'message': 'Cannot find request parameters!'
             }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
-        
+
         # validate the from account balance
         try:
-            fromAcct = AccountInfo.objects.get(owner = owner, accountNumber = fromAccountNumber)
-            toAcct = AccountInfo.objects.get(owner = owner, accountNumber = toAccountNumber)
+            fromAcct = AccountInfo.objects.get(owner=owner, accountNumber=fromAccountNumber)
+            toAcct = AccountInfo.objects.get(owner=owner, accountNumber=toAccountNumber)
             if (amount > fromAcct.balance):
                 return Response({
                     'status': 'Precondition invalid',
                     'message': 'Your from account has insufficient fund!'
-                }, headers=headers, status=status.HTTP_428_PRECONDITION_REQUIRED) 
-            # deduct the amount in from-account
+                }, headers=headers, status=status.HTTP_428_PRECONDITION_REQUIRED)
+                # deduct the amount in from-account
             fromAcct.balance = fromAcct.balance - amount
             fromAcct.save()
             # increase the amount in to-account
             toAcct.balance = toAcct.balance + amount
             toAcct.save()
             # generate two transaction records related to two accounts
-            trans1 = Transaction(fromAccountNumber = fromAccountNumber, \
-                toAccountNumber = toAccountNumber, owner = owner, date = date, \
-                pending = pending, amount = amount * -1)
+            trans1 = Transaction(fromAccountNumber=fromAccountNumber, \
+                                 toAccountNumber=toAccountNumber, owner=owner, date=date, \
+                                 pending=pending, amount=amount * -1)
             trans1.save()
-            trans2 = Transaction(fromAccountNumber = toAccountNumber, \
-                toAccountNumber = fromAccountNumber, owner = owner, date = date, \
-                pending = pending, amount = amount)
+            trans2 = Transaction(fromAccountNumber=toAccountNumber, \
+                                 toAccountNumber=fromAccountNumber, owner=owner, date=date, \
+                                 pending=pending, amount=amount)
             trans2.save()
             return Response({
                 'status': 'Success',
                 'message': 'Your transfer has been scheduled successfully!'
-            }, headers=headers, status=status.HTTP_200_OK) 
+            }, headers=headers, status=status.HTTP_200_OK)
         except AccountInfo.DoesNotExist:
             return Response({
                 'status': 'Precondition invalid',
                 'message': 'Internal Error: cannot find from/to account!'
             }, headers=headers, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 # the function to handle check deposit
 class handleCheckDeposit(views.APIView):
@@ -221,7 +226,7 @@ class handleCheckDeposit(views.APIView):
         return (permissions.IsAuthenticated(), IsAccountOwner(),)
 
     @csrf_exempt
-    def post(self,request, format=None):
+    def post(self, request, format=None):
         data = json.loads(request.body)
         print('--------------------')
         print(data['fromAccountNumber'])
@@ -238,24 +243,24 @@ class handleCheckDeposit(views.APIView):
         date = data.get('date', None)
         pending = data.get('pending', None)
 
-        headers = {'Content-Type':'application/json'}
+        headers = {'Content-Type': 'application/json'}
         if (fromAccountNumber == None or toAccountNumber == None or owner == None \
-            or amount == None or date == None or pending == None):
+                or amount == None or date == None or pending == None):
             return Response({
                 'status': 'Not acceptable',
                 'message': 'Cannot find request parameters!'
             }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
-        
+
         # validate the account information
         try:
-            toAcct = AccountInfo.objects.get(owner = owner, accountNumber = toAccountNumber)
+            toAcct = AccountInfo.objects.get(owner=owner, accountNumber=toAccountNumber)
             # increase the amount in to-account
             toAcct.balance = toAcct.balance + amount
             toAcct.save()
             # generate one transaction record in the database
-            trans = Transaction(fromAccountNumber = toAccountNumber, \
-                toAccountNumber = fromAccountNumber, owner = owner, date = date, \
-                pending = pending, amount = amount)
+            trans = Transaction(fromAccountNumber=toAccountNumber, \
+                                toAccountNumber=fromAccountNumber, owner=owner, date=date, \
+                                pending=pending, amount=amount)
             trans.save()
             return Response({
                 'status': 'Success',
@@ -266,6 +271,7 @@ class handleCheckDeposit(views.APIView):
                 'status': 'Precondition invalid',
                 'message': 'Internal Error: cannot find to account!'
             }, headers=headers, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 class getContactsInfoView(views.APIView):
     print("[getContactsInfo view ready]")
@@ -281,23 +287,24 @@ class getContactsInfoView(views.APIView):
         return (permissions.IsAuthenticated(), IsAccountOwner(),)
 
     @csrf_exempt
-    def post(self,request, format=None):
+    def post(self, request, format=None):
         data = json.loads(request.body)
         print('--------------------')
         print(data['owner'])
         print('--------------------')
         owner = data.get('owner', None)
 
-        headers = {'Content-Type':'application/json'}
+        headers = {'Content-Type': 'application/json'}
         if (owner == None):
             return Response({
                 'status': 'Not acceptable',
                 'message': 'Cannot find request parameters!'
             }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
-        
-        result = Contact.objects.filter(owner = owner)
+
+        result = Contact.objects.filter(owner=owner)
         serializer = AccountInfoSerializer(result, many=True)
         return Response(serializer.data, headers=headers, status=status.HTTP_200_OK)
+
 
 class handleExternalTransfer(views.APIView):
     print("[handleExternalTransfer view ready]")
@@ -313,7 +320,7 @@ class handleExternalTransfer(views.APIView):
         return (permissions.IsAuthenticated(), IsAccountOwner(),)
 
     @csrf_exempt
-    def post(self,request, format=None):
+    def post(self, request, format=None):
         data = json.loads(request.body)
         print('--------------------')
         print(data['fromAccountNumber'])
@@ -332,48 +339,49 @@ class handleExternalTransfer(views.APIView):
         pending = data.get('pending', None)
         notes = data.get('notes', None)
 
-        headers = {'Content-Type':'application/json'}
+        headers = {'Content-Type': 'application/json'}
         if (fromAccountNumber == None or toAccountNumber == None or owner == None \
-            or amount == None or date == None or pending == None or notes == None):
+                or amount == None or date == None or pending == None or notes == None):
             return Response({
                 'status': 'Not acceptable',
                 'message': 'Cannot find request parameters!'
             }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
-        
+
         # validate the from account balance
         try:
-            fromAcct = AccountInfo.objects.get(owner = owner, accountNumber = fromAccountNumber)
-            toAcct = AccountInfo.objects.get(accountNumber = toAccountNumber)
+            fromAcct = AccountInfo.objects.get(owner=owner, accountNumber=fromAccountNumber)
+            toAcct = AccountInfo.objects.get(accountNumber=toAccountNumber)
             if (amount > fromAcct.balance):
                 return Response({
                     'status': 'Precondition invalid',
                     'message': 'Your from account has insufficient fund!'
-                }, headers=headers, status=status.HTTP_428_PRECONDITION_REQUIRED) 
-            # deduct the amount in from-account
+                }, headers=headers, status=status.HTTP_428_PRECONDITION_REQUIRED)
+                # deduct the amount in from-account
             fromAcct.balance = fromAcct.balance - amount
             fromAcct.save()
             # increase the amount in to-account
             toAcct.balance = toAcct.balance + amount
             toAcct.save()
             # generate two transaction records related to two accounts
-            trans1 = Transaction(fromAccountNumber = fromAccountNumber, \
-                toAccountNumber = toAccountNumber, owner = owner, date = date, \
-                pending = pending, amount = amount * -1)
+            trans1 = Transaction(fromAccountNumber=fromAccountNumber, \
+                                 toAccountNumber=toAccountNumber, owner=owner, date=date, \
+                                 pending=pending, amount=amount * -1)
             trans1.save()
-            trans2 = Transaction(fromAccountNumber = toAccountNumber, \
-                toAccountNumber = fromAccountNumber, owner = toAcct.owner, date = date, \
-                pending = pending, amount = amount)
+            trans2 = Transaction(fromAccountNumber=toAccountNumber, \
+                                 toAccountNumber=fromAccountNumber, owner=toAcct.owner, date=date, \
+                                 pending=pending, amount=amount)
             trans2.save()
             successM = 'Your transfer to ' + toAcct.firstName + ' ' + toAcct.lastName + ' has been scheduled successfully!'
             return Response({
                 'status': 'Success',
                 'message': successM
-            }, headers=headers, status=status.HTTP_200_OK) 
+            }, headers=headers, status=status.HTTP_200_OK)
         except AccountInfo.DoesNotExist:
             return Response({
                 'status': 'Precondition invalid',
                 'message': 'Internal Error: cannot find from/to account!'
             }, headers=headers, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 class addContactView(views.APIView):
     print("[addContact view ready]")
@@ -389,7 +397,7 @@ class addContactView(views.APIView):
         return (permissions.IsAuthenticated(), IsAccountOwner(),)
 
     @csrf_exempt
-    def post(self,request, format=None):
+    def post(self, request, format=None):
         data = json.loads(request.body)
         print('--------------------')
         print(data['firstName'])
@@ -406,17 +414,17 @@ class addContactView(views.APIView):
         routingNumber = data.get('routingNumber', None)
         accountType = data.get('accountType', None)
 
-        headers = {'Content-Type':'application/json'}
+        headers = {'Content-Type': 'application/json'}
         if (firstName == None or lastName == None or owner == None \
-            or accountNumber == None or routingNumber == None or accountType == None):
+                or accountNumber == None or routingNumber == None or accountType == None):
             return Response({
                 'status': 'Not acceptable',
                 'message': 'Cannot find request parameters!'
             }, headers=headers, status=status.HTTP_406_NOT_ACCEPTABLE)
-        
+
         # validate the contact should not exist in the record
         try:
-            result = Contact.objects.get(owner = owner, accountNumber = accountNumber)
+            result = Contact.objects.get(owner=owner, accountNumber=accountNumber)
             return Response({
                 'status': 'Precondition invalid',
                 'message': 'This account has already existed in your contacts list!'
@@ -424,12 +432,12 @@ class addContactView(views.APIView):
         except Contact.DoesNotExist:
             # first check whether this contact exist in the accountinfo table
             try:
-                result = AccountInfo.objects.get(firstName = firstName, \
-                    lastName = lastName, accountNumber = accountNumber,\
-                    accountType = accountType, routingNumber = routingNumber)
+                result = AccountInfo.objects.get(firstName=firstName, \
+                                                 lastName=lastName, accountNumber=accountNumber, \
+                                                 accountType=accountType, routingNumber=routingNumber)
                 # the result do exist in the contact list.
-                newContact = Contact(owner = owner, firstName = firstName, lastName = lastName, \
-                    accountNumber = accountNumber, routingNumber = routingNumber, accountType = accountType)
+                newContact = Contact(owner=owner, firstName=firstName, lastName=lastName, \
+                                     accountNumber=accountNumber, routingNumber=routingNumber, accountType=accountType)
                 newContact.save()
                 return Response({
                     'status': 'Success',
@@ -439,9 +447,4 @@ class addContactView(views.APIView):
                 return Response({
                     'status': 'Not found',
                     'message': 'We do not have record of this contact!'
-                }, headers=headers, status=status.HTTP_404_NOT_FOUND)                
-
-            
-
-
-
+                }, headers=headers, status=status.HTTP_404_NOT_FOUND)

@@ -11,9 +11,9 @@ from rest_framework.parsers import JSONParser
 from loanmanagement.models import Loan
 from loanmanagement.serializers import LoanManagementSerializer
 
+
 @csrf_exempt
 def loan_list(request):
-
     if request.method == 'GET':
         loans = Loan.objects.all()
         serializer = LoanManagementSerializer(loans, many=True)
@@ -27,14 +27,13 @@ def loan_list(request):
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
 
+
 @csrf_exempt
 def loan_detail(request, user_id):
-
-
     if request.method == 'GET':
         loans = Loan.objects.filter(user_id=user_id)
-        serializer = LoanManagementSerializer(loans,many=True)
-        return JsonResponse(serializer.data,safe=False)
+        serializer = LoanManagementSerializer(loans, many=True)
+        return JsonResponse(serializer.data, safe=False)
 
     elif request.method == 'PUT':
         data = JSONParser().parse(request)

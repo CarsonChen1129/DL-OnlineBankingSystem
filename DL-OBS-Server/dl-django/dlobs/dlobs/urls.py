@@ -32,7 +32,7 @@ urlpatterns = [
     url(r'^account', AccountViewSet.as_view(), name='account'),
     url(r'^auth/login', LoginView.as_view(), name='login'),
     url(r'^auth/logout', LogoutView.as_view(), name='logout'),
-    url(r'^loanmanage/',include('loanmanagement.urls')),
+    url(r'^loanmanage/', include('loanmanagement.urls')),
     url(r'^transferfund/getAccountInfo', getAccountInfoView.as_view(), name="getAccountInfo"),
     url(r'^transferfund/getAllAccounts', getAllAccountsView.as_view(), name="getAllAccounts"),
     url(r'^transferfund/getTransactionHistory', getTransactionHistoryView.as_view(), name="getTransactionHistory"),

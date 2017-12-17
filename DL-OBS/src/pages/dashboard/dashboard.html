@@ -1,27 +1,35 @@
+<div id="modal-login" class="modal">
+  <div class="modal-content">
+    <h4>You are not logged in</h4>
+    <p>Please login to continue</p>
+  </div>
+  <div class="modal-footer">
+    <a href="" class="modal-action modal-close waves-effect waves-green btn-flat">Login</a>
+  </div>
+</div>
 <div>
-    <!-- <h1>This is the dashboard page</h1> -->
-    <div id="topbar">
-        <span>Hello {{user.name}}. What would you like to do?</span>
+  <!-- <h1>This is the dashboard page</h1> -->
+  <div id="topbar">
+    <span>Hello {{user?.first_name}}. What would you like to do?</span>
+  </div>
+  <div id="dashboard" class="row">
+    <div class="col s4 button valign-wrapper center">
+      <a routerLink="/account" routerLinkActive="active">
+        <div class="circle valign-wrapper"><img class="icon" src="assets/images/myaccount.png"></div>
+        <div class="title">My Account</div>
+      </a>
     </div>
-    <div id="dashboard" class="row">
-        <div class="col s4 button valign-wrapper center">
-            <a routerLink="/account" routerLinkActive="active">
-                <div class="circle valign-wrapper"><img class="icon" src="assets/images/myaccount.png"></div>
-                <div class="title">My Account</div>
-            </a>
-        </div>
-        <div class="col s4 button valign-wrapper center">
-            <a routerLink="/transfer-fund/dashboard" routerLinkActive="active">
-                <div class="circle valign-wrapper"><img class="icon" src="assets/images/transfer.png"></div>
-                <div class="title">Transfer Funds</div>
-            </a>
-        </div>
-        <div class="col s4 button valign-wrapper  center">
-            <a href="/loanmanage">
-                <div class="circle valign-wrapper"><img class="icon" src="assets/images/loan.png"></div>
-                <div class="title">Loan Management</div>
-            </a>
-        </div>
+    <div class="col s4 button valign-wrapper center">
+      <a routerLink="/transfer-fund/dashboard" routerLinkActive="active">
+        <div class="circle valign-wrapper"><img class="icon" src="assets/images/transfer.png"></div>
+        <div class="title">Transfer Funds</div>
+      </a>
     </div>
-
+    <div class="col s4 button valign-wrapper  center">
+      <a href="/loanmanage">
+        <div class="circle valign-wrapper"><img class="icon" src="assets/images/loan.png"></div>
+        <div class="title">Loan Management</div>
+      </a>
+    </div>
+  </div>
 </div>

@@ -3,22 +3,22 @@ from dateutil import parser
 
 
 def init_data(apps, schema_editor):
-
-    Account = apps.get_model("authentication","Account")
+    Account = apps.get_model("authentication", "Account")
     db_alias = schema_editor.connection.alias
     Account.objects.using(db_alias).bulk_create([
-        Account(id=uuid.uuid4(), email="team8best@gmail.com",first_name="Team",last_name="Best",
-                dob=parser.parse('11/11/2017'),primary_phone_number="412-123-6666",
-                alternative_phone_number="",home_address_1="5000 Forbes Ave",home_address_2="Apt#123",
-                home_address_city="Pittsburgh",home_address_state="PA",home_address_country="US",
-                home_address_zip="15213",mail_address_1="5000 Forbes Ave",mail_address_2="Apt#123",
-                mail_address_city="Pittsburgh",mail_address_state="PA",mail_address_country="US",
-                mail_address_zip="15213",license_number="88-666-123",license_type="Driver License",
+        Account(id=uuid.uuid4(), email="team8best@gmail.com", first_name="Team", last_name="Best",
+                dob=parser.parse('11/11/2017'), primary_phone_number="412-123-6666",
+                alternative_phone_number="", home_address_1="5000 Forbes Ave", home_address_2="Apt#123",
+                home_address_city="Pittsburgh", home_address_state="PA", home_address_country="US",
+                home_address_zip="15213", mail_address_1="5000 Forbes Ave", mail_address_2="Apt#123",
+                mail_address_city="Pittsburgh", mail_address_state="PA", mail_address_country="US",
+                mail_address_zip="15213", license_number="88-666-123", license_type="Driver License",
                 license_issue_date=parser.parse("11/12/2017"),
                 license_expire=parser.parse("11/12/2018"),
-                license_geo="PA",occupation="CEO",annual_income=100000,employee="Carneige Mellon University",
-                security_question_1=2,security_answer_1="Unknown",security_question_2=4,security_answer_2="Unknown",
-                security_question_3=1,security_answer_3="Unknown",language='E',pin_code='CMU6661234',registration_status=False),
+                license_geo="PA", occupation="CEO", annual_income=100000, employee="Carneige Mellon University",
+                security_question_1=2, security_answer_1="Unknown", security_question_2=4, security_answer_2="Unknown",
+                security_question_3=1, security_answer_3="Unknown", language='E', pin_code='CMU6661234',
+                registration_status=False),
         Account(id=uuid.uuid4(), email="haha@gmail.com", first_name="Ha", last_name="Ha",
                 dob=parser.parse('11/11/1991'), primary_phone_number="111-111-1111",
                 alternative_phone_number="", home_address_1="111 Haha Ave", home_address_2="",
@@ -67,7 +67,8 @@ def init_data(apps, schema_editor):
                 mail_address_zip="15216", license_number="12-345-678", license_type="Driver License",
                 license_issue_date=parser.parse("11/25/2017"),
                 license_expire=parser.parse("11/25/2019"),
-                license_geo="PA", occupation="Machine Learning Head", annual_income=100000000, employee="Carneige Mellon University",
+                license_geo="PA", occupation="Machine Learning Head", annual_income=100000000,
+                employee="Carneige Mellon University",
                 security_question_1=1, security_answer_1="Unknown", security_question_2=2, security_answer_2="Unknown",
                 security_question_3=4, security_answer_3="Unknown", language='S', pin_code='CMU1521366',
                 registration_status=False),
@@ -81,7 +82,8 @@ def init_data(apps, schema_editor):
                 license_issue_date=parser.parse("12/22/2016"),
                 license_expire=parser.parse("12/20/2021"),
                 license_geo="PA", occupation="Analyst", annual_income=70000, employee="Apple",
-                security_question_1=2, security_answer_1="Unknown", security_question_2=3, security_answer_2="Hard to say",
+                security_question_1=2, security_answer_1="Unknown", security_question_2=3,
+                security_answer_2="Hard to say",
                 security_question_3=1, security_answer_3="Unknown", language='E', pin_code='CMU3211234',
                 registration_status=False),
     ])

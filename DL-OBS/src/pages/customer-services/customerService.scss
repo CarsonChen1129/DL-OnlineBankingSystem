@@ -1,48 +1,52 @@
 .container {
-  float:middle;
+  float: middle;
   margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   width: 60%;
-  min-height:1330px;
-  background-color:#fff;
+  min-height: 1330px;
+  background-color: #fff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border: 2px solid #b79344;
 }
 
-.header{
+.header {
   margin-left: auto;
   margin-right: auto;
-  width:99%;
-  height:60px;
-  background: -webkit-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
-  background: -o-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
-  background: -moz-linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
-  background: linear-gradient(rgba(247,247,247,0),rgba(240,240,240,1));
+  width: 99%;
+  height: 60px;
+  background: -webkit-linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
+  background: -o-linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
+  background: -moz-linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
+  background: linear-gradient(rgba(247, 247, 247, 0), rgba(240, 240, 240, 1));
 }
-.content{
+
+.content {
   padding: 20px;
   padding-left: 50px;
   padding-right: 50px;
 }
+
 .title {
   margin-bottom: 10px;
   font-size: 1.5em;
   color: #b79244;
 }
+
 .sub-title {
   margin-top: 10px;
   padding-left: 25px;
   font-size: 1em;
   color: #b79244;
 }
+
 .sub-input {
   margin-left: 25px;
 }
 
 .contact-title {
   /*width: 180px;*/
-  width:200%;
+  width: 200%;
   padding-left: 30px;
   padding-top: 10px;
   text-align: left;
@@ -50,6 +54,7 @@
   font-size: 1em;
   color: #b79244;
 }
+
 .contact-title-large {
   width: 180px;
   padding-left: 30px;
@@ -57,9 +62,11 @@
   font-size: 1.3em;
   color: #b79244;
 }
+
 .contact-input {
   padding-left: 30px;
 }
+
 .contact-title-middle {
   width: 190px;
   text-align: left;
@@ -71,6 +78,7 @@
   vertical-align: left;
   color: #b79244;
 }
+
 .contact-title-right {
   width: 180px;
   padding-left: 25px;
@@ -78,7 +86,8 @@
   font-size: 1em;
   color: #b79244;
 }
-.tagBox{
+
+.tagBox {
   background-color: #b79344;
   height: 35px;
   width: 180px;
@@ -99,16 +108,19 @@
   font-size: 10pt;
   color: #fff;
 }
+
 td {
   margin-right: 5px;
 }
-.image{
+
+.image {
   margin-bottom: 10px;
   text-align: center;
 }
+
 .table {
-  border-top-left-radius:19px;
-  border-top-right-radius:19px;
+  border-top-left-radius: 19px;
+  border-top-right-radius: 19px;
   background-color: #b79344;
   height: 33px;
   margin-top: 30px;
@@ -118,30 +130,35 @@ td {
   font-size: 1.4em;
   color: #fff;
 }
+
 .number {
   font-size: 1.2em;
-  color:#4b4b4b;
+  color: #4b4b4b;
   padding-top: 18px;
   padding-bottom: 7px;
 }
+
 .star {
-  color:red;
-  vertical-align:sub;
+  color: red;
+  vertical-align: sub;
   padding-left: 8px;
-  font-size:0.9em;
+  font-size: 0.9em;
 
 }
+
 .dash {
   font-size: 1.3em;
   color: #bbbbbb;
 
 }
+
 .notify {
   padding-left: 2px;
   padding-top: 8px;
   padding-bottom: 10px;
   color: #1D3c56;
 }
+
 .tablemid {
 
   background-color: #b79344;
@@ -153,6 +170,7 @@ td {
   font-size: 1.4em;
   color: #fff;
 }
+
 #usernotify {
   width: 360px;
   padding-left: 2px;
@@ -176,11 +194,11 @@ td {
   float: right;
   margin-top: 50px;
 }
+
 .form {
   padding-left: 7px;
   padding-right: 7px;
 }
-
 
 .steps {
   color: #000;
@@ -194,6 +212,7 @@ td {
   width: calc(100% + 1rem);
   font-size: 1rem;
 }
+
 .steps .step {
   padding: 0 1.2rem;
   position: relative;
@@ -202,6 +221,7 @@ td {
   align-items: center;
   justify-content: center;
 }
+
 .steps .step::after {
   content: "";
   display: block;
@@ -212,6 +232,7 @@ td {
   background: #000;
   z-index: 5;
 }
+
 .steps .step::before {
   content: "";
   display: block;
@@ -221,14 +242,17 @@ td {
   height: 2px;
   position: absolute;
 }
+
 .steps .step:first-of-type::before {
   left: 50%;
   width: 50%;
 }
+
 .steps .step:last-of-type::before {
   right: 50%;
   width: 50%;
 }
+
 .steps .step.done::before, .steps .step.done::after {
   background-color: #b79344;
 }
@@ -237,11 +261,13 @@ td {
   padding-top: 70px;
   vertical-align: center;
 }
+
 #cancel {
   color: #b79344;
   font-weight: 900;
 }
+
 #string {
-  padding:10px;
+  padding: 10px;
   color: #9F9F9F;
 }

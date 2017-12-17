@@ -1,368 +1,385 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Online Banking Setup: Step 1</title>
-    <style>
-        .container {
-            float:middle;
-            margin-top: 20px;
-            margin-left: auto;
-            margin-right: auto;
-            width: 60%;
-            min-height:1330px;
-            background-color:#fff;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            border: 2px solid #b79344;
-        }
+  <meta charset="UTF-8">
+  <title>Online Banking Setup: Step 1</title>
+  <style>
+    .container {
+      float: middle;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 60%;
+      min-height: 1330px;
+      background-color: #fff;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      border: 2px solid #b79344;
+    }
 
+    .header {
+      padding-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      height: 60px;
+      text-align: center;
+      font-size: 1.3em;
+      font-family: "Lucida" Grande, sans-serif;
+      color: #b79244;
+    }
 
-        .header{
-            padding-top: 20px;
-            margin-left: auto;
-            margin-right: auto;
-            width:100%;
-            height:60px;
-            text-align: center;
-            font-size: 1.3em;
-            font-family: "Lucida" Grande, sans-serif;
-            color: #b79244;
-        }
-        .content{
-            padding: 20px;
-            padding-left: 50px;
-            padding-right: 50px;
-        }
-        .title {
-            margin-bottom: 10px;
-            font-size: 1.8em;
-            color: #b79244;
-        }
-        .sub-title {
-            width:200%;
-            padding-left: 20px;
-            padding-top: 10px;
-            text-align: left;
-            vertical-align: left;
-            font-size: 1em;
-            color: #b79244;
-        }
-        .sub-input {
-            margin-left: 25px;
-        }
+    .content {
+      padding: 20px;
+      padding-left: 50px;
+      padding-right: 50px;
+    }
 
-        .contact-title {
-            /*width: 180px;*/
-            width:200%;
-            padding-left: 30px;
-            padding-top: 10px;
-            /*padding-bottom: 5px;*/
-            text-align: left;
-            vertical-align: left;
-            font-size: 1em;
-            color: #b79244;
-            margin-left: 35px;
-        }
+    .title {
+      margin-bottom: 10px;
+      font-size: 1.8em;
+      color: #b79244;
+    }
 
-        .contact-input {
-            width:200%;
-            padding-left: 30px;
-            padding-top: 10px;
-            text-align: left;
-            vertical-align: left;
-            font-size: 1em;
-        }
-        td {
-            margin-right: 5px;
-        }
+    .sub-title {
+      width: 200%;
+      padding-left: 20px;
+      padding-top: 10px;
+      text-align: left;
+      vertical-align: left;
+      font-size: 1em;
+      color: #b79244;
+    }
 
-        .getStartButton{
-            text-align: center;
-            color: white;
-            background: #b79244;
-            width: 15%;
-            height: 50px;
-            font-size: 1em;
+    .sub-input {
+      margin-left: 25px;
+    }
 
-        }
-        url(https://fonts.googleapis.com/css?family=Open+Sans);
+    .contact-title {
+      /*width: 180px;*/
+      width: 200%;
+      padding-left: 30px;
+      padding-top: 10px;
+      /*padding-bottom: 5px;*/
+      text-align: left;
+      vertical-align: left;
+      font-size: 1em;
+      color: #b79244;
+      margin-left: 35px;
+    }
 
-        body{
-            background: #b79244;
-            font-family: 'Open Sans', sans-serif;
-        }
+    .contact-input {
+      width: 200%;
+      padding-left: 30px;
+      padding-top: 10px;
+      text-align: left;
+      vertical-align: left;
+      font-size: 1em;
+    }
 
-        .search {
-            width: 120%;
-            position: relative;
-        }
+    td {
+      margin-right: 5px;
+    }
 
-        .searchTerm {
-            float: left;
-            width: 100%;
-            border: 3px solid #b79244;
-            /*text-align: center;*/
-            padding: 5px;
-            height: 20px;
-            border-radius: 5px;
-            outline: none;
-            color: #b79244;
-        }
+    .getStartButton {
+      text-align: center;
+      color: white;
+      background: #b79244;
+      width: 15%;
+      height: 50px;
+      font-size: 1em;
 
-        .searchTerm:focus{
-            color: #b79244;
-        }
+    }
 
-        .searchButton {
-            position: absolute;
-            right: -50px;
-            width: 50px;
-            height: 36px;
-            border: 1px solid #b79244;
-            background: #b79244;
-            text-align: center;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 10px;
-        }
+    url
+    (
+    https://fonts.googleapis.com/css?family=Open+Sans
+    )
+    ;
 
-        /*Resize the wrap to see the search bar change!*/
-        .search{
-            width: 50%;
-            position: absolute;
-            /*top: 50%;*/
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
+    body {
+      background: #b79244;
+      font-family: 'Open Sans', sans-serif;
+    }
 
-        .image{
-            margin-bottom: 10px;
-            margin-top: 30px;
-            text-align: left;
-        }
+    .search {
+      width: 120%;
+      position: relative;
+    }
 
-        /* Create two equal columns that floats next to each other */
-        .column {
-            float: left;
-            width: 40%;
-            padding: 10px;
-            height: 400px; /* Should be removed. Only for demonstration */
-        }
+    .searchTerm {
+      float: left;
+      width: 100%;
+      border: 3px solid #b79244;
+      /*text-align: center;*/
+      padding: 5px;
+      height: 20px;
+      border-radius: 5px;
+      outline: none;
+      color: #b79244;
+    }
 
-        /* Clear floats after the columns */
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-        .table {
-            border-top-left-radius:19px;
-            border-top-right-radius:19px;
-            background-color: #b79344;
-            height: 33px;
-            margin-top: 30px;
-            padding-left: 20px;
-            padding-top: 9px;
-            padding-bottom: 5px;
-            font-size: 1.4em;
-            color: #fff;
-        }
+    .searchTerm:focus {
+      color: #b79244;
+    }
 
-        .steps .step {
-            padding: 0 1.2rem;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .steps .step::after {
-            content: "";
-            display: block;
-            margin: 0.5rem;
-            border-radius: 50%;
-            width: 1rem;
-            height: 1rem;
-            background: #000;
-            z-index: 5;
-        }
-        .steps .step::before {
-            content: "";
-            display: block;
-            background: #000;
-            width: 100%;
-            bottom: 1rem;
-            height: 2px;
-            position: absolute;
-        }
-        .steps .step:first-of-type::before {
-            left: 50%;
-            width: 50%;
-        }
-        .steps .step:last-of-type::before {
-            right: 50%;
-            width: 50%;
-        }
-        .steps .step.done::before, .steps .step.done::after {
-            background-color: #b79344;
-        }
+    .searchButton {
+      position: absolute;
+      right: -50px;
+      width: 50px;
+      height: 36px;
+      border: 1px solid #b79244;
+      background: #b79244;
+      text-align: center;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 10px;
+    }
 
-        .buttons {
-            padding-top: 70px;
-            vertical-align: center;
-        }
-        #cancel {
-            color: #b79344;
-            font-weight: 900;
-        }
-        #string {
-            padding:10px;
-            color: #9F9F9F;
-        }
-    </style>
+    /*Resize the wrap to see the search bar change!*/
+    .search {
+      width: 50%;
+      position: absolute;
+      /*top: 50%;*/
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .image {
+      margin-bottom: 10px;
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    /* Create two equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 40%;
+      padding: 10px;
+      height: 400px; /* Should be removed. Only for demonstration */
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .table {
+      border-top-left-radius: 19px;
+      border-top-right-radius: 19px;
+      background-color: #b79344;
+      height: 33px;
+      margin-top: 30px;
+      padding-left: 20px;
+      padding-top: 9px;
+      padding-bottom: 5px;
+      font-size: 1.4em;
+      color: #fff;
+    }
+
+    .steps .step {
+      padding: 0 1.2rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .steps .step::after {
+      content: "";
+      display: block;
+      margin: 0.5rem;
+      border-radius: 50%;
+      width: 1rem;
+      height: 1rem;
+      background: #000;
+      z-index: 5;
+    }
+
+    .steps .step::before {
+      content: "";
+      display: block;
+      background: #000;
+      width: 100%;
+      bottom: 1rem;
+      height: 2px;
+      position: absolute;
+    }
+
+    .steps .step:first-of-type::before {
+      left: 50%;
+      width: 50%;
+    }
+
+    .steps .step:last-of-type::before {
+      right: 50%;
+      width: 50%;
+    }
+
+    .steps .step.done::before, .steps .step.done::after {
+      background-color: #b79344;
+    }
+
+    .buttons {
+      padding-top: 70px;
+      vertical-align: center;
+    }
+
+    #cancel {
+      color: #b79344;
+      font-weight: 900;
+    }
+
+    #string {
+      padding: 10px;
+      color: #9F9F9F;
+    }
+  </style>
 </head>
 
 <body>
 
 <div class="container">
-    <div class="header">
+  <div class="header">
+  </div>
+  <div class="content">
+    <table>
+      <tr>
+        <td>
+          <div class="contact-title">
+            Location Type
+          </div>
+        </td>
+        <td>
+          <div class="contact-title">
+            ATM Services
+          </div>
+        </td>
+        <td>
+          <div class="contact-title">
+            Branch Services
+          </div>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <div class="sub-title" style="margin-left: 35px">
+            <input type="checkbox" name="locationtype" value="ATM">Devenshire ATM (5)<br>
+            <input type="checkbox" name="locationtype" value="Branch" checked>Devenshire Branch (4)<br>
+          </div>
+
+        </td>
+        <td>
+          <div class="sub-title" style="margin-left: 35px">
+            <input type="checkbox" name="locationtype" value="ATMService">24-hours access (5)<br>
+            <input type="checkbox" name="locationtype" value="ATMService" checked>Allowed deposits (2)<br>
+            <input type="checkbox" name="locationtype" value="ATMService">Drive-up (5)<br>
+          </div>
+        </td>
+
+        <td>
+          <div class="sub-title" style="margin-left: 35px">
+            <input type="checkbox" name="locationtype" value="BranchService">Safe deposit boxes (3)<br>
+            <input type="checkbox" name="locationtype" value="Branch" checked>Multiple Languages Specialist<br>
+          </div>
+
+        </td>
+      </tr>
+    </table>
+
+    <div class="header">Find a Devenshire ATM or Branch Near Your Location</div>
+
+    <div class="search">
+      <div class="search">
+        <input type="text" class="searchTerm" placeholder="Please enter a ZIP code, or an adress, city and state">
+        <button type="submit" class="searchButton">Search
+          <i class="fa fa-search"></i>
+        </button>
+      </div>
     </div>
-    <div class="content">
+
+    <div class="row">
+      <div class="column" style="">
+        <div class="image"><img src="customerService_map.png" width=120%px height=150% alt="Line"></div>
+        <!--<p>Some text..</p>-->
+      </div>
+      <div class="column" style="">
+        <!--<h2>Column 2</h2>-->
         <table>
-            <tr>
-                <td>
-                    <div class="contact-title">
-                        Location Type
-                    </div>
-                </td>
-                <td>
-                    <div class="contact-title">
-                        ATM Services
-                    </div>
-                </td>
-                <td>
-                    <div class="contact-title">
-                        Branch Services
-                    </div>
-                </td>
-            </tr>
+          <tr>
+            <td>
+              <div class="contact-title" style="margin-top: 30px; margin-left: 35px">
+                Oakland<br>
+                1000 Forbes Ave<br>
+                Pittsburgh, PA 15213<br>
+              </div>
+            </td>
+            <td>
+              <div class="contact-title" style="margin-left:45px">
+                0.5 miles<br>
+                Driving directions
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="contact-input" style=" margin-left: 35px">
+                +1-412-123-4567<br>
+                Lobby Hours<br>
+                Monday-Friday: 8 AM -Midnight<br>
+                Saturday: 8 AM - 8 PM ET<br>
+                Sunday: Closed<br>
+              </div>
+            </td>
 
-            <tr>
-                <td>
-                    <div class="sub-title" style="margin-left: 35px">
-                        <input type="checkbox" name="locationtype" value="ATM" >Devenshire ATM (5)<br>
-                        <input type="checkbox" name="locationtype" value="Branch" checked>Devenshire Branch (4)<br>
-                    </div>
 
-                </td>
-                <td>
-                    <div class="sub-title" style="margin-left: 35px">
-                        <input type="checkbox" name="locationtype" value="ATMService">24-hours access (5)<br>
-                        <input type="checkbox" name="locationtype" value="ATMService" checked>Allowed deposits (2)<br>
-                        <input type="checkbox" name="locationtype" value="ATMService" >Drive-up (5)<br>
-                    </div>
-                </td>
-
-                <td>
-                    <div class="sub-title" style="margin-left: 35px">
-                        <input type="checkbox" name="locationtype" value="BranchService">Safe deposit boxes (3)<br>
-                        <input type="checkbox" name="locationtype" value="Branch" checked>Multiple Languages Specialist<br>
-                    </div>
-
-                </td>
-            </tr>
+          </tr>
+          <tr>
+            <td>
+              <div class="contact-title" style="margin-top: 30px; margin-left: 35px">
+                ShadySide<br>
+                2000 Fifth Ave<br>
+                Pittsburgh, PA 15213<br>
+              </div>
+            </td>
+            <td>
+              <div class="contact-title" style="margin-left:45px">
+                1.5 miles<br>
+                Driving directions
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="contact-input" style="margin-left: 35px">
+                +1-412-100-7890<br>
+                Lobby Hours<br>
+                Monday-Friday: 8 AM -Midnight<br>
+                Saturday: 8 AM - 8 PM ET<br>
+                Sunday: Closed<br>
+              </div>
+            </td>
+          </tr>
         </table>
 
-        <div class="header">Find a Devenshire ATM or Branch Near Your Location</div>
-
-        <div class="search">
-            <div class="search">
-                <input type="text" class="searchTerm" placeholder="Please enter a ZIP code, or an adress, city and state">
-                <button type="submit" class="searchButton">Search
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="column" style="">
-                <div class="image"><img src="customerService_map.png" width=120%px height=150% alt="Line"></div>
-                <!--<p>Some text..</p>-->
-            </div>
-            <div class="column" style="">
-                <!--<h2>Column 2</h2>-->
-                <table>
-                    <tr>
-                        <td>
-                            <div class="contact-title" style="margin-top: 30px; margin-left: 35px">
-                                Oakland<br>
-                                1000 Forbes Ave<br>
-                                Pittsburgh, PA 15213<br>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="contact-title" style="margin-left:45px">
-                                0.5 miles<br>
-                                Driving directions
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="contact-input" style=" margin-left: 35px">
-                                +1-412-123-4567<br>
-                                Lobby Hours<br>
-                                Monday-Friday: 8 AM -Midnight<br>
-                                Saturday: 8 AM - 8 PM ET<br>
-                                Sunday: Closed<br>
-                            </div>
-                        </td>
-
-
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="contact-title" style="margin-top: 30px; margin-left: 35px">
-                                ShadySide<br>
-                                2000 Fifth Ave<br>
-                                Pittsburgh, PA 15213<br>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="contact-title" style="margin-left:45px">
-                                1.5 miles<br>
-                                Driving directions
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="contact-input" style="margin-left: 35px">
-                                +1-412-100-7890<br>
-                                Lobby Hours<br>
-                                Monday-Friday: 8 AM -Midnight<br>
-                                Saturday: 8 AM - 8 PM ET<br>
-                                Sunday: Closed<br>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-
-            </div>
-        </div>
-
-        <div class="title" style="margin-top: 50px";>
-            Open a Chase checking account today!
-        </div>
-        <div style="margin-top: 20px">
-            Find the one that's right for you.
-            <br>
-            <button type="submit" style="margin-top: 10px" class="getStartButton">Get Started
-                <i class="fa fa-search"></i>
-            </button>
-           </div>
+      </div>
     </div>
+
+    <div class="title" style="margin-top: 50px" ;>
+      Open a Chase checking account today!
+    </div>
+    <div style="margin-top: 20px">
+      Find the one that's right for you.
+      <br>
+      <button type="submit" style="margin-top: 10px" class="getStartButton">Get Started
+        <i class="fa fa-search"></i>
+      </button>
+    </div>
+  </div>
 </div>
 </body>
 </html>

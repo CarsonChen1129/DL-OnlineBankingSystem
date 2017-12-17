@@ -1,111 +1,111 @@
 <ng-container>
   <h1>Profile & Setting</h1>
-    <form class="buttons">
-      <input type="button" name="profile-button" value="Profile">
-      <input type="button" name="privacy-button" value="Privacy">      
-    </form>
-    <div class="content">
-      <div class="Security-info">
-        <table class="sub-header">
+  <form class="buttons">
+    <input type="button" name="profile-button" value="Profile">
+    <input type="button" name="privacy-button" value="Privacy">
+  </form>
+  <div class="content">
+    <div class="Security-info">
+      <table class="sub-header">
+        <tr>
+          <td><h2>Security</h2></td>
+          <td><h3>Edit</h3></td>
+        </tr>
+      </table>
+      <div class="table-content">
+        <table>
           <tr>
-            <td><h2>Security</h2></td>
-            <td><h3>Edit</h3></td>
+            <td>Password</td>
+            <td>********</td>
+          </tr>
+          <h4>Security Question</h4>
+          <tr>
+            <td>Q1: What is the last name of your best friend in high school?</td>
+            <td>********</td>
+          </tr>
+          <tr>
+            <td>Q2: To what destination city did you fly on your first plane ride?</td>
+            <td>********</td>
+          </tr>
+          <tr>
+            <td>Q3: To what destination city did you fly on your first plane ride?</td>
+            <td>********</td>
           </tr>
         </table>
-        <div class="table-content">
-          <table>
-            <tr>
-              <td>Password</td>
-              <td>********</td>
-            </tr>
-            <h4>Security Question</h4>
-            <tr>
-              <td>Q1: What is the last name of your best friend in high school?</td>
-              <td>********</td>
-            </tr>
-            <tr>
-              <td>Q2: To what destination city did you fly on your first plane ride?</td>
-              <td>********</td>
-            </tr>
-            <tr>
-                <td>Q3: To what destination city did you fly on your first plane ride?</td>
-                <td>********</td>
-            </tr>           
-          </table>
-        </div>
       </div>
-      
-      <div class="alert-info">
-          <table class="sub-header">
-              <tr>
-                <td><h2>Alert Delivery</h2></td>
-                <td><h3>Edit</h3></td>
-              </tr>
-            </table>
-          <div class="table-content">
-            <table>
-              <tr>
-                <th>Nickname</th>
-                <th>Delivery type</th>
-                <th>Deliver to</th>
-                <th>Status</th>
-              </tr>
-              <tr>
-                <td>Primary</td>
-                <td>Text</td>
-                <td>111-111-1111</td>
-                <td>Active</td>
-              </tr>
-              <tr>
-                <td>MyEmail</td>
-                <td>Email</td>
-                <td>tonyqin@cmu.edu</td>
-                <td>Active</td>
-              </tr>
-            </table>          
-          </div>
-        </div>
-
-        <div class="choose-alert">
-            <table class="sub-header">
-                <tr>
-                  <td><h2>Choose Alert</h2></td>
-                  <td><h3>Edit</h3></td>
-                </tr>
-              </table>
-            <div class="table-content">
-              <h4>Balance and Transactions</h4>
-              <table>
-                <tr>
-                  <td class="column-1">My available balance is less than $_________ (USD)</td>
-                  <td class="column-2">Dollar amount $ </td>
-                  <td class="column-3"><input type="text" value="250" name="less-balance"></td>
-                </tr>
-                <tr>
-                  <td class="column-1">My balance reaches $_______ (USD)</td>
-                  <td class="column-2">Dollar amount $ </td>
-                  <td class="column-3"><input type="text" value="250" name="reach-balance"></td>                  
-                </tr>
-                <tr>
-                  <td class="column-1">A transfer exceeds $_______ (USD) has been posted to the account</td>
-                  <td class="column-2">Dollar amount $ </td>
-                  <td class="column-3"><input type="text" value="250" name="transfer-balance"></td>                                    
-                </tr>
-              </table>
-              <h4>Payments</h4> 
-              <table>
-                  <tr>
-                    <td class="column-1">A payment exceeds $_______ (USD) has been posted to the account</td>
-                    <td class="column-2">Dollar amount $ </td>
-                    <td class="column-3"><input type="text" value="250" name="pay-more-balance"></td>
-                  </tr>
-                  <tr>
-                    <td class="column-1">My payment is due in ______________ days</td>
-                    <td class="column-2">Number of days </td>
-                    <td class="column-3"><input type="text" value="3" name="pay-due"></td>                  
-                  </tr>
-                </table>         
-            </div>
-          </div>      
     </div>
+
+    <div class="alert-info">
+      <table class="sub-header">
+        <tr>
+          <td><h2>Alert Delivery</h2></td>
+          <td><h3>Edit</h3></td>
+        </tr>
+      </table>
+      <div class="table-content">
+        <table>
+          <tr>
+            <th>Nickname</th>
+            <th>Delivery type</th>
+            <th>Deliver to</th>
+            <th>Status</th>
+          </tr>
+          <tr>
+            <td>Primary</td>
+            <td>Text</td>
+            <td>111-111-1111</td>
+            <td>Active</td>
+          </tr>
+          <tr>
+            <td>MyEmail</td>
+            <td>Email</td>
+            <td>tonyqin@cmu.edu</td>
+            <td>Active</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="choose-alert">
+      <table class="sub-header">
+        <tr>
+          <td><h2>Choose Alert</h2></td>
+          <td><h3>Edit</h3></td>
+        </tr>
+      </table>
+      <div class="table-content">
+        <h4>Balance and Transactions</h4>
+        <table>
+          <tr>
+            <td class="column-1">My available balance is less than $_________ (USD)</td>
+            <td class="column-2">Dollar amount $</td>
+            <td class="column-3"><input type="text" value="250" name="less-balance"></td>
+          </tr>
+          <tr>
+            <td class="column-1">My balance reaches $_______ (USD)</td>
+            <td class="column-2">Dollar amount $</td>
+            <td class="column-3"><input type="text" value="250" name="reach-balance"></td>
+          </tr>
+          <tr>
+            <td class="column-1">A transfer exceeds $_______ (USD) has been posted to the account</td>
+            <td class="column-2">Dollar amount $</td>
+            <td class="column-3"><input type="text" value="250" name="transfer-balance"></td>
+          </tr>
+        </table>
+        <h4>Payments</h4>
+        <table>
+          <tr>
+            <td class="column-1">A payment exceeds $_______ (USD) has been posted to the account</td>
+            <td class="column-2">Dollar amount $</td>
+            <td class="column-3"><input type="text" value="250" name="pay-more-balance"></td>
+          </tr>
+          <tr>
+            <td class="column-1">My payment is due in ______________ days</td>
+            <td class="column-2">Number of days</td>
+            <td class="column-3"><input type="text" value="3" name="pay-due"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
 </ng-container>

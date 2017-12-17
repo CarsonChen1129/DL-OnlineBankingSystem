@@ -8,7 +8,7 @@ from permissions import IsAccountOwner
 from serializers import AccountSerializer
 
 import json, datetime
-from django.contrib.auth import authenticate,login, logout
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.hashers import check_password
 
 import logging
@@ -17,7 +17,6 @@ logger = logging.getLogger('obs-log')
 
 
 class AccountViewSet(views.APIView):
-
     lookup_field = 'email'
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
@@ -39,43 +38,42 @@ class AccountViewSet(views.APIView):
 
     @csrf_exempt
     def get(self, request):
-            print "[Received data]"
-            print request.query_params
-            # print typerequest.query_params
-            data = request.query_params
-            print data
-            print data.get('email')
-            print data.get('pin')
-            pin = data.get('pin')
-            try:
-                user = Account.objects.get(email=data.get('email'))
-                print "user: {}".format(user)
-            except Account.DoesNotExist as e:
+        print "[Received data]"
+        print request.query_params
+        # print typerequest.query_params
+        data = request.query_params
+        print data
+        print data.get('email')
+        print data.get('pin')
+        pin = data.get('pin')
+        try:
+            user = Account.objects.get(email=data.get('email'))
+            print "user: {}".format(user)
+        except Account.DoesNotExist as e:
+            return Response({
+                'status': 'Unauthorized',
+                'message': 'Unable to find the user. [Message]: ' + e.message
+            }, status=status.HTTP_401_UNAUTHORIZED)
+        print "registration status: {}".format(user.registration_status)
+        if user.registration_status is True:
+            return Response({
+                'status': 'Bad request',
+                'message': 'Account is already registered.'
+            }, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            print pin
+            print user.pin_code
+            if pin == user.pin_code:
+                return Response(AccountSerializer(user).data, status=status.HTTP_200_OK)
+            else:
                 return Response({
                     'status': 'Unauthorized',
-                    'message': 'Unable to find the user. [Message]: ' + e.message
+                    'message': 'Your pin code does not match our record.'
                 }, status=status.HTTP_401_UNAUTHORIZED)
-            print "registration status: {}".format(user.registration_status)
-            if user.registration_status is True:
-                return Response({
-                    'status': 'Bad request',
-                    'message': 'Account is already registered.'
-                }, status=status.HTTP_400_BAD_REQUEST)
-            else:
-                print pin
-                print user.pin_code
-                if pin == user.pin_code:
-                    return Response(AccountSerializer(user).data, status=status.HTTP_200_OK)
-                else:
-                    return Response({
-                        'status':'Unauthorized',
-                        'message':'Your pin code does not match our record.'
-                    }, status=status.HTTP_401_UNAUTHORIZED)
-                # return Response({
-                #     'status': 'OK',
-                #     'message': 'OK.'
-                # }, status=status.HTTP_200_OK)
-
+            # return Response({
+            #     'status': 'OK',
+            #     'message': 'OK.'
+            # }, status=status.HTTP_200_OK)
 
     @csrf_exempt
     def post(self, request):
@@ -100,8 +98,8 @@ class AccountViewSet(views.APIView):
             logger.debug(user.registration_status)
             if user.registration_status is True:
                 return Response({
-                    'status':'Bad request',
-                    'message':'Account is already registered.'
+                    'status': 'Bad request',
+                    'message': 'Account is already registered.'
                 }, status=status.HTTP_400_BAD_REQUEST)
             else:
                 user.first_name = data['first_name']
@@ -113,7 +111,7 @@ class AccountViewSet(views.APIView):
                 user.mail_address_1 = data['mail_address_1']
                 user.mail_address_2 = data['mail_address_2']
                 user.license_type = data['license_type']
-                user.license_number =data['license_number']
+                user.license_number = data['license_number']
                 user.occupation = data['occupation']
                 user.annual_income = data['annual_income']
                 user.employee = data['employee']
@@ -145,6 +143,7 @@ class AccountViewSet(views.APIView):
 
 class LoginView(views.APIView):
     print "[LogintView ready]"
+
     # permission_classes = (permissions.AllowAny,)
     @csrf_exempt
     def get_permissions(self):
@@ -157,7 +156,7 @@ class LoginView(views.APIView):
         return (permissions.IsAuthenticated(), IsAccountOwner(),)
 
     @csrf_exempt
-    def post(self,request, format=None):
+    def post(self, request, format=None):
         try:
             data = json.loads(request.body)
             print data
@@ -169,16 +168,16 @@ class LoginView(views.APIView):
             except Account.DoesNotExist as e:
                 return Response({
                     'status': 'Unauthorized',
-                    'message': 'Username does not exist. Please visit the nearest branch. Error: '+e.message
+                    'message': 'Username does not exist. Please visit the nearest branch. Error: ' + e.message
                 }, status=status.HTTP_401_UNAUTHORIZED)
 
             if user.registration_status is False:
                 return Response({
-                    'status':'Unauthorized',
-                    'message':'Your online banking account is not yet registered.'
+                    'status': 'Unauthorized',
+                    'message': 'Your online banking account is not yet registered.'
                 }, status=status.HTTP_401_UNAUTHORIZED)
-            
-            valid = check_password(password,user.password)
+
+            valid = check_password(password, user.password)
             print "valid {}".format(valid)
             # account = authenticate(email=email, password=password)
             # print account
@@ -207,9 +206,9 @@ class LoginView(views.APIView):
             # else:
 
         except ValueError as e:
-            return Response ({
+            return Response({
                 'status': 'Unauthorized',
-                'message':'Please provide login credentials.[Message]:'+e.message
+                'message': 'Please provide login credentials.[Message]:' + e.message
             }, status=status.HTTP_401_UNAUTHORIZED)
 
 
@@ -219,7 +218,7 @@ class LogoutView(views.APIView):
     permission_classes = (permissions.AllowAny,)
 
     @csrf_exempt
-    def post(self,request, format=None):
+    def post(self, request, format=None):
         print "Logging user out"
         try:
             print json.loads(request.body)
@@ -227,6 +226,6 @@ class LogoutView(views.APIView):
             return Response({}, status=status.HTTP_204_NO_CONTENT)
         except ValueError as e:
             return Response({
-                'status':'Unauthorized',
-                'message':'Unable to log the user out. [Message]: '+e.message
+                'status': 'Unauthorized',
+                'message': 'Unable to log the user out. [Message]: ' + e.message
             }, status=status.HTTP_401_UNAUTHORIZED)
