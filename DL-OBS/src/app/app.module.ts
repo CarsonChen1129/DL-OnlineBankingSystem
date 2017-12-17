@@ -30,7 +30,6 @@ import {TransactioninfoService} from '../providers/transactioninfo.service';
 import {ContactinfoService} from '../providers/contactinfo.service';
 import {AccountinfoserviceService} from '../providers/accountinfoservice.service';
 import {LocalStorage} from '../providers/localstorage.service';
-import {MaterializeModule} from 'angular2-materialize';
 
 
 @NgModule({
@@ -60,8 +59,7 @@ import {MaterializeModule} from 'angular2-materialize';
     HttpClientModule,
     BrowserAnimationsModule,
     CommonModule,
-    ImageUploadModule.forRoot(),
-    MaterializeModule
+    ImageUploadModule.forRoot()
   ],
   providers: [AuthenticationService, HttpClient, TransactioninfoService, ContactinfoService, AccountinfoserviceService, LocalStorage],
   bootstrap: [AppComponent]

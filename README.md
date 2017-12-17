@@ -31,3 +31,4 @@ Download the zipped package from Team 8 and uncompressed the package. You will g
 8.    In order to initialize the system with some data, please run “python manage.py makemigrations” and then “python manage.py migrate”
 9.    Then type “python manage.py runserver” to start the server
 
+
